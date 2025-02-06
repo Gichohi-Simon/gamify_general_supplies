@@ -8,7 +8,7 @@ const Products = () => {
         Our Products
       </h1>
       <div className="flex justify-center items-center mt-8 md:mt-12 mx-2 md:mx-0 py-2 md:py-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-20">
           <div className="w-44 md:w-64 flex flex-col items-center rounded-xl">
             <Image
               src="/warehouse.jpg"
