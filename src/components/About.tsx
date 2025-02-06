@@ -9,9 +9,9 @@ const About = () => {
 
       <div className="md:flex justify-center items-center mt-6 md:mt-12 w-full">
         <div className="w-full md:w-1/2 px-8">
-          <p className="mt-4 text-center text-base md:text-lg">
+          <p className="mt-4 text-center text-base md:text-lg font-bold">
             {" "}
-            Suppliers of materials for warehouse handling.
+            Suppliers of materials for <span className="text-secondary ">warehouse</span> handling.
           </p>
           <p className="mt-4 text-center text-base md:text-lg">
             {" "}
