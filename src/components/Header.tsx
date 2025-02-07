@@ -6,7 +6,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 
 const Header = () => {
   return (
-    <Popover className="h-14 flex justify-between items-center px-2 md:px-5 py-10 font-[family-name:var(--font-poppins)] font-bold">
+    <Popover className="h-14 flex justify-between items-center px-2 md:px-5 py-10 font-[family-name:var(--font-poppins)] font-bold bg-primary">
       <div className="text-base md:text-2xl">
         <h1>Gamify General Supplies</h1>
       </div>
