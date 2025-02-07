@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
-const Products = () => {
+const MainProducts = () => {
   return (
     <div className="font-[family-name:var(--font-poppins)] my-8 md:my-20 overflow-x-hidden">
       <h1 className="text-center text-xl md:text-3xl font-bold text-secondary">
@@ -57,15 +56,8 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div className="text-center">
-        <Link href="/products">
-          <button className="border border-1 px-10 py-4 hover:bg-primary rounded text-sm md:text-base">
-            see more
-          </button>
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default Products;
+export default MainProducts;

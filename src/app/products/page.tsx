@@ -1,9 +1,12 @@
 import React from 'react'
+import MainProducts from '@/components/MainProducts'
 
-const Products = () => {
+const ProductsPage = () => {
   return (
-    <div>Products</div>
+    <div>
+        <MainProducts />
+    </div>
   )
 }
 
-export default Products
+export default ProductsPage
