@@ -11,29 +11,40 @@ const Header = () => {
         <h1>Gamify General Supplies</h1>
       </div>
       <div className="hidden md:block">
-        <Link href="/" className="text-base mr-2 capitalize">
+        <Link
+          href="/"
+          className="text-base mr-2 capitalize hover:text-secondary"
+        >
           home
         </Link>
-        <Link href="/products" className="text-base capitalize">
+        <Link
+          href="/products"
+          className="text-base capitalize hover:text-secondary"
+        >
           Products
         </Link>
       </div>
       <div className="block md:hidden">
-        <PopoverButton>
-             ☰  
-        </PopoverButton>
+        <PopoverButton>☰</PopoverButton>
       </div>
-      <PopoverPanel className="absolute block inset-x-0 md:hidden bg-secondary px-2 py-5 rounded mt-14 w-40" anchor="bottom">
-        <PopoverButton>
-          ⛌
-        </PopoverButton>
+      <PopoverPanel
+        className="absolute block inset-x-0 md:hidden bg-secondary px-2 py-5 rounded mt-14 w-40"
+        anchor="bottom"
+      >
+        <PopoverButton>⛌</PopoverButton>
         <div className="flex flex-col mt-4">
-        <Link href="/" className="text-base mr-2 capitalize">
-          home
-        </Link>
-        <Link href="/products" className="text-base capitalize mt-4">
-          products
-        </Link>
+          <Link
+            href="/"
+            className="text-base mr-2 capitalize hover:text-secondary"
+          >
+            home
+          </Link>
+          <Link
+            href="/products"
+            className="text-base capitalize mt-4 hover:text-secondary"
+          >
+            products
+          </Link>
         </div>
       </PopoverPanel>
     </Popover>
