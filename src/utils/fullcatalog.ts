@@ -9,7 +9,7 @@ export const FullCatalog: FullCatalog[] = [
     image: "/manilla.jpg",
   },
   {
-    name: "Top & bottom Capping HD (50kg per roll)",
+    name: "Top & bottom Capping HD (52kg per roll)",
     image: "/topcapping.jpg",
   },
   {
@@ -33,12 +33,12 @@ export const FullCatalog: FullCatalog[] = [
     image: "/twine.jpg",
   },
   {
-    name:"basco paints (red, black, green, blue)",
+    name:"basco paints 4 litres (red, black, green, blue)",
     image:"/basco.jpg"
   },
   {
     name:"marking brushes",
-    image:"/brushes.png"
+    image:"/maarking.jpg"
   },
   {
     name:"clear tape",
@@ -50,7 +50,7 @@ export const FullCatalog: FullCatalog[] = [
   },
   {
     name:"Black and Green marking ink",
-    image:"/marking_ink.webp"
+    image:"/ink_slodge.webp"
   },
   {
     name:"Paper gummed tape, 6 inches 150m",

@@ -15,12 +15,14 @@ const Footer = () => {
         <div className="text-center md:text-start">
           <p className="font-bold capitalize text-sm md:text-base">openning hours</p>
           <p className="mt-1 md:mt-2 mb-1 md:mb-2 text-sm md:text-base">Mon-Fri 8:00AM to 5:00PM</p>
-          <a href="tel:+254 727 386 878" className="text-sm md:text-base">+254 727 386 878</a>
+          <a href="tel:+254 727 386 878" className="text-sm md:text-base hover:font-bold">+254 727 386 878</a>
+          <br/>
+          <a href="mailto:gamify100@gmail.com" className="mt-4 hover:font-bold">gamify100@gmail.com</a>
         </div>
         <div className="text-center md:text-start">
           <p className="font-bold capitalize text-sm md:text-base">location</p>
           <p className="mt-1 md:mt-2 text-sm md:text-base">
-            Mombasa, Creek View Ganjoni
+            Archbishop Makarios Road, Ganjoni
           </p>
         </div>
       </div>
