@@ -44,7 +44,7 @@ const Header = () => {
           </span>
         </Link>
         <Link
-          href="/shop"
+          href="/cart"
           className="text-base capitalize mt-4 hover:text-secondary"
         >
           <span className="flex justify-between items-center gap-2 relative">
@@ -53,7 +53,7 @@ const Header = () => {
             <p>Cart</p>
           </span>
         </Link>
-        <Link href="/shop" className="capitalize mt-4 hover:text-secondary">
+        <Link href="/account" className="capitalize mt-4 hover:text-secondary">
           <span className="flex justify-between items-center gap-2">
             <UserCircleIcon className="size-6" />
             <p>Account</p>
@@ -123,7 +123,7 @@ const Header = () => {
               </span>
             </Link>
             <Link
-              href="/shop"
+              href="/cart"
               className="text-base capitalize mt-4 hover:text-secondary"
             >
               <span className="flex gap-2 bg-transparent">
@@ -132,7 +132,7 @@ const Header = () => {
                 <p>Cart</p>
               </span>
             </Link>
-            <Link href="/shop" className="capitalize mt-4 hover:text-secondary">
+            <Link href="/account" className="capitalize mt-4 hover:text-secondary">
               <span className="flex gap-2">
                 <UserCircleIcon className="size-6" />
                 <p>Account</p>
