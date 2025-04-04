@@ -48,7 +48,7 @@ const Header = () => {
           className="text-base capitalize mt-4 hover:text-secondary"
         >
           <span className="flex justify-between items-center gap-2 relative">
-          <p className="bg-secondary absolute left-3 top-[-10] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">4</p>
+          <p className="bg-secondary absolute left-3 top-[-16] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">4</p>
             <ShoppingCartIcon className="size-6" />
             <p>Cart</p>
           </span>
@@ -127,7 +127,7 @@ const Header = () => {
               className="text-base capitalize mt-4 hover:text-secondary"
             >
               <span className="flex gap-2 bg-transparent">
-                <p className="bg-secondary absolute left-5 top-30 text-sm w-5 h-5 flex justify-center items-center rounded-full text-black hover:bg-pink-500">4</p>
+                <p className="bg-secondary absolute left-5 top-[64px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black hover:bg-pink-500">4</p>
                 <ShoppingCartIcon className="size-6" />
                 <p>Cart</p>
               </span>
