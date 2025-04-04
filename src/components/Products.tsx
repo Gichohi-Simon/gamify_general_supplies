@@ -53,7 +53,7 @@ const Products = () => {
                 </div>
                 {clicked[catalog.name] ? (
                   <button
-                    className="bg-red-500text-xs px-6 py-3 rounded-full mt-4 mb-5 flex justify-between items-center gap-2"
+                    className="bg-red-500 text-xs px-6 py-3 rounded-full mt-4 mb-5 flex justify-between items-center gap-2"
                     onClick={() => handleCart(catalog.name)}
                   >
                     <span>
