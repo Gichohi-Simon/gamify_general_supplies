@@ -8,20 +8,20 @@ const Footer = () => {
           <p className="font-bold text-2xl md:text-4xl ">
             Gamify General Supplies
           </p>
-          <p className="text-sm md:text-base mt-2">
+          <p className="text-sm mt-2">
             suppliers of materials used in warehouses
           </p>
         </div>
         <div className="text-center md:text-start">
           <p className="font-bold capitalize text-sm md:text-base">openning hours</p>
-          <p className="mt-1 md:mt-2 mb-1 md:mb-2 text-sm md:text-base">Mon-Fri 8:00AM to 5:00PM</p>
-          <a href="tel:+254 727 386 878" className="text-sm md:text-base hover:font-bold">+254 727 386 878</a>
+          <p className="mt-1 md:mt-2 mb-1 md:mb-2 text-sm">Mon-Fri 8:00AM to 5:00PM</p>
+          <a href="tel:+254 727 386 878" className="text-sm hover:font-bold">+254 727 386 878</a>
           <br/>
-          <a href="mailto:gamify100@gmail.com" className="mt-4 hover:font-bold text-sm md:text-base">gamify100@gmail.com</a>
+          <a href="mailto:gamify100@gmail.com" className="mt-4 hover:font-bold text-sm">gamify100@gmail.com</a>
         </div>
         <div className="text-center md:text-start">
           <p className="font-bold capitalize text-sm md:text-base">location</p>
-          <p className="mt-1 md:mt-2 text-sm md:text-base">
+          <p className="mt-1 md:mt-2 text-sm">
             Archbishop Makarios Road, Ganjoni
           </p>
         </div>
