@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Catalog } from "@/utils/catalog";
+import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 
 const Products = () => {
   return (
@@ -39,11 +40,12 @@ const Products = () => {
                     <p className="font-bold">kes {catalog.price}</p>
                   </div>
                 </div>
-                <div className="mt-auto">
-                  <button className="bg-primary hover:bg-secondary text-sm px-6 py-3 rounded-full mt-4 mb-5">
+                <button className="bg-primary hover:bg-secondary text-xs px-6 py-3 rounded-full mt-4 mb-5 flex justify-between items-center gap-2">
+                  <span>
+                    <ShoppingCartIcon className="size-6"/>
+                  </span>
                     Add to cart
                   </button>
-                </div>
               </div>
             </div>
           ))}
