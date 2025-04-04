@@ -19,7 +19,7 @@ const MainProducts = () => {
 
   return (
     <div className="font-[family-name:var(--font-poppins)] my-5 md:my-20 overflow-x-hidden">
-      <div className="md:flex mx-10 md:mx-40 justify-between items-center">
+      <div className="md:flex mx-10 md:mx-52 justify-between items-center">
         <Search />
         <Categories />
       </div>
