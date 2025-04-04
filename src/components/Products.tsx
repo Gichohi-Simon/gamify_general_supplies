@@ -30,7 +30,7 @@ const Products = () => {
         </div>
       </div>
       <div className="text-center">
-        <Link href="/products">
+        <Link href="/shop">
           <button className="border border-1 px-10 py-4 hover:bg-primary rounded text-sm md:text-base">
             see more
           </button>
