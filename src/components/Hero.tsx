@@ -1,3 +1,4 @@
+import { BuildingStorefrontIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import React from "react";
 
@@ -21,8 +22,11 @@ const Hero = () => {
         </p>
         <Link
           href="/shop"
-          className="text-center mt-6 md:mt-6 px-4 md:px-8 py-2 md:py-3 rounded bg-secondary text-sm md:text-base"
+          className="mt-6 md:mt-6 px-4 md:px-6 py-2 md:py-2 rounded bg-secondary flex gap-2 items-center justify-center text-xs md:text-sm"
         >
+          <span>
+            <BuildingStorefrontIcon className="size-4 md:size-6"/>
+          </span>
           Shop
         </Link>
       </div>
