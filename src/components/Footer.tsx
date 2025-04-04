@@ -5,7 +5,7 @@ const Footer = () => {
     <div className="bg-primary font-[family-name:var(--font-poppins)] py-10 px-10">
       <div className="grid place-items-center grid-cols-1 md:grid-cols-3 gap-6">
         <div className="text-center md:text-start">
-          <p className="font-bold text-2xl md:text-4xl ">
+          <p className="font-bold text-xl md:text-2xl ">
             Gamify General Supplies
           </p>
           <p className="text-sm mt-2">
