@@ -6,10 +6,12 @@ import { TrashIcon } from "@heroicons/react/16/solid";
 export default function CartPage() {
   return (
     <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 lg:mx-72 my-5 md:my-10 lg:my-14">
-      {Catalog.map((item) => (
+      <h4 className="capitalize font-bold text-base md:text-3xl mb-5 md:mb-10 ">your cart</h4>
+    <div className="elevation-2 shadow-xl px-2 md:px-10 py-2 md:py-6">
+    {Catalog.map((item) => (
         <div
           key={item.name}
-          className="flex flex-col justify-between mt-4 px-2 md:px-6 py-2 md:py-6 rounded-lg elevation-2 shadow-xl"
+          className="flex flex-col justify-between mt-4 rounded-lg"
         >
           <div className="flex items-center gap-4">
             <div className="mt-6">
@@ -43,6 +45,7 @@ export default function CartPage() {
             </div>
         </div>
       ))}
+    </div>
 
       <div className="elevation-2 shadow-lg px-4 py-10 mt-10">
           <h4 className="text-sm md:text-lg font-bold capitalize mb-10">summary</h4>
