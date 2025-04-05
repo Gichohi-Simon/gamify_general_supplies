@@ -2,11 +2,15 @@ import React from "react";
 import { Catalog } from "@/utils/catalog";
 import Image from "next/image";
 import { TrashIcon } from "@heroicons/react/16/solid";
+import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 export default function CartPage() {
   return (
     <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 lg:mx-72 my-5 md:my-10 lg:my-14">
-      <h4 className="capitalize font-bold text-base md:text-3xl mb-5 md:mb-10 ">your cart</h4>
+      <span className="capitalize font-bold text-base md:text-3xl mb-5 md:mb-10 flex gap-2 items-center justify-center">
+        <ShoppingCartIcon className="size-4 md:size-10"/>
+        <h4>your cart</h4>
+      </span>
     <div className="elevation-2 shadow-xl px-2 md:px-10 py-2 md:py-6">
     {Catalog.map((item) => (
         <div
