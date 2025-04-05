@@ -5,7 +5,7 @@ import { TrashIcon } from "@heroicons/react/16/solid";
 
 export default function CartPage() {
   return (
-    <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 lg:mx-40 my-5 md:my-10 lg:my-14">
+    <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 lg:mx-72 my-5 md:my-10 lg:my-14">
       {Catalog.map((item) => (
         <div
           key={item.name}
