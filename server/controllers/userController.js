@@ -12,11 +12,18 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-export const getSingleUser = async(req,res) => {
-  const id = req.params.id;
+export const getSingleUser = async (req, res) => {
   try {
-    
+    const user = await prisma.user.findUnique({
+      where: {
+        id: req.user.id,
+      },
+    });
+    delete user.password;
+    res.status(200).json({user})
   } catch (error) {
-    
+    res.status(400).json({
+      error:error.message
+    })
   }
-}
+};
