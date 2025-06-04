@@ -64,3 +64,23 @@ export const makeAdmin = async (req, res) => {
     });
   }
 };
+
+export const removeAdmin = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const user = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        isAdmin: false,
+      },
+    });
+
+    delete user.password;
+
+    res.status(200).json({ user });
+  } catch (error) {
+    error: error.message;
+  }
+};
