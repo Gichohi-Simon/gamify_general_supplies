@@ -11,3 +11,12 @@ export const getAllUsers = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const getSingleUser = async(req,res) => {
+  const id = req.params.id;
+  try {
+    
+  } catch (error) {
+    
+  }
+}
