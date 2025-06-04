@@ -20,26 +20,47 @@ export const getSingleUser = async (req, res) => {
       },
     });
     delete user.password;
-    res.status(200).json({user})
+    res.status(200).json({ user });
   } catch (error) {
     res.status(400).json({
-      error:error.message
-    })
+      error: error.message,
+    });
   }
 };
 
-export const deleteUser = async(req,res) => {
-  const id = parseInt(req.params.id)
+export const deleteUser = async (req, res) => {
+  const id = parseInt(req.params.id);
   try {
     const deletedUser = await prisma.user.delete({
-      where:{
-        id
-      }
-    })
-    res.status(200).json({message:"user has been deleted"})
+      where: {
+        id,
+      },
+    });
+    res.status(200).json({ message: "user has been deleted" });
   } catch (error) {
     res.status(404).json({
-      error:error.message
-    })
+      error: error.message,
+    });
   }
-}
+};
+
+export const makeAdmin = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const user = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        isAdmin: true,
+      },
+    });
+    delete user.password;
+
+    res.status(201).json({ user });
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
+  }
+};
