@@ -27,3 +27,19 @@ export const getSingleUser = async (req, res) => {
     })
   }
 };
+
+export const deleteUser = async(req,res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const deletedUser = await prisma.user.delete({
+      where:{
+        id
+      }
+    })
+    res.status(200).json({message:"user has been deleted"})
+  } catch (error) {
+    res.status(404).json({
+      error:error.message
+    })
+  }
+}
