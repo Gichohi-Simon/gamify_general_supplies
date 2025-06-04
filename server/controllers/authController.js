@@ -45,9 +45,6 @@ export const signUp = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  // create token
-  // delete password
-  // send response.
   const { email, password } = req.body;
   try {
     const user = await prisma.user.findUnique({
@@ -56,24 +53,35 @@ export const login = async (req, res) => {
       },
     });
 
-    if (!user)
-      return res.status(400).json({ error: "user does not exist" });
+    if (!user) return res.status(400).json({ error: "user does not exist" });
 
     const passwordsMatch = await bcrypt.compare(password, user.password);
 
-    if(!passwordsMatch) return res.status(400).json({msg:'passwords do not match'})
+    if (!passwordsMatch)
+      return res.status(400).json({ msg: "passwords do not match" });
 
-    const token = createToken(res,user.id)
+    const token = createToken(res, user.id);
 
     delete user.password;
 
     res.status(200).json({
       token,
-      user
-    })
+      user,
+    });
   } catch (error) {
     res.status(500).json({
-      error:error.message
-    })
+      error: error.message,
+    });
   }
+};
+
+export const logoutCurrentUser = async (req, res) => {
+  res.cookie("jwt", " ", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+
+  res.status(200).json({
+    message: "logged out succesfully",
+  });
 };
