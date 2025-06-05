@@ -1,5 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import {v4 as uuidv4} from 'uuid';
+
 const prisma = new PrismaClient();
+const invoiceNumber = `INV-${uuidv4().slice(0, 8).toUpperCase()}`
+
 
 function calcPrices(orderItems) {
   const itemsPrice = orderItems.reduce(
@@ -68,6 +72,7 @@ export const createOrder = async (req, res) => {
         orderItems: {
           create: dbOrderItems,
         },
+        invoiceNumber,
       },
       include: {
         orderItems: {
@@ -191,7 +196,7 @@ export const markOrderAsPaid = async (req, res) => {
       },
       data: {
         isPaid: true,
-        paidAt: new Date()
+        paidAt: new Date(),
       },
     });
     res.status(201).json({ paidProduct });
