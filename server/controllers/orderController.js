@@ -110,3 +110,31 @@ export const getAllOrders = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const getSingleUserOrders = async(req,res) => {
+    const userId = parseInt(req.params.id)
+    try {
+     const singleUserOrders = await prisma.order.findMany({
+        where:{
+            userId
+        }
+     })
+     res.status(200).json({singleUserOrders})
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
+
+export const getCurrentUserOrders = async(req,res) => {
+    const userId = req.user.id
+    try {
+        const orders = await prisma.order.findMany({
+            where:{
+                userId
+            }
+        })
+        res.status(200).json({orders})
+    } catch (error) {
+        res.status(400).json({error:error.message})
+    }
+}
