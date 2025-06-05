@@ -1,16 +1,18 @@
 import { PrismaClient } from "@prisma/client";
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import PDFDocument from "pdfkit";
+import fs from "fs";
+import path from "path";
 
 const prisma = new PrismaClient();
-const invoiceNumber = `INV-${uuidv4().slice(0, 8).toUpperCase()}`
-
+const invoiceNumber = `INV-${uuidv4().slice(0, 8).toUpperCase()}`;
 
 function calcPrices(orderItems) {
   const itemsPrice = orderItems.reduce(
     (acc, item) => acc + Number(item.price) * item.quantity,
     0
   );
-
+  
   const shippingPrice = 0;
   const taxRate = 0.16;
   const taxPrice = (itemsPrice * taxRate).toFixed(2);
@@ -27,6 +29,44 @@ function calcPrices(orderItems) {
     taxPrice,
     totalPrice,
   };
+}
+
+function generateInvoice(order, res) {
+  const doc = new PDFDocument();
+
+  const filename = `invoice-${order.invoiceNumber}.pdf`;
+  const filepath = path.join("/tmp", filename);
+
+  doc.pipe(fs.createWriteStream(filepath));
+
+  doc.text("Gamify General Supplies").fontSize(32).moveDown();
+
+  doc
+    .fontSize(12)
+    .text(`Invoice Number: ${order.invoiceNumber}`)
+    .text(`Date: ${new Date().toLocaleDateString()}`)
+    .text(`Customer ID: ${order.userId}`)
+    .moveDown();
+
+  doc.text("Items:");
+  order.orderItems.forEach((item) => {
+    doc.text(`${item.product.name} x${item.quantity} - ${item.price} each`);
+  });
+
+  doc.moveDown();
+  doc.text(`Tax: ${order.taxPrice}`);
+  doc.text(`Total: ${order.totalPrice}`);
+
+  // footer
+  doc.moveDown();
+  doc.fontSize(10).text("Thank you for your business!", {
+    align: "center",
+  });
+
+  doc.end();
+
+  // returns pdf file stream to client
+  doc.pipe(res);
 }
 
 export const createOrder = async (req, res) => {
@@ -176,7 +216,7 @@ export const markOrderAsDelivered = async (req, res) => {
       },
       data: {
         isDelivered: true,
-        deliveredAt: new Date()
+        deliveredAt: new Date(),
       },
     });
     res.status(201).json({ delivered });
@@ -200,6 +240,28 @@ export const markOrderAsPaid = async (req, res) => {
       },
     });
     res.status(201).json({ paidProduct });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getInvoice = async (req, res) => {
+  try {
+    const order = await prisma.order.findUnique({
+      where: { id: parseInt(req.params.orderId) },
+      include: {
+        orderItems: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+    if (!order) {
+      return res.status(404).json({ error: "order not found" });
+    }
+
+    generateInvoice(order, res);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

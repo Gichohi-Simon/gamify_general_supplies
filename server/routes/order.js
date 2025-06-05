@@ -3,6 +3,7 @@ import {
   createOrder,
   getAllOrders,
   getCurrentUserOrders,
+  getInvoice,
   getSingleUserOrders,
   getTotalOrders,
   getTotalSales,
@@ -21,6 +22,7 @@ router.get("/allOrders", authenticate, authorizeAdmin, getAllOrders);
 router.get("/total-orders", authenticate, authorizeAdmin, getTotalOrders);
 router.get("/total-sales", authenticate, authorizeAdmin, getTotalSales);
 router.get("/get-current-user-orders", authenticate, getCurrentUserOrders);
+router.get("/invoice/:orderId", authenticate, getInvoice);
 router.get(
   "/singleUser-orders/:id",
   authenticate,
@@ -33,6 +35,11 @@ router.patch(
   authorizeAdmin,
   markOrderAsDelivered
 );
-router.patch("/mark-as-paid/:orderId", authenticate, authorizeAdmin, markOrderAsPaid);
+router.patch(
+  "/mark-as-paid/:orderId",
+  authenticate,
+  authorizeAdmin,
+  markOrderAsPaid
+);
 
 export default router;
