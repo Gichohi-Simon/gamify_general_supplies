@@ -35,6 +35,7 @@ export const getAllProducts = async (req, res) => {
 export const getPaginatedProducts = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = 6;
+  // calcluates number of products to skip
   const skip = (page - 1) * limit;
   try {
     const products = await prisma.product.findMany({
