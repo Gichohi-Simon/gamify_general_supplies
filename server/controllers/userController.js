@@ -8,7 +8,7 @@ export const getAllUsers = async (req, res) => {
       users,
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -22,7 +22,7 @@ export const getActiveUsers = async (req, res) => {
 
     res.status(200).json({ activeUsers });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -35,7 +35,7 @@ export const getDeletedAccounts = async (req, res) => {
     });
     res.status(200).json({ deletedAccounts });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -49,7 +49,7 @@ export const getSingleUser = async (req, res) => {
     delete user.password;
     res.status(200).json({ user });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       error: error.message,
     });
   }
@@ -69,7 +69,7 @@ export const deleteAccount = async (req, res) => {
 
     res.status(201).json({ deletedAccount });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -86,7 +86,7 @@ export const deleteUser = async (req, res) => {
     });
     res.status(200).json({ deletedUser });
   } catch (error) {
-    res.status(404).json({
+    res.status(500).json({
       error: error.message,
     });
   }
@@ -107,7 +107,7 @@ export const makeAdmin = async (req, res) => {
 
     res.status(201).json({ user });
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       error: error.message,
     });
   }
@@ -129,6 +129,8 @@ export const removeAdmin = async (req, res) => {
 
     res.status(200).json({ user });
   } catch (error) {
-    error: error.message;
+    res.status(500).json({
+      error: error.message
+    })
   }
 };

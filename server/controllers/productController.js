@@ -18,7 +18,7 @@ export const createProduct = async (req, res) => {
 
     res.status(201).json({ newProduct });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -27,7 +27,7 @@ export const getAllProducts = async (req, res) => {
     const products = await prisma.product.findMany();
     res.status(200).json({ products });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -56,7 +56,7 @@ export const getPaginatedProducts = async (req, res) => {
       products,
     })
   } catch (error) {
-    res.status(400).json({error:error.message})
+    res.status(500).json({error:error.message})
   }
 };
 
@@ -70,7 +70,7 @@ export const getFirstThreeProducts = async (req, res) => {
     });
     res.status(200).json({ products });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -85,7 +85,7 @@ export const getSingleProduct = async (req, res) => {
 
     res.status(200).json({ singleProduct });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -108,7 +108,7 @@ export const searchProducts = async (req, res) => {
 
     res.status(200).json({ products });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -129,7 +129,7 @@ export const updateProduct = async (req, res) => {
 
     res.status(201).json({ updatedProduct });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -143,6 +143,6 @@ export const deleteSingleProduct = async (req, res) => {
     });
     res.status(200).json({ message: "product deleted succesfully" });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
