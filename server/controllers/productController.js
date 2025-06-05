@@ -31,6 +31,20 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
+export const getFirstThreeProducts = async(req,res) => {
+  try {
+    const products = await prisma.product.findMany({
+      take:3,
+      orderBy:{
+        id:"asc"
+      }
+    })
+    res.status(200).json({products});
+  } catch (error) { 
+    res.status(400).json({error:error.message})
+  }
+}
+
 export const getSingleProduct = async (req, res) => {
   const id = parseInt(req.params.id);
   try {

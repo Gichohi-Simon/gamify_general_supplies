@@ -3,6 +3,7 @@ import {
   createProduct,
   deleteSingleProduct,
   getAllProducts,
+  getFirstThreeProducts,
   getSingleProduct,
   searchProducts,
   updateProduct,
@@ -16,6 +17,7 @@ const router = express.Router();
 router.post("/create-product", authenticate, authorizeAdmin, createProduct);
 router.get("/all-products", getAllProducts);
 router.get("/search", searchProducts);
+router.get("/getFirstThree", getFirstThreeProducts)
 router.get("/:id", getSingleProduct);
 router.delete("/:id", authenticate, authorizeAdmin, deleteSingleProduct);
 router.patch("/update-product/:id", authenticate, authorizeAdmin, updateProduct);
