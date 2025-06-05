@@ -7,7 +7,7 @@ export const createProduct = async (req, res) => {
     if (!image || !name || !price) {
       return res.status(400).json({ error: "all fields are required" });
     }
-    
+
     const newProduct = await prisma.product.create({
       data: {
         image,
@@ -46,16 +46,59 @@ export const getSingleProduct = async (req, res) => {
   }
 };
 
-export const deleteSingleProduct = async(req,res) => {
-  const id = parseInt(req.params.id)
+export const searchProducts = async(req,res) => {
+  const query = req.query.q;
+  if(!query){
+    return res.status(400).json({error:"Search query is required"})
+  }
+
   try {
-    const deletedProduct = await prisma.product.delete({
+    const products = await prisma.product.findMany({
       where:{
-        id
+        name:{
+          contains:query,
+          mode:"insensitive" 
+        }
       }
     })
-    res.status(200).json({message:"product deleted succesfully"})
+
+    res.status(200).json({products});
   } catch (error) {
-    res.status(400).json({error:error.message})
+    res.status(400).json({error:error.message});
   }
 }
+
+export const updateProduct = async (req, res) => {
+  const id = parseInt(req.params.id);
+  const { name, image, price } = req.body;
+  try {
+    const updatedProduct = await prisma.product.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+        image,
+        price,
+      },
+    });
+
+    res.status(201).json({ updatedProduct });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+export const deleteSingleProduct = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const deletedProduct = await prisma.product.delete({
+      where: {
+        id,
+      },
+    });
+    res.status(200).json({ message: "product deleted succesfully" });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
