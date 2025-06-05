@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import productRoutes from './routes/product.js'
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
+import orderRoutes from './routes/order.js'
 
 const app = express();
 
@@ -18,7 +19,8 @@ const PORT = process.env.PORT;
 
 app.use('/product', productRoutes);
 app.use('/auth', authRoutes);
-app.use('/users', userRoutes)
+app.use('/users', userRoutes);
+app.use("/order", orderRoutes);
 
 app.listen(PORT, () => {
   console.log(`server has started on port ${PORT}🔥`);
