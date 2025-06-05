@@ -45,3 +45,17 @@ export const getSingleProduct = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+export const deleteSingleProduct = async(req,res) => {
+  const id = parseInt(req.params.id)
+  try {
+    const deletedProduct = await prisma.product.delete({
+      where:{
+        id
+      }
+    })
+    res.status(200).json({message:"product deleted succesfully"})
+  } catch (error) {
+    res.status(400).json({error:error.message})
+  }
+}
