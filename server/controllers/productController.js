@@ -31,19 +31,47 @@ export const getAllProducts = async (req, res) => {
   }
 };
 
-export const getFirstThreeProducts = async(req,res) => {
+// http://localhost:8080/product?page=1
+export const getPaginatedProducts = async (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = 6;
+  const skip = (page - 1) * limit;
   try {
     const products = await prisma.product.findMany({
-      take:3,
+      skip,
+      take:limit,
       orderBy:{
-        id:"asc"
+        id:"desc"
       }
     })
-    res.status(200).json({products});
-  } catch (error) { 
+
+    const totalProducts = await prisma.product.count();
+    const totalPages = Math.ceil(totalProducts/limit);
+
+    return res.status(200).json({
+      currentPage:page,
+      totalPages,
+      totalProducts,
+      products,
+    })
+  } catch (error) {
     res.status(400).json({error:error.message})
   }
-}
+};
+
+export const getFirstThreeProducts = async (req, res) => {
+  try {
+    const products = await prisma.product.findMany({
+      take: 3,
+      orderBy: {
+        id: "asc",
+      },
+    });
+    res.status(200).json({ products });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 export const getSingleProduct = async (req, res) => {
   const id = parseInt(req.params.id);
@@ -60,27 +88,28 @@ export const getSingleProduct = async (req, res) => {
   }
 };
 
-export const searchProducts = async(req,res) => {
+// http://localhost:8080/product/search?q=book
+export const searchProducts = async (req, res) => {
   const query = req.query.q;
-  if(!query){
-    return res.status(400).json({error:"Search query is required"})
+  if (!query) {
+    return res.status(400).json({ error: "Search query is required" });
   }
 
   try {
     const products = await prisma.product.findMany({
-      where:{
-        name:{
-          contains:query,
-          mode:"insensitive" 
-        }
-      }
-    })
+      where: {
+        name: {
+          contains: query,
+          mode: "insensitive",
+        },
+      },
+    });
 
-    res.status(200).json({products});
+    res.status(200).json({ products });
   } catch (error) {
-    res.status(400).json({error:error.message});
+    res.status(400).json({ error: error.message });
   }
-}
+};
 
 export const updateProduct = async (req, res) => {
   const id = parseInt(req.params.id);

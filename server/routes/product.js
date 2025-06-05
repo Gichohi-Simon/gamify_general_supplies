@@ -4,6 +4,7 @@ import {
   deleteSingleProduct,
   getAllProducts,
   getFirstThreeProducts,
+  getPaginatedProducts,
   getSingleProduct,
   searchProducts,
   updateProduct,
@@ -15,11 +16,17 @@ import {
 const router = express.Router();
 
 router.post("/create-product", authenticate, authorizeAdmin, createProduct);
-router.get("/all-products", getAllProducts);
+router.get("/all-products", authenticate, authorizeAdmin, getAllProducts);
 router.get("/search", searchProducts);
-router.get("/getFirstThree", getFirstThreeProducts)
+router.get("/", getPaginatedProducts);
+router.get("/getFirstThree", getFirstThreeProducts);
 router.get("/:id", getSingleProduct);
 router.delete("/:id", authenticate, authorizeAdmin, deleteSingleProduct);
-router.patch("/update-product/:id", authenticate, authorizeAdmin, updateProduct);
+router.patch(
+  "/update-product/:id",
+  authenticate,
+  authorizeAdmin,
+  updateProduct
+);
 
 export default router;
