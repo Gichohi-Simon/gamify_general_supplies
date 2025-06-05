@@ -107,34 +107,95 @@ export const getAllOrders = async (req, res) => {
     });
     res.status(200).json({ orders });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
-export const getSingleUserOrders = async(req,res) => {
-    const userId = parseInt(req.params.id)
-    try {
-     const singleUserOrders = await prisma.order.findMany({
-        where:{
-            userId
-        }
-     })
-     res.status(200).json({singleUserOrders})
-    } catch (error) {
-        res.status(400).json({error:error.message})
-    }
-}
+export const getSingleUserOrders = async (req, res) => {
+  const userId = parseInt(req.params.id);
+  try {
+    const singleUserOrders = await prisma.order.findMany({
+      where: {
+        userId,
+      },
+    });
+    res.status(200).json({ singleUserOrders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-export const getCurrentUserOrders = async(req,res) => {
-    const userId = req.user.id
-    try {
-        const orders = await prisma.order.findMany({
-            where:{
-                userId
-            }
-        })
-        res.status(200).json({orders})
-    } catch (error) {
-        res.status(400).json({error:error.message})
-    }
-}
+export const getCurrentUserOrders = async (req, res) => {
+  const userId = req.user.id;
+  try {
+    const orders = await prisma.order.findMany({
+      where: {
+        userId,
+      },
+    });
+    res.status(200).json({ orders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getTotalOrders = async (req, res) => {
+  try {
+    const totalOrders = await prisma.order.count();
+    res.status(200).json({ totalOrders });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getTotalSales = async (req, res) => {
+  try {
+    const orders = await prisma.order.findMany();
+    const totalSales = orders.reduce((sum, order) => sum + order.totalPrice, 0);
+    res.status(200).json({
+      totalSales,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+};
+
+export const markOrderAsDelivered = async (req, res) => {
+  const orderId = parseInt(req.params.orderId);
+  try {
+    const delivered = await prisma.order.update({
+      where: {
+        id: orderId,
+      },
+      data: {
+        isDelivered: true,
+        deliveredAt: new Date()
+      },
+    });
+    res.status(201).json({ delivered });
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+};
+
+export const markOrderAsPaid = async (req, res) => {
+  const orderId = parseInt(req.params.orderId);
+  try {
+    const paidProduct = await prisma.order.update({
+      where: {
+        id: orderId,
+      },
+      data: {
+        isPaid: true,
+        paidAt: new Date()
+      },
+    });
+    res.status(201).json({ paidProduct });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
