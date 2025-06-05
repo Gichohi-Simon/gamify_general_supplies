@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import orderRoutes from './routes/order.js'
+import productRoutes from './routes/product.js'
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
 
@@ -16,7 +16,7 @@ app.use(express.json())
 
 const PORT = process.env.PORT;
 
-app.use('/order', orderRoutes);
+app.use('/product', productRoutes);
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes)
 

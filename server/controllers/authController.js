@@ -25,7 +25,7 @@ export const signUp = async (req, res) => {
 
     const salt = await bcrypt.genSalt(12);
     const hashedPassword = await bcrypt.hash(password, salt);
-
+    
     const savedUser = await prisma.user.create({
       data: {
         username,
