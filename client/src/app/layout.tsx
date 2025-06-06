@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+import Providers from "./providers";
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -22,13 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} antialiased overflow-x-hidden min-h-screen flex flex-col`}>
+      <Providers>
+        <body className={`${poppins.variable} antialiased overflow-x-hidden min-h-screen flex flex-col`}>
         <Header />
        <main className="flex-grow">
        {children}
        </main>
         <Footer />
       </body>
+      </Providers>
     </html>
   );
 }
