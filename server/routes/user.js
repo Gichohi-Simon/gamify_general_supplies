@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.get("/allUsers", authenticate, authorizeAdmin, getAllUsers);
 router.get("/logged-in-user", authenticate,getLoggedInUser);
-router.get("/getActiveusers", authenticate,authorizeAdmin ,getActiveUsers);
+// router.get("/getActiveusers", authenticate,authorizeAdmin ,getActiveUsers);
 router.get("/getDeletedAccounts", authenticate, authorizeAdmin, getDeletedAccounts);
 router.patch("/delete-account", authenticate, deleteAccount)
 router.get("/single-user/:id",authenticate, authorizeAdmin, getSingleUser)

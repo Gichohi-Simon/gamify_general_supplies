@@ -3,7 +3,11 @@ const prisma = new PrismaClient();
 
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+      where:{
+        isActive:true
+      }
+    });
     res.status(200).json({
       users,
     });
@@ -12,19 +16,19 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-export const getActiveUsers = async (req, res) => {
-  try {
-    const activeUsers = await prisma.user.findMany({
-      where: {
-        isActive: true,
-      },
-    });
+// export const getActiveUsers = async (req, res) => {
+//   try {
+//     const activeUsers = await prisma.user.findMany({
+//       where: {
+//         isActive: true,
+//       },
+//     });
 
-    res.status(200).json({ activeUsers });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+//     res.status(200).json({ activeUsers });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+// };
 
 export const getDeletedAccounts = async (req, res) => {
   try {
