@@ -5,6 +5,7 @@ import {
   getActiveUsers,
   getAllUsers,
   getDeletedAccounts,
+  getLoggedInUser,
   getSingleUser,
   makeAdmin,
   removeAdmin,
@@ -16,10 +17,11 @@ import {
 const router = express.Router();
 
 router.get("/allUsers", authenticate, authorizeAdmin, getAllUsers);
-router.get("/getSingleUser", authenticate, authorizeAdmin, getSingleUser);
+router.get("/logged-in-user", authenticate,getLoggedInUser);
 router.get("/getActiveusers", authenticate,authorizeAdmin ,getActiveUsers);
 router.get("/getDeletedAccounts", authenticate, authorizeAdmin, getDeletedAccounts);
 router.patch("/delete-account", authenticate, deleteAccount)
+router.get("/single-user/:id",authenticate, authorizeAdmin, getSingleUser)
 router.patch("/deleteUser/:id", authenticate, authorizeAdmin, deleteUser);
 router.patch("/makeAdmin/:id", authenticate, authorizeAdmin, makeAdmin);
 router.patch("/removeAdmin/:id", authenticate, authorizeAdmin, removeAdmin);

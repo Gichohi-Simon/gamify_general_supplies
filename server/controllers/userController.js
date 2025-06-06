@@ -39,7 +39,7 @@ export const getDeletedAccounts = async (req, res) => {
   }
 };
 
-export const getSingleUser = async (req, res) => {
+export const getLoggedInUser = async (req, res) => {
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -52,6 +52,20 @@ export const getSingleUser = async (req, res) => {
     res.status(500).json({
       error: error.message,
     });
+  }
+};
+
+export const getSingleUser = async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -130,7 +144,7 @@ export const removeAdmin = async (req, res) => {
     res.status(200).json({ user });
   } catch (error) {
     res.status(500).json({
-      error: error.message
-    })
+      error: error.message,
+    });
   }
 };
