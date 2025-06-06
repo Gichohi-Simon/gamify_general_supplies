@@ -55,6 +55,8 @@ export const login = async (req, res) => {
 
     if (!user) return res.status(400).json({ error: "user does not exist" });
 
+    if(user.isActive !== true) return res.status(400).json({error:"account has been deleted,contact admin"})
+
     const passwordsMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordsMatch)
