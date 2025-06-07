@@ -7,13 +7,7 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../../store/features/authSlice";
-
-interface initialFormValuesInterface {
-  email: string;
-  username: string;
-  password: string;
-  confirmPassword: string;
-}
+import { initialFormValuesInterface } from "@/types/types";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -36,15 +30,14 @@ export default function SignUpPage() {
         .oneOf([Yup.ref("password")], "Passwords do not match")
         .required("confirm password is required"),
     }),
-    onSubmit: (values) => {
-      signUp(values)
-        .then(() => {
-          formik.resetForm();
-          router.push("/");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    onSubmit: async(values) => {
+      try {
+        await signUp(values)
+        formik.resetForm();
+          router.push("/shop");
+      } catch (error) {
+         console.log(error);
+      }
     },
   });
 
