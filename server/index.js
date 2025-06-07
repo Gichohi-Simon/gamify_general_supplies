@@ -11,8 +11,11 @@ import orderRoutes from './routes/order.js'
 const app = express();
 
 dotenv.config();
+app.use(cors({
+  origin:"http://localhost:3000",
+  credentials:true
+}));
 app.use(cookieParser())
-app.use(cors());
 app.use(express.json())
 
 const PORT = process.env.PORT;
