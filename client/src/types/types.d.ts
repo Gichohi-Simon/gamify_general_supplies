@@ -20,3 +20,13 @@ export interface loginInitialValues {
     email:string;
     password:string;
 }
+
+export interface userInterface {
+    id:number;
+    username:string;
+    email:string;
+    password:string;
+    isAdmin:boolean;
+    isActive:boolean;
+    createdAt:string;
+}

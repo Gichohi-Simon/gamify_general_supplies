@@ -32,11 +32,11 @@ export default function SignUpPage() {
     }),
     onSubmit: async(values) => {
       try {
-        await signUp(values)
+        await signUp(values);
         formik.resetForm();
-          router.push("/shop");
+        router.push("/shop");
       } catch (error) {
-         console.log(error);
+        console.log(error);
       }
     },
   });
