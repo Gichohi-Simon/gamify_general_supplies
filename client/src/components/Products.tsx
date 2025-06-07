@@ -6,13 +6,11 @@ import React, { useState } from "react";
 import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 import { postsInterface } from "@/types/types";
 
- interface FirstThreeProducts {
-    products:postsInterface[] 
-  }
+interface FirstThreeProducts {
+  products: postsInterface[];
+}
 
-const Products = ({products}:FirstThreeProducts) => {
- 
-
+const Products = ({ products }: FirstThreeProducts) => {
   const [clicked, setClicked] = useState<{ [key: string]: boolean }>({});
 
   const handleCart = (productName: string) => {
@@ -22,7 +20,6 @@ const Products = ({products}:FirstThreeProducts) => {
     }));
   };
 
-  
   return (
     <div className="font-[family-name:var(--font-poppins)] my-8 md:my-20 overflow-x-hidden">
       <div className="md:flex mx-10 md:mx-40 justify-between">
