@@ -3,10 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import { Catalog } from "@/utils/catalog";
 import { ShoppingCartIcon } from "@heroicons/react/16/solid";
+import { postsInterface } from "@/types/types";
 
-const Products = () => {
+ interface FirstThreeProducts {
+    products:postsInterface[] 
+  }
+
+const Products = ({products}:FirstThreeProducts) => {
+ 
+
   const [clicked, setClicked] = useState<{ [key: string]: boolean }>({});
 
   const handleCart = (productName: string) => {
@@ -16,6 +22,7 @@ const Products = () => {
     }));
   };
 
+  
   return (
     <div className="font-[family-name:var(--font-poppins)] my-8 md:my-20 overflow-x-hidden">
       <div className="md:flex mx-10 md:mx-40 justify-between">
@@ -33,7 +40,7 @@ const Products = () => {
 
       <div className="flex justify-center items-center mt-8 md:mt-12 mx-2 md:mx-0 py-2 md:py-6">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 lg:gap-20">
-          {Catalog.map((catalog) => (
+          {products?.map((catalog) => (
             <div key={catalog.name}>
               <div className="w-44 md:w-72 flex flex-col items-center rounded-xl border border-1 elevation-1 shadow-xl px-4 py-2 md:min-h-[450px] md:max-h-[450px]">
                 <Image
