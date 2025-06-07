@@ -18,14 +18,13 @@ import {
   XCircleIcon,
 } from "@heroicons/react/16/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../store/store";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setLogout } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const user = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
+  const user = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleLogout = async () => {
