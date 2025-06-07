@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import {
   Popover,
@@ -18,12 +18,27 @@ import {
   XCircleIcon,
 } from "@heroicons/react/16/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { setLogout } from "@/store/features/authSlice";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const [LoggedIn, toggleLoggedIn] = useState(false);
+  const user = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  const handleLogout = () => {
-    toggleLoggedIn(!LoggedIn);
+  const handleLogout = async () => {
+    try {
+      const loggedOut = await fetch("http://localhost:8080/auth/logout", {
+        method: "POST",
+      });
+      console.log({ loggedOut });
+      dispatch(setLogout());
+      router.push("/");
+    } catch (error) {
+      console.error("logout failed", error);
+    }
   };
 
   return (
@@ -48,7 +63,9 @@ const Header = () => {
           className="text-base capitalize mt-4 hover:text-secondary"
         >
           <span className="flex justify-between items-center gap-2 relative">
-          <p className="bg-secondary absolute left-3 top-[-16] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">4</p>
+            <p className="bg-secondary absolute left-3 top-[-16] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">
+              4
+            </p>
             <ShoppingCartIcon className="size-6" />
             <p>Cart</p>
           </span>
@@ -59,13 +76,13 @@ const Header = () => {
             <p>Account</p>
           </span>
         </Link>
-        {LoggedIn ? (
+        {!user.token ? (
           <>
             <Link
               href="/signup"
               className="capitalize mt-4 hover:text-secondary"
             >
-              <span className="flex gap-2" onClick={() => handleLogout()}>
+              <span className="flex gap-2">
                 <ArrowRightCircleIcon className="size-6" />
                 <p>Sign up</p>
               </span>
@@ -74,7 +91,7 @@ const Header = () => {
               href="/login"
               className="capitalize mt-4 hover:text-secondary"
             >
-              <span className="flex gap-2" onClick={() => handleLogout()}>
+              <span className="flex gap-2">
                 <LockClosedIcon className="size-6" />
                 <p>Login</p>
               </span>
@@ -82,12 +99,10 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Link href="/" className="capitalize mt-4 hover:text-secondary">
-              <span className="flex gap-2" onClick={() => handleLogout()}>
-                <LockOpenIcon className="size-6" />
-                <p>Logout</p>
-              </span>
-            </Link>
+            <button className="flex gap-2" onClick={handleLogout}>
+              <LockOpenIcon className="size-6" />
+              <p>Logout</p>
+            </button>
           </>
         )}
       </div>
@@ -127,24 +142,29 @@ const Header = () => {
               className="text-base capitalize mt-4 hover:text-secondary"
             >
               <span className="flex gap-2 bg-transparent">
-                <p className="bg-secondary absolute left-5 top-[64px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black hover:bg-pink-500">4</p>
+                <p className="bg-secondary absolute left-5 top-[64px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black hover:bg-pink-500">
+                  4
+                </p>
                 <ShoppingCartIcon className="size-6" />
                 <p>Cart</p>
               </span>
             </Link>
-            <Link href="/account" className="capitalize mt-4 hover:text-secondary">
+            <Link
+              href="/account"
+              className="capitalize mt-4 hover:text-secondary"
+            >
               <span className="flex gap-2">
                 <UserCircleIcon className="size-6" />
                 <p>Account</p>
               </span>
             </Link>
-            {LoggedIn ? (
+            {!user.token ? (
               <>
                 <Link
                   href="/signup"
                   className="capitalize mt-4 hover:text-secondary"
                 >
-                  <span className="flex gap-2" onClick={() => handleLogout()}>
+                  <span className="flex gap-2">
                     <ArrowRightCircleIcon className="size-6" />
                     <p>Sign up</p>
                   </span>
@@ -153,7 +173,7 @@ const Header = () => {
                   href="/login"
                   className="capitalize mt-4 hover:text-secondary"
                 >
-                  <span className="flex gap-2" onClick={() => handleLogout()}>
+                  <span className="flex gap-2">
                     <LockClosedIcon className="size-6" />
                     <p>Login</p>
                   </span>
@@ -161,12 +181,10 @@ const Header = () => {
               </>
             ) : (
               <>
-                <Link href="/" className="capitalize mt-4 hover:text-secondary">
-                  <span className="flex gap-2" onClick={() => handleLogout()}>
-                    <LockOpenIcon className="size-6" />
-                    <p>Logout</p>
-                  </span>
-                </Link>
+                <button className="flex gap-2" onClick={handleLogout}>
+                  <LockOpenIcon className="size-6" />
+                  <p>Logout</p>
+                </button>
               </>
             )}
           </div>

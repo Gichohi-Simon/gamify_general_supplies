@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { useDispatch} from "react-redux";
-import {setCredentials} from '../../../store/features/authSlice'
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../../store/features/authSlice";
 
 interface initialFormValuesInterface {
   email: string;
@@ -43,29 +43,27 @@ export default function SignUpPage() {
           router.push("/");
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     },
   });
 
   const signUp = async (value: initialFormValuesInterface) => {
-    const registerUserResponse = await fetch('http://localhost:8080/auth/sign-up', {
-      method:"POST",
-      body:JSON.stringify(value),
-      headers:{"Content-Type":"application/json"},
-    });
-
-    if(registerUserResponse.ok){
-      const data = await registerUserResponse.json();
+    try {
+      const response = await fetch("http://localhost:8080/auth/sign-up", {
+        method: "POST",
+        body: JSON.stringify(value),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
       dispatch(
         setCredentials({
-          userInfo:data.user,
-          token:data.token
+          userInfo: data.user,
+          token: data.token,
         })
-      )
-      return Promise.resolve();
-    }else{
-      return Promise.reject();
+      );
+    } catch (error) {
+      console.log(error);
     }
   };
 
