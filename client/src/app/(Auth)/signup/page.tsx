@@ -1,10 +1,80 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { useRouter } from "next/navigation";
+import { useDispatch} from "react-redux";
+import {setCredentials} from '../../../store/features/authSlice'
+
+interface initialFormValuesInterface {
+  email: string;
+  username: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default function SignUpPage() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const initialValues: initialFormValuesInterface = {
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: Yup.object({
+      email: Yup.string().email("Invalid email").required("email is required"),
+      username: Yup.string().required("username is required"),
+      password: Yup.string().required("password is required"),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Passwords do not match")
+        .required("confirm password is required"),
+    }),
+    onSubmit: (values) => {
+      signUp(values)
+        .then(() => {
+          formik.resetForm();
+          router.push("/");
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+  });
+
+  const signUp = async (value: initialFormValuesInterface) => {
+    const registerUserResponse = await fetch('http://localhost:8080/auth/sign-up', {
+      method:"POST",
+      body:JSON.stringify(value),
+      headers:{"Content-Type":"application/json"},
+    });
+
+    if(registerUserResponse.ok){
+      const data = await registerUserResponse.json();
+      dispatch(
+        setCredentials({
+          userInfo:data.user,
+          token:data.token
+        })
+      )
+      return Promise.resolve();
+    }else{
+      return Promise.reject();
+    }
+  };
+
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center">
-      <form className="w-3/4 md:w-1/2 py-10 mt-0 md:mt-10">
+      <form
+        className="w-3/4 md:w-1/2 py-10 mt-0 md:mt-10"
+        onSubmit={formik.handleSubmit}
+      >
         <div className="my-5">
           <p className="text-xl md:text-2xl font-bold">Sign Up</p>
           <p className="text-sm md:text-base font-semibold mt-2">
@@ -18,9 +88,18 @@ export default function SignUpPage() {
           <br />
           <input
             type="text"
+            name="email"
             placeholder="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
             className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded "
           />
+          {formik.touched.email && formik.errors.email ? (
+            <h4 className="text-red-500 mt-1 font-bold text-sm">
+              {formik.errors.email}
+            </h4>
+          ) : null}
         </div>
 
         <div className="mt-4">
@@ -32,10 +111,19 @@ export default function SignUpPage() {
           </label>
           <br />
           <input
+            name="username"
             type="text"
             placeholder="username"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.username}
             className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded "
           />
+          {formik.touched.username && formik.errors.username ? (
+            <h4 className="text-red-500 mt-1 font-bold text-sm">
+              {formik.errors.username}
+            </h4>
+          ) : null}
         </div>
 
         <div className="mt-4">
@@ -47,10 +135,19 @@ export default function SignUpPage() {
           </label>
           <br />
           <input
+            name="password"
             type="password"
             placeholder="password"
             className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
           />
+          {formik.touched.password && formik.errors.password ? (
+            <h4 className="text-red-500 mt-1 font-bold text-sm">
+              {formik.errors.password}
+            </h4>
+          ) : null}
         </div>
         <div className="mt-4">
           <label
@@ -61,13 +158,25 @@ export default function SignUpPage() {
           </label>
           <br />
           <input
+            name="confirmPassword"
             type="password"
             placeholder="confirmPassword"
             className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded"
+            value={formik.values.confirmPassword}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
           />
+          {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+            <h4 className="text-red-500 mt-1 font-bold text-sm">
+              {formik.errors.confirmPassword}
+            </h4>
+          ) : null}
         </div>
 
-        <button className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5">
+        <button
+          className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5"
+          type="submit"
+        >
           Sign up
         </button>
         <Link

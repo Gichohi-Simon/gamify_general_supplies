@@ -8,7 +8,7 @@ const ClientAuthHydrator = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("userInfo");
+    const storedUser = localStorage.getItem("auth");
     if (storedUser) {
       dispatch(setCredentials(JSON.parse(storedUser)));
     }
