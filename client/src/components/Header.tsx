@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Link from "next/link";
 import {
   Popover,
@@ -19,13 +19,32 @@ import {
 } from "@heroicons/react/16/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setLogout } from "@/store/features/authSlice";
+import { setCredentials, setLogout } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
   const user = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/auth/check',{
+        credentials:'include'
+      });
+      const data = await response.json();
+      console.log({tokenId:data})
+      dispatch(setCredentials({
+        userId:data.userId,
+      }))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+    checkAuth()
+  },[])
 
   const handleLogout = async () => {
     try {

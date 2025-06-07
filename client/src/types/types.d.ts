@@ -9,6 +9,10 @@ export interface tokenState {
     token:string;
 }
 
+export interface userIdinterface {
+    userId:number
+}
+
 export interface initialFormValuesInterface {
   email: string;
   username: string;
@@ -29,4 +33,12 @@ export interface userInterface {
     isAdmin:boolean;
     isActive:boolean;
     createdAt:string;
+}
+
+export interface postsInterface {
+    id:number;
+    name:string;
+    price:number;
+    image:string;
+    createdAt:string
 }

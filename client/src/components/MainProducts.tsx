@@ -1,13 +1,20 @@
-"use client"
+"use client";
 
 import Image from "next/image";
-import { useState } from "react";
-import { FullCatalog } from "@/utils/fullcatalog";
+import { useState, useEffect } from "react";
+// import { FullCatalog } from "@/utils/fullcatalog";
 import Search from "./Search";
-import Categories from "./Categories";
 import { ShoppingCartIcon } from "@heroicons/react/16/solid";
+import { postsInterface } from "@/types/types";
+import { setProducts } from "@/store/features/productsSlice";
+import { useAppDispatch } from "@/store/hooks";
 
-const MainProducts = () => {
+interface AllPosts {
+  products: postsInterface[];
+}
+
+const MainProducts = ({ products }: AllPosts) => {
+  const dispatch = useAppDispatch();
   const [clicked, setClicked] = useState<{ [key: string]: boolean }>({});
 
   const handleCart = (productName: string) => {
@@ -17,15 +24,22 @@ const MainProducts = () => {
     }));
   };
 
+
+  useEffect(() => {
+    dispatch(setProducts({
+      products
+    }))
+  },[dispatch])
+
   return (
     <div className="font-[family-name:var(--font-poppins)] my-5 md:my-20 overflow-x-hidden">
-      <div className="md:flex mx-10 md:mx-52 justify-between items-center">
+      <div className="mx-10 md:mx-52">
         <Search />
-        <Categories />
+        {/* <Categories /> */}
       </div>
       <div className="flex justify-center items-center mt-8 md:mt-12 mx-2 md:mx-0 py-2 md:py-6">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-10 lg:gap-20">
-          {FullCatalog.map((catalog) => (
+          {products.map((catalog) => (
             <div key={catalog.name}>
               <div className="w-44 md:w-72 flex flex-col items-center rounded-xl border border-1 elevation-1 shadow-xl px-4 py-2 md:min-h-[450px] md:max-h-[450px]">
                 <Image

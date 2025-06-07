@@ -18,7 +18,7 @@ export default function LoginPage() {
     email:"",
     password:""
   }
-
+  
   const formik = useFormik({
     initialValues,
     validationSchema:Yup.object({
@@ -44,16 +44,16 @@ export default function LoginPage() {
     headers:{'Content-Type':'application/json'}
    })
     const data = await response.json();
+    console.log(data)
     dispatch(setCredentials({
       userInfo:data.user,
-      token:data.token,
     }))
    } catch (error) {
     console.log(error)
    }
   }
 
-
+  
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center">
       <form className="w-3/4 md:w-1/2 py-10 mt-0 md:mt-10" onSubmit={formik.handleSubmit}>

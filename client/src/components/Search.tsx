@@ -6,7 +6,7 @@ export default function Search() {
         <input 
             type='text'
             placeholder='search products'
-            className='w-full border border-1 border-primary rounded-xl md:rounded-lg py-2 px-2 md:py-3 md:px-3 text-xs md:text-sm'
+            className='w-full md:w-1/2 border border-1 border-primary rounded-xl md:rounded-lg py-2 px-2 md:py-3 md:px-3 text-xs md:text-sm'
         />
         <button className='bg-primary py-2 md:py-3 px-2 rounded-lg text-xs md:text-sm'>
             search
