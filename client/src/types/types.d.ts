@@ -2,7 +2,7 @@
 export interface userState {
     id?:number;
     email:string;
-    password:string
+    password:string;
 }
 
 export interface tokenState {
@@ -41,4 +41,10 @@ export interface postsInterface {
     price:number;
     image:string;
     createdAt:string
+}
+
+export interface AuthState {
+    userInfo: userState | null;
+    userId: userIdinterface | null;
+    token: string | null
 }

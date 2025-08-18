@@ -8,13 +8,11 @@ const ProductsPage = async () => {
 
   const posts = await response.json();
   console.log(posts.products);
-  const products = posts.products
+  const products = posts.products;
 
   return (
     <div>
-      <MainProducts 
-        products={products}
-      />
+      <MainProducts products={products} />
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userState, userIdinterface } from "@/types/types";
+import { AuthState } from "@/types/types";
 
-const initialState = {
-  userInfo: null as userState | null,
-  userId: null as userIdinterface | null,
+const initialState: AuthState = {
+  userInfo: null,
+  userId: null,
+  token: null,
 };
 
 const authSlice = createSlice({
@@ -18,7 +19,11 @@ const authSlice = createSlice({
       if (action.payload.userId) {
         state.userId = action.payload.userId;
       }
-      
+
+      if (action.payload.token) {
+        state.token = action.payload.token;
+      }
+
       if (typeof window !== "undefined") {
         localStorage.setItem("auth", JSON.stringify(action.payload));
       }

@@ -37,6 +37,7 @@ const Header = () => {
       console.log({tokenId:data})
       dispatch(setCredentials({
         userId:data.userId,
+        token:data.token
       }))
     } catch (error) {
       console.log(error)
