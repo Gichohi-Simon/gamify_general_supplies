@@ -10,6 +10,8 @@ import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 
 export default function LoginPage() {
+  const API = process.env.API_URL
+
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -37,7 +39,7 @@ export default function LoginPage() {
 
   const login = async (values: loginInitialValues) => {
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch(`${API}/auth/login`, {
         method: "POST",
         body: JSON.stringify(values),
         headers: { "Content-Type": "application/json" },
@@ -52,7 +54,7 @@ export default function LoginPage() {
       console.log(error);
     }
   };
-
+  
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center">
       <form

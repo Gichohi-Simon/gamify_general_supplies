@@ -9,7 +9,10 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../../../store/features/authSlice";
 import { initialFormValuesInterface } from "@/types/types";
 
+
+
 export default function SignUpPage() {
+  const API = process.env.API_URL
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -43,7 +46,7 @@ export default function SignUpPage() {
 
   const signUp = async (value: initialFormValuesInterface) => {
     try {
-      const response = await fetch("http://localhost:8080/auth/sign-up", {
+      const response = await fetch(`${API}/auth/sign-up`, {
         method: "POST",
         body: JSON.stringify(value),
         headers: { "Content-Type": "application/json" },

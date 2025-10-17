@@ -2,7 +2,8 @@ import React from "react";
 import MainProducts from "@/components/MainProducts";
 
 const ProductsPage = async () => {
-  const response = await fetch("http://localhost:8080/product", {
+  const API = process.env.API_URL
+  const response = await fetch(`${API}/product/all-products`, {
     cache: "no-store",
   });
 
