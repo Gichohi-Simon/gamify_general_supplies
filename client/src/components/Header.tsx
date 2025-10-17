@@ -23,33 +23,36 @@ import { setCredentials, setLogout } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const API = process.env.API_URL;
   const user = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   useEffect(() => {
     const checkAuth = async () => {
-    try {
-      const response = await fetch('http://localhost:8080/auth/check',{
-        credentials:'include'
-      });
-      const data = await response.json();
-      console.log({tokenId:data})
-      dispatch(setCredentials({
-        userId:data.userId,
-        token:data.token
-      }))
-    } catch (error) {
-      console.log(error)
-    }
-  }
+      try {
+        const response = await fetch(`${API}/auth/check`, {
+          credentials: "include",
+        });
+        const data = await response.json();
+        console.log({ tokenId: data });
+        dispatch(
+          setCredentials({
+            userId: data.userId,
+            token: data.token,
+          })
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    checkAuth()
-  },[])
+    checkAuth();
+  }, []);
 
   const handleLogout = async () => {
     try {
-      const loggedOut = await fetch("http://localhost:8080/auth/logout", {
+      const loggedOut = await fetch(`${API}/auth/logout`, {
         method: "POST",
       });
       console.log({ loggedOut });
