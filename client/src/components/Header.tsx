@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 
 const Header = () => {
   const API = process.env.API_URL;
+  console.log("api from header: ", API)
   const user = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const router = useRouter();
