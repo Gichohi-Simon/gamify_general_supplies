@@ -8,7 +8,7 @@ const ProductsPage = async () => {
   });
 
   const posts = await response.json();
-  console.log(posts.products);
+ 
   const products = posts.products;
 
   return (
