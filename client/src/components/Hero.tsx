@@ -6,10 +6,10 @@ const Hero = () => {
   return (
     <div
       className="relative flex h-[400px] md:h-[600px] bg-cover bg-center bg-no-repeat  pt-28 md:pt-72 font-[family-name:var(--font-poppins)] px-2 md:px-14"
-      style={{ backgroundImage: "url('/warehouse2.jpg')" }}
+      style={{ backgroundImage: "url('/warehouse.jpg')" }}
     >
       {/* Overlay with opacity */}
-      <div className="absolute inset-0 bg-black bg-opacity-75"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-65"></div>
       <div className="relative text-start mx-4 md:mx-0">
         <p className=" text-3xl md:text-5xl font-bold text-primary tracking-wider">
           Gamify general <span className="text-secondary">supplies</span> 
