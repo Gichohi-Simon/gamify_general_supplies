@@ -1,4 +1,4 @@
-import { ArrowRightCircleIcon } from "@heroicons/react/16/solid";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React from "react";
 
@@ -11,26 +11,25 @@ const Hero = () => {
       {/* Overlay with opacity */}
       <div className="absolute inset-0 bg-black bg-opacity-65"></div>
       <div className="relative text-start mx-4 md:mx-0">
-        <p className=" text-3xl md:text-5xl font-bold text-primary tracking-wider">
+        <p className=" text-2xl md:text-5xl font-bold text-primary tracking-wider">
           Gamify general <span className="text-secondary">supplies</span> 
         </p>
-        <p className="mt-2 text-3xl md:text-5xl font-bold text-primary tracking-wider">
+        <p className="mt-0 md:mt-2 text-2xl md:text-5xl font-bold text-primary tracking-wider">
           and general services
         </p>
-        <p className="mt-4 md:mt-4 text-primary text-base md:text-xl">
+        <p className="mt-2 md:mt-4 text-primary  text-xs md:text-base">
           suppliers of materials used in handling{" "}
           <span className="text-secondary">warehouse</span> products
         </p>
         <Link
           href="/shop"
-          className="mt-6 md:mt-10 px-4 md:px-6 py-2 md:py-2 rounded-full bg-secondary flex justify-center items-center gap-2 w-32"
+          className="mt-4 md:mt-10 px-4 md:px-6 py-2 md:py-2 rounded-full bg-secondary flex justify-center items-center gap-2 w-24 md:w-32"
         >
-          <p className="text-sm lowercase">Shop</p>
+          <p className="text-xs md:text-sm lowercase">Shop</p>
           <span>
             <ArrowRightCircleIcon className="size-4"/>
           </span>
         </Link>
-
       </div>
     </div>
   );
