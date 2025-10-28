@@ -46,8 +46,8 @@ const Header = () => {
   }, []);
 
   return (
-    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold bg-primary">
-      <div className="text-base">
+    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">
+      <div className="text-sm">
         <h1 className="uppercase font-bold">
           <Link href="/">Gamify General Supplies</Link>
         </h1>
@@ -97,7 +97,7 @@ const Header = () => {
         leaveTo="opacity-0 translate-y-1"
       >
         <PopoverPanel
-          className="absolute block inset-x-0 md:hidden bg-primary px-2 py-5 mt-6"
+          className="absolute block inset-x-0 md:hidden px-2 py-5 mt-6 bg-white"
           anchor="bottom"
         >
           <PopoverButton>
