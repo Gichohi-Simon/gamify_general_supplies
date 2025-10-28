@@ -26,9 +26,9 @@ const Hero = () => {
           href="/shop"
           className="mt-6 md:mt-10 px-4 md:px-6 py-2 md:py-2 rounded-full bg-primary flex justify-center items-center gap-2 w-24 md:w-32 hover:bg-secondary"
         >
-          <p className="text-xs md:text-sm lowercase">Shop</p>
+          <p className="text-xs md:text-sm lowercase font-bold">Shop</p>
           <span>
-            <ArrowRightCircleIcon className="size-4"/>
+            <ArrowRightCircleIcon className="size-5"/>
           </span>
         </Link>
       </div>
