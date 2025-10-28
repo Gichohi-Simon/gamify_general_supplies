@@ -110,7 +110,7 @@ const Header = () => {
             >
               <span className="flex gap-2">
                 <BuildingStorefrontIcon className="size-6" />
-                <p>Shop</p>
+                <p className="text-sm">Shop</p>
               </span>
             </Link>
             <Link
@@ -119,7 +119,7 @@ const Header = () => {
             >
               <span className="flex gap-2">
                 <UserCircleIcon className="size-6" />
-                <p>Account</p>
+                <p className="text-sm">Account</p>
               </span>
             </Link>
              <Link
@@ -131,7 +131,7 @@ const Header = () => {
                   4
                 </p>
                 <ShoppingCartIcon className="size-6" />
-                <p>Cart</p>
+                <p className="text-sm">Cart</p>
               </span>
             </Link>
           </div>
