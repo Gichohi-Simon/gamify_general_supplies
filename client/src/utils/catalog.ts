@@ -20,4 +20,9 @@ export const Catalog: Catalog[] = [
     image: "/stretch_film.jpg",
     price:4500
   },
+  {
+    name: "slip sheet",
+    image: "/slipsheet.png",
+    price:31000
+  },
 ];

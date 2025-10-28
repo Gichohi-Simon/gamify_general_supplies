@@ -1,21 +1,22 @@
 import About from "@/components/About";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
+import { Catalog } from "@/utils/catalog";
 
 export default async function Home() {
-  const API = process.env.API_URL;
+  // const API = process.env.API_URL;
 
-  const response = await fetch(`${API}/product/getFirstThree`, {
-    cache: "no-store",
-  });
-  const productsResponse = await response.json();
-  const products = productsResponse.products;
+  // const response = await fetch(`${API}/product/getFirstThree`, {
+  //   cache: "no-store",
+  // });
+  // const productsResponse = await response.json();
+  // const products = productsResponse.products;
 
   return (
     <div>
       <Hero />
       <About />
-      <Products products={products} />
+      <Products products={Catalog} />
     </div>
   );
 }
