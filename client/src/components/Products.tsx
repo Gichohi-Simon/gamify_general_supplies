@@ -20,7 +20,7 @@ const Products = ({ products }: FirstThreeProducts) => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 md:gap-10">
           {products?.map((catalog) => (
             <div key={catalog.name} className="px-2">
-              <div className="md:w-72 flex flex-col items-center py-10 md:min-h-[200px] md:max-h-[450px] w-[240] cursor-pointer">
+              <div className="md:w-72 flex flex-col items-center py-10 md:min-h-[200px] md:max-h-[450px] w-[240px] cursor-pointer">
                <Link href="/shop">
                  <Image
                   src={catalog.image}
@@ -30,7 +30,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                   className="rounded max-h-36 min-h-36 md:max-h-60 md:min-h-60 transform transition-transform duration-300 hover:rotate-6 hover:scale-105"
                 />
                </Link>
-                <div className="flex justify-between items-center gap-5 w-[240]">
+                <div className="flex justify-between items-center gap-5 w-[240px]">
                   <div className="flex flex-col mt-4 md:mt-8">
                     <div>
                       <p className="text-sm line-clamp-1">{catalog.name}</p>
