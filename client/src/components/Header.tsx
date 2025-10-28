@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">
-      <div className="text-sm">
+      <div className="text-xs md:text-sm">
         <h1 className="uppercase font-bold">
           <Link href="/">Gamify General Supplies</Link>
         </h1>

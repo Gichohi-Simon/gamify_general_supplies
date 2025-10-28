@@ -2,20 +2,20 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="font-[family-name:var(--font-poppins)] px-4 md:px-24 py-12 md:py-24 rounded-xl">
-      <h1 className="text-center text-xl md:text-3xl font-bold text-secondary">
-        Our Services
+    <div className="font-[family-name:var(--font-poppins)] px-2 md:px-24 py-16 md:py-24 rounded-xl">
+      <h1 className="text-center text-base md:text-xl font-bold underline underline-offset-8 decoration-black capitalize tracking-wider">
+        what we offer
       </h1>
 
-      <div className="md:flex justify-center items-center mt-6 md:mt-12 w-full">
+      <div className="md:flex justify-center items-center mt-8 md:mt-24 w-full gap-0 md:gap-12">
         <div className="w-full md:w-1/2 px-8">
           <p className="mt-4 text-center text-base md:text-lg font-bold">
             {" "}
-            Suppliers of materials for <span className="text-secondary ">warehouse</span> handling.
+            Trusted suppliers of high-quality materials for efficient warehouse operations.
           </p>
-          <p className="mt-4 text-center text-base md:text-lg">
+          <p className="mt-4 text-center text-sm md:text-base">
             {" "}
-            For example: top and bottom capping, strapping manila, stretch wrapping film, stitching thread, slip sheets, dust masks, and various warehouse operations.
+            Suppliers of premium materials and equipment for efficient warehouse handling, including top and bottom capping, strapping, stretch wrapping film, stitching thread, slip sheets, dust masks, and other essential warehouse operations.
           </p>
         </div>
 
@@ -25,7 +25,6 @@ const About = () => {
             style={{ backgroundImage: "url('/warehouse2.jpg')" }}
           ></div>
         </div>
-
       </div>
     </div>
   );
