@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Search() {
   return (
-    <div className="mb-4 font-[family-name:var(--font-poppins)] flex justify-center items-center mt-6 gap-2 w-full">
+    <div className="mb-4 font-[family-name:var(--font-poppins)] flex justify-start items-center mt-6 gap-2 w-full">
       <input
         type="text"
         placeholder="search products"
