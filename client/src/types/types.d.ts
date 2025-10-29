@@ -40,7 +40,8 @@ export interface postsInterface {
     name:string;
     price:number;
     image:string;
-    createdAt?:string
+    createdAt?:string;
+    cloudinary_id?:string;
 }
 
 export interface AuthState {
