@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const API = process.env.NEXT_PUBLIC_API_URL;
+console.log("api from server", API)
 
 export const useProducts = () => {
   const fetchProducts = async () => {
