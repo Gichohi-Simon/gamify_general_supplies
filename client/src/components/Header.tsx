@@ -48,9 +48,17 @@ const Header = () => {
   return (
     <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">
       <div className="text-xs md:text-sm">
-        <h1 className="uppercase font-bold">
+        {/* <h1 className="uppercase font-bold">
           <Link href="/">Gamify General Supplies</Link>
-        </h1>
+        </h1> */}
+        <Link href="/" className="flex flex-col">
+          <span className="font-bold text-xl uppercase tracking-wider">
+            Gamify
+          </span>
+          <span className="text-xs text-center text-secondary font-bold">
+            general supplies.
+          </span>
+        </Link>
       </div>
 
       <div className="hidden md:flex gap-4 items-center justify-between">
@@ -122,7 +130,7 @@ const Header = () => {
                 <p className="text-sm">Account</p>
               </span>
             </Link>
-             <Link
+            <Link
               href="/cart"
               className="text-base capitalize mt-4 hover:text-secondary"
             >
