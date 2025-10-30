@@ -66,7 +66,7 @@ export default function SignUpPage() {
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center min-h-screen bg-gray-100">
       <form
-        className="w-3/4 md:w-4/12 md:mt-10 bg-white px-8 py-6 rounded-xl"
+        className="w-3/4 md:w-4/12 bg-white px-4 md:px-8 py-6 rounded-xl"
         onSubmit={formik.handleSubmit}
       >
         <p className="text-center font-semibold text-2xl uppercase tracking-wider">
