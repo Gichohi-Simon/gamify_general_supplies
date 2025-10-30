@@ -2,7 +2,7 @@
 
 import React from "react";
 import MainProducts from "@/components/MainProducts";
-import { useProducts } from "../../hooks/useProducts";
+import { useProducts } from "../../../hooks/useProducts";
 
 const ProductsPage = () => {
   const { data, isLoading, error } = useProducts();
