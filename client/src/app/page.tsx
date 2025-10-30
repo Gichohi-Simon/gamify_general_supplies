@@ -3,7 +3,7 @@
 import About from "@/components/About";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
-import { useGetFirstFourProducts } from "./lib/product.api";
+import { useGetFirstFourProducts } from "@/hooks/useProducts";
 
 export default function Home() {
   const { data, isLoading, error } = useGetFirstFourProducts();
