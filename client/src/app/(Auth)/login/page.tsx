@@ -10,7 +10,7 @@ import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 
 export default function LoginPage() {
-  const API = process.env.API_URL;
+  const API = process.env.NEXT_PUBLIC_API_URL;
 
   const router = useRouter();
   const dispatch = useAppDispatch();

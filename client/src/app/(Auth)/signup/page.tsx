@@ -9,10 +9,8 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../../../store/features/authSlice";
 import { initialFormValuesInterface } from "@/types/types";
 
-
-
 export default function SignUpPage() {
-  const API = process.env.API_URL
+  const API = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
   const dispatch = useDispatch();
 

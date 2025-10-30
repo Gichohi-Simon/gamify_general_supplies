@@ -52,7 +52,7 @@ const Header = () => {
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">
             Gamify
           </span>
-          <span className="text-[10px] md:text-xs text-center text-secondary font-bold">
+          <span className="text-[10px]md:text-xs text-center text-secondary font-bold">
             general supplies.
           </span>
         </Link>
