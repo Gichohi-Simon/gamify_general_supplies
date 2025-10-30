@@ -21,7 +21,7 @@ const Products = ({ products }: FirstThreeProducts) => {
           {products?.map((catalog) => (
             <div key={catalog.name} className="px-2">
               <div className="md:w-72 flex flex-col items-center py-10 md:min-h-[200px] md:max-h-[450px] w-[240px] cursor-pointer">
-               <Link href="/shop">
+               <Link href={`/shop/${catalog.id}`}>
                  <Image
                   src={catalog.image}
                   alt={catalog.name}
@@ -42,7 +42,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                     </div>
                   </div>
                   <div className="bg-primary p-2 rounded-full">
-                    <Link href="/shop">
+                    <Link href={`/shop/${catalog.id}`}>
                       <EyeIcon className="size-4 md:size-5" />
                     </Link>
                   </div>
