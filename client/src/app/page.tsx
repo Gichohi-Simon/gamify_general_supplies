@@ -1,22 +1,22 @@
+"use client";
+
 import About from "@/components/About";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
-import { Catalog } from "@/utils/catalog";
+import { useGetFirstFourProducts } from "./lib/product.api";
 
-export default async function Home() {
-  // const API = process.env.API_URL;
+export default function Home() {
+  const { data, isLoading, error } = useGetFirstFourProducts();
 
-  // const response = await fetch(`${API}/product/getFirstThree`, {
-  //   cache: "no-store",
-  // });
-  // const productsResponse = await response.json();
-  // const products = productsResponse.products;
+  if (isLoading) return <p>loading...</p>;
+
+  if (error) return <p>error occured {error.message}</p>;
 
   return (
     <div>
       <Hero />
       <About />
-      <Products products={Catalog} />
+      <Products products={data.products} />
     </div>
   );
 }

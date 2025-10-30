@@ -1,3 +1,5 @@
+import { hostname } from "os";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -13,6 +15,11 @@ const nextConfig = {
         hostname: 'unsplash.com',
         pathname: '/**',
       },
+      {
+        protocol:"https",
+        hostname:"res.cloudinary.com",
+        pathname:"/**"
+      }
 
     ],
   },

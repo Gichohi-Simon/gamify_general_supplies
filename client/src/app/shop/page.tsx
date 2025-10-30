@@ -1,20 +1,19 @@
+"use client";
+
 import React from "react";
 import MainProducts from "@/components/MainProducts";
-import { FullCatalog } from "@/utils/fullcatalog";
+import { useProducts } from "../lib/product.api";
 
-const ProductsPage = async () => {
-  // const API = process.env.API_URL
-  // const response = await fetch(`${API}/product/all-products`, {
-  //   cache: "no-store",
-  // });
+const ProductsPage = () => {
+  const { data, isLoading, error } = useProducts();
 
-  // const posts = await response.json();
- 
-  // const products = posts.products;
+  if (isLoading) return <p>loading...</p>;
+
+  if (error) return <p>Error occured: {error.message}</p>;
 
   return (
     <div>
-      <MainProducts products={FullCatalog} />
+      <MainProducts products={data.products} />
     </div>
   );
 };
