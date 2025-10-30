@@ -10,8 +10,8 @@ import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 
 export default function LoginPage() {
-  const API = process.env.API_URL
-  
+  const API = process.env.API_URL;
+
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -54,21 +54,27 @@ export default function LoginPage() {
       console.log(error);
     }
   };
-  
+
   return (
-    <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center">
+    <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center min-h-screen bg-gray-100">
       <form
-        className="w-3/4 md:w-1/2 py-10 mt-0 md:mt-10"
+        className="w-3/4 md:w-4/12 md:mt-10 bg-white px-8 py-6 rounded-xl"
         onSubmit={formik.handleSubmit}
       >
-        <div className="my-5">
-          <p className="text-xl md:text-2xl font-bold">login</p>
-          <p className="text-sm md:text-base font-semibold mt-2">
+        <p className="text-center font-semibold text-2xl uppercase tracking-wider text-primary">
+          Gamify
+        </p>
+        <p className="text-xs text-center text-secondary font-bold">
+          general supplies.
+        </p>
+        <div className="mt-5 mb-3">
+          <p className="text-lg md:text-2xl tracking-wider font-bold">login</p>
+          <p className="text-xs md:text-sm">
             welcome to gamify store, login to continue.
           </p>
         </div>
         <div>
-          <label htmlFor="email" className="font-semibold text-sm md:text-base">
+          <label htmlFor="email" className="font-semibold text-xs md:text-sm">
             email
           </label>
           <br />
@@ -76,16 +82,16 @@ export default function LoginPage() {
             type="text"
             placeholder="email"
             name="email"
-            className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded "
+            className="border border-1 py-2 px-2 text-xs md:text-sm w-full mt-2 rounded-md"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
         </div>
-        <div className="mt-4">
+        <div className="mt-2">
           <label
             htmlFor="password"
-            className="font-semibold text-sm md:text-base"
+            className="font-semibold text-xs md:text-sm"
           >
             password
           </label>
@@ -94,14 +100,14 @@ export default function LoginPage() {
             type="password"
             placeholder="password"
             name="password"
-            className="border border-1 py-2 px-2 text-sm md:text-base w-full mt-2 rounded"
+            className="border border-1 py-2 px-2 text-xs md:text-sm w-full mt-2 rounded-md"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
         </div>
         <button
-          className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5"
+          className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5 rounded-md"
           type="submit"
         >
           login
@@ -109,9 +115,9 @@ export default function LoginPage() {
 
         <Link
           href="/signup"
-          className="text-xs md:text-sm flex justify-center items-center"
+          className="text-xs md:text-sm flex justify-center items-center gap-1 lowercase font-semibold"
         >
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account ?{" "}
           <span className="text-secondary">sign up</span>
         </Link>
       </form>
