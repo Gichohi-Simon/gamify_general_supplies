@@ -24,15 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
-        <body className={`${poppins.variable} antialiased overflow-x-hidden min-h-screen flex flex-col`}>
-        <Header />
-       <main className="flex-grow">
-       {children}
-       </main>
-        <Footer />
+      <body
+        className={`${poppins.variable} antialiased overflow-x-hidden min-h-screen flex flex-col`}
+      >
+        <Providers>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </Providers>
       </body>
-      </Providers>
     </html>
   );
 }
