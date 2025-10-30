@@ -87,6 +87,11 @@ export default function LoginPage() {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
+           {formik.touched.email && formik.errors.email ? (
+            <h4 className="text-red-500 mt-1 font-bold text-xs">
+              {formik.errors.email}
+            </h4>
+          ) : null}
         </div>
         <div className="mt-2">
           <label
@@ -105,9 +110,14 @@ export default function LoginPage() {
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
+           {formik.touched.password && formik.errors.password ? (
+            <h4 className="text-red-500 mt-1 font-bold text-xs">
+              {formik.errors.password}
+            </h4>
+          ) : null}
         </div>
         <button
-          className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5 rounded-md"
+          className="bg-primary mt-8 py-2 w-full text-xs md:text-sm mb-5 rounded-md lowercase"
           type="submit"
         >
           login
