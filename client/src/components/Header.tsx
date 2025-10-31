@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import {
   Popover,
@@ -15,37 +15,8 @@ import {
   XCircleIcon,
 } from "@heroicons/react/16/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
-import { useAppDispatch } from "@/store/hooks";
-import { setCredentials } from "@/store/features/authSlice";
-import { useCheckAuth } from "@/hooks/auth";
 
 const Header = () => {
-
-  const dispatch = useAppDispatch();
-  const {data, isLoading, isError, error} = useCheckAuth();
-
-  useEffect(() => {
-     if(data?.user){
-        dispatch(
-          setCredentials({
-            userInfo:data.user,
-          })
-        )
-     }
-  }, [data?.user,dispatch]);
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[60px]">
-        <p className="text-sm">Checking authentication...</p>
-      </div>
-    );
-  }
-
-  if (isError) {
-    console.error("Auth check failed:", error);
-  }
-
   return (
     <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">
       <div className="text-xs md:text-sm">
