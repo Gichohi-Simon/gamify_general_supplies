@@ -64,13 +64,13 @@ const Header = () => {
         >
           <span className="flex justify-between items-center gap-2">
             <BuildingStorefrontIcon className="size-6" />
-            <p className="text-sm">Shop</p>
+            <p className="text-sm">Store</p>
           </span>
         </Link>
         <Link href="/account" className="capitalize mt-4 hover:text-secondary">
           <span className="flex justify-between items-center gap-2">
             <UserCircleIcon className="size-6" />
-            <p className="text-sm">Account</p>
+            <p className="text-sm">Orders</p>
           </span>
         </Link>
         <Link
@@ -114,7 +114,7 @@ const Header = () => {
             >
               <span className="flex gap-2">
                 <BuildingStorefrontIcon className="size-6" />
-                <p className="text-sm">Shop</p>
+                <p className="text-sm">Store</p>
               </span>
             </Link>
             <Link
@@ -123,7 +123,7 @@ const Header = () => {
             >
               <span className="flex gap-2">
                 <UserCircleIcon className="size-6" />
-                <p className="text-sm">Account</p>
+                <p className="text-sm">Orders</p>
               </span>
             </Link>
             <Link

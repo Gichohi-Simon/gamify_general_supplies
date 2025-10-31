@@ -8,12 +8,12 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
 import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
+import { useSignIn } from "@/hooks/auth";
 
 export default function LoginPage() {
-  const API = process.env.NEXT_PUBLIC_API_URL;
-
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const {mutateAsync, isPending, isError, error} = useSignIn();
 
   const initialValues: loginInitialValues = {
     email: "",
@@ -28,7 +28,9 @@ export default function LoginPage() {
     }),
     onSubmit: async (values) => {
       try {
-        await login(values);
+        const data = await mutateAsync(values)
+        console.log("data from login", data);
+        // dispatch(setCredentials({userInfo:data.user}))
         formik.resetForm();
         router.push("/shop");
       } catch (error) {
@@ -37,24 +39,7 @@ export default function LoginPage() {
     },
   });
 
-  const login = async (values: loginInitialValues) => {
-    try {
-      const response = await fetch(`${API}/auth/login`, {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      dispatch(
-        setCredentials({
-          userInfo: data.user,
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center min-h-screen bg-gray-100">
       <form
