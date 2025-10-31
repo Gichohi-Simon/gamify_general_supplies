@@ -3,17 +3,18 @@
 import Protected from "@/components/Protected";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setLogout } from "@/store/features/authSlice";
-import { signOut } from "@/api/auth.api";
 import { useRouter } from "next/navigation";
+import { useSignOut } from "@/hooks/auth";
 
 export default function AccounPage() {
   const user = useAppSelector((state) => state.auth.userInfo);
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const {mutateAsync} = useSignOut();
 
   const handleLogout = async () => {
     try {
-      await signOut();
+      await mutateAsync();
       dispatch(setLogout());
       router.replace("/login");
     } catch (error) {

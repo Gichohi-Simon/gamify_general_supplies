@@ -1,71 +1,54 @@
 "use client";
 
 import React, { useEffect } from "react";
-// import { useCheckAuth } from "@/hooks/auth";
+import { useCheckAuth } from "@/hooks/auth";
 import { useAppDispatch } from "@/store/hooks";
 import { setCredentials } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
-import { checkAuth } from "@/api/auth.api";
+import { setLogout } from "@/store/features/authSlice";
+
 
 type childrenProps = {
   children: React.ReactNode;
 };
 
 export default function Protected({ children }: childrenProps) {
-  // const { data, isLoading, isError, error } = useCheckAuth();
+  const { data, isLoading, isError, error } = useCheckAuth();
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const checkUser = async () => {
-    const data = await checkAuth();
-    console.log("data from checkAuth: ", data);
-    if(data.user){
+  useEffect(() => {
+    if (!isLoading && data?.user) {
       dispatch(
         setCredentials({
-          userInfo:data.user
+          userInfo: data.user,
         })
-      )
-    }else{
-      router.replace("/login")
+      );
     }
-  };
+  }, [data?.user, dispatch, isLoading]);
 
   useEffect(() => {
-    checkUser();
-  }, []);
+    if (!isLoading && !data?.user) {
+      dispatch(setLogout())
+      router.replace("/login");
+    }
+  }, [isLoading, data?.user]);
 
-  // useEffect(() => {
-  //   if (!isLoading && data?.user) {
-  //     dispatch(
-  //       setCredentials({
-  //         userInfo: data.user,
-  //       })
-  //     );
-  //   }
-  // }, [data?.user, dispatch, isLoading]);
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60px]">
+        <p className="text-sm">Checking authentication...</p>
+      </div>
+    );
+  }
 
-  // useEffect(() => {
-  //   if (!isLoading && !data?.user) {
-  //     dispatch(setLogout())
-  //     router.replace("/login");
-  //   }
-  // }, [isLoading, data?.user]);
+  if (isError) {
+    console.error("Auth check failed:", error);
+  }
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="flex justify-center items-center min-h-[60px]">
-  //       <p className="text-sm">Checking authentication...</p>
-  //     </div>
-  //   );
-  // }
-
-  // if (isError) {
-  //   console.error("Auth check failed:", error);
-  // }
-
-  // if(!data?.user){
-  //   return null
-  // }
+  if(!data?.user){
+    return null
+  }
 
   return <>{children}</>;
 }

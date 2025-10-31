@@ -5,15 +5,15 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-// import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch } from "@/store/hooks";
 import { loginInitialValues } from "@/types/types";
-// import { setCredentials } from "@/store/features/authSlice";
+import { setCredentials } from "@/store/features/authSlice";
 import { useSignIn } from "@/hooks/auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  // const dispatch = useAppDispatch();
-  const {mutateAsync} = useSignIn();
+  const dispatch = useAppDispatch();
+  const { mutateAsync } = useSignIn();
 
   const initialValues: loginInitialValues = {
     email: "",
@@ -28,9 +28,9 @@ export default function LoginPage() {
     }),
     onSubmit: async (values) => {
       try {
-        const data = await mutateAsync(values)
+        const data = await mutateAsync(values);
         console.log("data from login", data);
-        // dispatch(setCredentials({userInfo:data.user}))
+        dispatch(setCredentials({ userInfo: data.user }));
         formik.resetForm();
         router.push("/shop");
       } catch (error) {
@@ -39,7 +39,6 @@ export default function LoginPage() {
     },
   });
 
-  
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center min-h-screen bg-gray-100">
       <form
@@ -72,7 +71,7 @@ export default function LoginPage() {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-           {formik.touched.email && formik.errors.email ? (
+          {formik.touched.email && formik.errors.email ? (
             <h4 className="text-red-500 mt-1 font-bold text-xs">
               {formik.errors.email}
             </h4>
@@ -95,7 +94,7 @@ export default function LoginPage() {
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
-           {formik.touched.password && formik.errors.password ? (
+          {formik.touched.password && formik.errors.password ? (
             <h4 className="text-red-500 mt-1 font-bold text-xs">
               {formik.errors.password}
             </h4>
