@@ -13,7 +13,7 @@ import { useSignUp } from "@/hooks/auth";
 export default function SignUpPage() {
   const router = useRouter();
   // const dispatch = useDispatch();
-  const {mutateAsync, isPending, isError, error} = useSignUp();
+  const { mutateAsync } = useSignUp();
 
   const initialValues: initialFormValuesInterface = {
     email: "",
@@ -33,7 +33,7 @@ export default function SignUpPage() {
         .required("confirm password is required"),
     }),
 
-    onSubmit: async(values) => {
+    onSubmit: async (values) => {
       try {
         const data = await mutateAsync(values);
         console.log("data from signup", data);
@@ -58,7 +58,9 @@ export default function SignUpPage() {
           general supplies.
         </p>
         <div className="mt-5 mb-3">
-          <p className="text-lg md:text-2xl tracking-wider font-bold">Register</p>
+          <p className="text-lg md:text-2xl tracking-wider font-bold">
+            Register
+          </p>
           <p className="text-xs md:text-sm">
             welcome to gamify, Register here!
           </p>

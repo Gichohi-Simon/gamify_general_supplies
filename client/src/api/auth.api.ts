@@ -22,4 +22,19 @@ export const signUp = async (values:initialFormValuesInterface) => {
     return response.json();
 };
 
-export const signOut = async () => {};
+export const signOut = async () => {
+    const response = await fetch(`${API}/auth/logout`,{
+        method:"POST",
+        credentials:"include"
+    });
+    if(!response.ok) throw new Error("logout failed");
+    return response.json();
+};
+
+export const checkAuth = async () => {
+    const response = await fetch(`${API}/auth/check`, {
+        credentials:"include",
+    })
+    if(!response.ok) throw new Error("error checking if user is authenticated");
+    return response.json();
+}

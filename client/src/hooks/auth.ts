@@ -1,6 +1,6 @@
-import { signIn, signUp } from "@/api/auth.api";
+import { signIn, signOut, signUp, checkAuth } from "@/api/auth.api";
 
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useSignIn = () => {
   return useMutation({
@@ -13,3 +13,17 @@ export const useSignUp = () => {
     mutationFn: signUp,
   });
 };
+
+export const useSignOut = () => {
+  return useMutation({
+    mutationFn: signOut,
+  });
+};
+
+export const useCheckAuth = () => {
+  return useQuery({
+    queryKey:["user"],
+    queryFn:checkAuth,
+    retry:false
+  })
+}

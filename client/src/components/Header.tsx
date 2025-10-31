@@ -17,32 +17,34 @@ import {
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { useAppDispatch } from "@/store/hooks";
 import { setCredentials } from "@/store/features/authSlice";
+import { useCheckAuth } from "@/hooks/auth";
 
 const Header = () => {
-  const API = process.env.API_URL;
+
   const dispatch = useAppDispatch();
+  const {data, isLoading, isError, error} = useCheckAuth();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch(`${API}/auth/check`, {
-          credentials: "include",
-        });
-        const data = await response.json();
-        console.log({ tokenId: data });
+     if(data?.user){
         dispatch(
           setCredentials({
-            userId: data.userId,
-            token: data.token,
+            userInfo:data.user,
           })
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    };
+        )
+     }
+  }, [data?.user,dispatch]);
 
-    checkAuth();
-  }, []);
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60px]">
+        <p className="text-sm">Checking authentication...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    console.error("Auth check failed:", error);
+  }
 
   return (
     <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">

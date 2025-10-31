@@ -13,7 +13,7 @@ import { useSignIn } from "@/hooks/auth";
 export default function LoginPage() {
   const router = useRouter();
   // const dispatch = useAppDispatch();
-  const {mutateAsync, isPending, isError, error} = useSignIn();
+  const {mutateAsync} = useSignIn();
 
   const initialValues: loginInitialValues = {
     email: "",
