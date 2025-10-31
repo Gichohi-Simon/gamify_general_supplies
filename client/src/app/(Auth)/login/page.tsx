@@ -32,7 +32,7 @@ export default function LoginPage() {
         console.log("data from login", data);
         dispatch(setCredentials({ userInfo: data.user }));
         formik.resetForm();
-        router.push("/shop");
+        router.push("/account");
       } catch (error) {
         console.error(error);
       }
