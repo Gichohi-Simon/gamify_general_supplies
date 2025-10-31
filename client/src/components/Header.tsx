@@ -20,7 +20,6 @@ import { setCredentials } from "@/store/features/authSlice";
 
 const Header = () => {
   const API = process.env.API_URL;
-  console.log("api from header: ", API);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const Header = () => {
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">
             Gamify
           </span>
-          <span className="text-[10px]md:text-xs text-center text-secondary font-bold">
+          <span className="text-[10px]md:text-xs text-center text-secondary font-bold mt-[-5px]">
             general supplies.
           </span>
         </Link>
