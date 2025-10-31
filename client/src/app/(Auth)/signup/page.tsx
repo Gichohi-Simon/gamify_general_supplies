@@ -5,14 +5,15 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../../../store/features/authSlice";
+// import { useDispatch } from "react-redux";
+// import { setCredentials } from "../../../store/features/authSlice";
 import { initialFormValuesInterface } from "@/types/types";
+import { useSignUp } from "@/hooks/auth";
 
 export default function SignUpPage() {
-  const API = process.env.NEXT_PUBLIC_API_URL;
   const router = useRouter();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const {mutateAsync, isPending, isError, error} = useSignUp();
 
   const initialValues: initialFormValuesInterface = {
     email: "",
@@ -31,35 +32,18 @@ export default function SignUpPage() {
         .oneOf([Yup.ref("password")], "Passwords do not match")
         .required("confirm password is required"),
     }),
+
     onSubmit: async(values) => {
       try {
-        await signUp(values);
+        const data = await mutateAsync(values);
+        console.log("data from signup", data);
         formik.resetForm();
-        router.push("/shop");
+        router.push("/login");
       } catch (error) {
         console.log(error);
       }
     },
   });
-
-  const signUp = async (value: initialFormValuesInterface) => {
-    try {
-      const response = await fetch(`${API}/auth/sign-up`, {
-        method: "POST",
-        body: JSON.stringify(value),
-        headers: { "Content-Type": "application/json" },
-      });
-      const data = await response.json();
-      dispatch(
-        setCredentials({
-          userInfo: data.user,
-          token: data.token,
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="font-[family-name:var(--font-poppins)] flex justify-center items-center min-h-screen bg-gray-100">

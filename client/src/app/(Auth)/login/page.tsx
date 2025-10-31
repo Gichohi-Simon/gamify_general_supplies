@@ -5,14 +5,14 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/store/hooks";
+// import { useAppDispatch } from "@/store/hooks";
 import { loginInitialValues } from "@/types/types";
-import { setCredentials } from "@/store/features/authSlice";
+// import { setCredentials } from "@/store/features/authSlice";
 import { useSignIn } from "@/hooks/auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const {mutateAsync, isPending, isError, error} = useSignIn();
 
   const initialValues: loginInitialValues = {

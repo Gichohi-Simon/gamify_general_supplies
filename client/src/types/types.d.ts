@@ -17,7 +17,7 @@ export interface initialFormValuesInterface {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
 }
 
 export interface loginInitialValues {
