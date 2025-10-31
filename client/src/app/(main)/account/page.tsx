@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setLogout } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
 import { useSignOut } from "@/hooks/auth";
+import Link from "next/link";
 
 export default function AccounPage() {
   const user = useAppSelector((state) => state.auth.userInfo);
@@ -37,7 +38,14 @@ export default function AccounPage() {
               <p className="mt-[-5] text-xs md:text-sm ">{user?.email}</p>
             </div>
           </div>
-          <div>
+          <div className="flex gap-4 justify-center items-center">
+           <Link href="/orders">
+             <button
+              className="bg-primary px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
+            >
+              view orders
+            </button>
+           </Link>
             <button
               className="bg-red-500 text-white px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
               onClick={handleLogout}
