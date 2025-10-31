@@ -2,6 +2,7 @@
 export interface userState {
     id?:number;
     email:string;
+    username:string;
     password:string;
 }
 
@@ -46,6 +47,4 @@ export interface postsInterface {
 
 export interface AuthState {
     userInfo: userState | null;
-    userId: userIdinterface | null;
-    token: string | null
 }

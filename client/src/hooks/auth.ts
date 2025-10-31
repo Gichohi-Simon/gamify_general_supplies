@@ -1,6 +1,7 @@
 import { signIn, signOut, signUp, checkAuth } from "@/api/auth.api";
-
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { setLogout } from "@/store/features/authSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useSignIn = () => {
   return useMutation({
@@ -15,15 +16,26 @@ export const useSignUp = () => {
 };
 
 export const useSignOut = () => {
+  const qc = useQueryClient();
+  const dispatch = useAppDispatch();
+
   return useMutation({
     mutationFn: signOut,
+    onSuccess:async () => {
+      await qc.removeQueries({queryKey:["user"], exact:true});
+      dispatch(setLogout());
+    }
   });
 };
 
 export const useCheckAuth = () => {
   return useQuery({
-    queryKey:["user"],
-    queryFn:checkAuth,
-    retry:false
-  })
-}
+    queryKey: ["user"],
+    queryFn: checkAuth,
+    retry: false,
+    staleTime: 0,
+    gcTime: 1000,
+    refetchOnMount:true,
+    refetchOnWindowFocus:false
+  });
+};

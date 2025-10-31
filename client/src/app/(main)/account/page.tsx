@@ -1,22 +1,51 @@
-import NoOrders from "@/components/NoOrders";
+"use client";
+
 import Protected from "@/components/Protected";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setLogout } from "@/store/features/authSlice";
+import { signOut } from "@/api/auth.api";
+import { useRouter } from "next/navigation";
 
 export default function AccounPage() {
-  const orders: boolean = false;
+  const user = useAppSelector((state) => state.auth.userInfo);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      dispatch(setLogout());
+      router.replace("/login");
+    } catch (error) {
+      console.error("logout error:", error);
+    }
+  };
+
   return (
     <Protected>
       <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 my-5 md:my-10 h-screen">
-      <p className="text-xl font-bold mb-7">Orders</p>
-      {orders ? (
-        <>
-          <p>your orders</p>
-        </>
-      ) : (
-        <>
-          <NoOrders />
-        </>
-      )}
-    </div>
+        <p className="text-xl font-bold mb-7">Profile</p>
+        <div className="font-[family-name:var(--font-poppins)] bg-gray-100 py-6 px-6 rounded-lg flex justify-between">
+          <div>
+            <div>
+              <p className="text-xs md:text-sm font-bold">Name</p>
+              <p className="mt-[-5] text-xs md:text-sm">{user?.username}</p>
+            </div>
+            <div className="mt-2">
+              <p className="text-xs md:text-sm font-bold">Email</p>
+              <p className="mt-[-5] text-xs md:text-sm ">{user?.email}</p>
+            </div>
+          </div>
+          <div>
+            <button
+              className="bg-red-500 text-white px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
+              onClick={handleLogout}
+            >
+              logout
+            </button>
+          </div>
+        </div>
+      </div>
     </Protected>
   );
 }
