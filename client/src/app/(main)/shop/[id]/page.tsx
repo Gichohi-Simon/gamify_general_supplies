@@ -57,10 +57,10 @@ export default function SingleProduct() {
         </div>
 
         <div className="mt-4">
-          <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-4 rounded-full text-[10px] md:text-base uppercase">
+          <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
             Add to cart
           </button>
-           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-4 rounded-full text-[10px] md:text-base uppercase">
+           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
             checkout
           </button>
         </div>

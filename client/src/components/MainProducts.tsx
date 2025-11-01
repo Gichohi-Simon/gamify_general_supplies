@@ -13,7 +13,7 @@ interface AllPosts {
 
 const MainProducts = ({ products }: AllPosts) => {
   return (
-    <div className="font-[family-name:var(--font-poppins)] overflow-x-hidden">
+    <div className="font-[family-name:var(--font-poppins)] overflow-x-hidden h-screen">
       <div
         className="relative bg-primary py-10 md:py-20 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/warehouse.jpg')" }}
