@@ -18,13 +18,13 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const Header = () => {
   return (
-    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)] font-bold">
+    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)]">
       <div className="text-xs md:text-sm">
         <Link href="/" className="flex flex-col">
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">
             Gamify
           </span>
-          <span className="text-[10px]md:text-xs text-center text-secondary font-bold mt-[-5px]">
+          <span className="text-[10px] md:text-xs text-center text-secondary font-bold mt-[-5px]">
             general supplies.
           </span>
         </Link>
@@ -51,7 +51,7 @@ const Header = () => {
           className="text-base capitalize mt-4 hover:text-secondary"
         >
           <span className="flex justify-between items-center gap-2 relative">
-            <p className="bg-secondary absolute left-3 top-[-12] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">
+            <p className="bg-secondary absolute left-3 top-[-12] text-sm w-5 h-5 flex justify-center items-center rounded-full ">
               4
             </p>
             <ShoppingCartIcon className="size-6" />

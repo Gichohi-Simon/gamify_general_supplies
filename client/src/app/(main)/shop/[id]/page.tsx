@@ -28,37 +28,40 @@ export default function SingleProduct() {
         </div>
       </div>
 
-      <div className="mt-10 w-full md:w-1/2">
+      <div className="mt-5 w-full md:w-1/2">
         <div>
-          <h5 className="font-bold text-xl md:text-3xl capitalize tracking-wider">
+          <h5 className="font-semibold text-xl md:text-4xl capitalize tracking-widest">
             {data.singleProduct.name}
           </h5>
-          <h5 className="mt-2 md:mt-8 text-sm md:text-base font-bold tracking-wider">
-            KSH {Number(data.singleProduct.price).toLocaleString()}
+          <h5 className="mt-2 md:mt-4 text-sm md:text-2xl font-semibold tracking-wider">
+            Ksh {Number(data.singleProduct.price).toLocaleString()}
           </h5>
-          <h6 className="text-[10px] md:text-xs font-bold tracking-wider">
+          <p className="text-[4px] md:text-xs font-semibold tracking-wider mt-[-2px] underline text-blue-500">
             price is exclusive of vat
-          </h6>
+          </p>
         </div>
 
-        <div className="mt-2 md:mt-8">
-          <h6 className="text-xs md:text-sm tracking-wider font-semibold">
+        <div className="mt-2 md:mt-6">
+          <h6 className="text-xs md:text-sm tracking-wider">
             select quantity
           </h6>
           <div className="mt-4">
-            <span className="bg-primary px-2 md:px-3 py-1 md:py-2 mr-4 cursor-pointer rounded-sm">
+            <span className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 mr-4 cursor-pointer rounded-sm">
               -
             </span>
             <span className="text-xs md:text-sm">1</span>
-            <span className="bg-primary px-2 md:px-3 py-1 md:py-2 ml-4 cursor-pointer rounded-sm">
+            <span className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 ml-4 cursor-pointer rounded-sm">
               +
             </span>
           </div>
         </div>
 
-        <div>
-          <button className="mt-8 md:mt-16 bg-primary w-full py-2 md:py-3 rounded-full font-bold text-[10px] md:text-xs uppercase">
+        <div className="mt-4">
+          <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-4 rounded-full text-[10px] md:text-base uppercase">
             Add to cart
+          </button>
+           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-4 rounded-full text-[10px] md:text-base uppercase">
+            checkout
           </button>
         </div>
       </div>

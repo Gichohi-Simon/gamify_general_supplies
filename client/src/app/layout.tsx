@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Nunito_Sans } from "next/font/google";
+import { Nunito_Sans, Raleway } from "next/font/google";
 import "./globals.css";
 
 import Providers from "./providers";
 
-const poppins = Nunito_Sans({
+const poppins = Raleway({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
