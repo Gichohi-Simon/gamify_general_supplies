@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito_Sans, Raleway } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 
 import Providers from "./providers";
