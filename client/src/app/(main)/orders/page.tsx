@@ -58,10 +58,10 @@ export default function MyOrders() {
 
                   <div className="mt-4">
                     <p className="text-xs md:text-sm capitalize text-wider">
-                      total amount
+                      V.A.T
                     </p>
                     <p className="text-[10px] md:text-xs text-wider font-bold">
-                      Ksh {Number(order.totalPrice).toLocaleString()}
+                      Ksh {Number(order.taxPrice).toLocaleString()}
                     </p>
                   </div>
 
@@ -112,11 +112,21 @@ export default function MyOrders() {
                     </div>
                   ))}
 
-                  <Link href="#">
+                 <div className="flex justify-between items-center">
+                   <Link href="#">
                     <button className="text-[8px] md:text-xs bg-primary px-1 py-0.5 md:px-2 md:py-1 rounded-sm mt-6">
                       view invoice
                     </button>
                   </Link>
+                   <div className="mt-4">
+                    <p className="text-[8px] md:text-sm capitalize text-wider">
+                      total amount
+                    </p>
+                    <p className="text-[8px] md:text-xs text-wider font-bold">
+                      Ksh {Number(order.totalPrice).toLocaleString()}
+                    </p>
+                  </div>
+                 </div>
                 </div>
               </div>
             ))}
