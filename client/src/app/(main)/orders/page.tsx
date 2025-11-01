@@ -65,6 +65,15 @@ export default function MyOrders() {
                     </p>
                   </div>
 
+                   <div className="mt-4">
+                    <p className="text-xs md:text-sm capitalize text-wider">
+                      Shipping Fee
+                    </p>
+                    <p className="text-[10px] md:text-xs text-wider font-bold">
+                      Ksh {Number(order.shippingPrice).toLocaleString()}
+                    </p>
+                  </div>
+
                   <div className="mt-4">
                     <p className="text-xs md:text-sm capitalize text-wider">
                       payment status
@@ -119,7 +128,14 @@ export default function MyOrders() {
                     </button>
                   </Link>
                    <div className="mt-4">
-                    <p className="text-[8px] md:text-sm capitalize text-wider">
+                     <p className="text-[8px] md:text-sm capitalize text-wider">
+                      price before VAT
+                    </p>
+                    <p className="text-[8px] md:text-xs text-wider font-bold">
+                      Ksh {Number(order.itemsPrice).toLocaleString()}
+                    </p>
+                    <hr className="mt-2"/>
+                    <p className="text-[8px] md:text-sm capitalize text-wider mt-2">
                       total amount
                     </p>
                     <p className="text-[8px] md:text-xs text-wider font-bold">

@@ -51,6 +51,8 @@ export interface AuthState {
 export interface OrderType {
   id: number;
   userId: number;
+  itemsPrice:number,
+  shippingPrice:number,
   taxPrice: number;
   totalPrice: number;
   isPaid: boolean;
