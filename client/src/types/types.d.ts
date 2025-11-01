@@ -1,17 +1,16 @@
-
 export interface userState {
-    id?:number;
-    email:string;
-    username:string;
-    password:string;
+  id?: number;
+  email: string;
+  username: string;
+  password: string;
 }
 
 export interface tokenState {
-    token:string;
+  token: string;
 }
 
 export interface userIdinterface {
-    userId:number
+  userId: number;
 }
 
 export interface initialFormValuesInterface {
@@ -22,29 +21,55 @@ export interface initialFormValuesInterface {
 }
 
 export interface loginInitialValues {
-    email:string;
-    password:string;
+  email: string;
+  password: string;
 }
 
 export interface userInterface {
-    id:number;
-    username:string;
-    email:string;
-    password:string;
-    isAdmin:boolean;
-    isActive:boolean;
-    createdAt:string;
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  isAdmin: boolean;
+  isActive: boolean;
+  createdAt: string;
 }
 
 export interface postsInterface {
-    id?:number;
-    name:string;
-    price:number;
-    image:string;
-    createdAt?:string;
-    cloudinary_id?:string;
+  id?: number;
+  name: string;
+  price: number;
+  image: string;
+  createdAt?: string;
+  cloudinary_id?: string;
 }
 
 export interface AuthState {
-    userInfo: userState | null;
+  userInfo: userState | null;
 }
+
+export interface OrderType {
+  id: number;
+  userId: number;
+  taxPrice: number;
+  totalPrice: number;
+  isPaid: boolean;
+  paidAt: string;
+  isDelivered: boolean;
+  deliverAt: string;
+  invoiceNumber: string;
+  createdAt: string;
+  orderItems: OrderItem[];
+}
+
+export type OrderItem = {
+  id: number;
+  orderId: number;
+  productId: number;
+  quantity: number;
+  price: string;
+  product: {
+    name: string;
+    image: string;
+  };
+};
