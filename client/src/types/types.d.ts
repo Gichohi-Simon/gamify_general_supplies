@@ -1,5 +1,5 @@
 export interface userState {
-  id?: number;
+  id: number;
   email: string;
   username: string;
   password: string;
@@ -40,8 +40,8 @@ export interface postsInterface {
   name: string;
   price: number;
   image: string;
-  createdAt?: string;
-  cloudinary_id?: string;
+  createdAt: string;
+  cloudinary_id: string;
 }
 
 export interface OrderType {

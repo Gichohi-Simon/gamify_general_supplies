@@ -12,6 +12,10 @@ export default function Home() {
 
   if (error) return <p>error occured {error.message}</p>;
 
+  if (!data || !data.products) {
+    return <p>No products found.</p>;
+  }
+
   return (
     <div>
       <Hero />

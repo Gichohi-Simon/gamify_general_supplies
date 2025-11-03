@@ -11,6 +11,10 @@ const ProductsPage = () => {
 
   if (error) return <p>Error occured: {error.message}</p>;
 
+  if (!data || !data.products) {
+    return <p>No products found.</p>;
+  }
+
   return (
     <div>
       <MainProducts products={data.products} />

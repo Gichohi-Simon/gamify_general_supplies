@@ -68,6 +68,10 @@ export default function SingleProduct() {
     setQuantity(1);
   };
 
+  if (!data || !data.singleProduct) {
+    return <p>No products found.</p>;
+  }
+
   return (
     <div className="md:flex gap-10 my-2 py-12 md:py-24 md:my-5 mx-10 md:mx-20 font-[family-name:var(--font-poppins)]">
       <div className="w-full md:w-1/2 ">
