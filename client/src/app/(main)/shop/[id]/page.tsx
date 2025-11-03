@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useGetSingleProduct } from "@/hooks/useProducts";
@@ -134,9 +135,11 @@ export default function SingleProduct() {
             </button>
           )}
 
-          <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
+         <Link href="/cart">
+           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
             checkout
           </button>
+         </Link>
         </div>
       </div>
     </div>

@@ -70,9 +70,9 @@ export default function CartPage() {
 
   if (!products.length) {
     return (
-      <div className="text-center mt-20 text-sm md:text-base">
-        <p>Your cart is empty 😢</p>
-        <Link href="/shop" className="underline text-primary">
+      <div className="font-[family-name:var(--font-poppins)] text-center mt-20 text-sm md:text-base h-screen flex flex-col items-center">
+        <p className="tetx-xl md:text-3xl capitalize font-bold">Your cart is empty 😢</p>
+        <Link href="/shop" className="underline underline-offset-8 font-bold text-secondary mt-4 hover:text-primary">
           Continue shopping
         </Link>
       </div>
@@ -80,7 +80,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] mx-4 md:mx-8 my-5 md:my-10 lg:my-14">
+    <div className="font-[family-name:var(--font-poppins)] mx-4 md:mx-8 my-5 md:my-10 lg:my-14 h-screen">
         <div className="flex justify-between items-center mb-6 px-2 md:px-3">
           <span className="capitalize flex items-center gap-2">
             <ShoppingCartIcon className="size-4 md:size-6" />
@@ -122,13 +122,9 @@ export default function CartPage() {
                       </div>
                     </div>
                   </td>
-
-                 
                   <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle">
                     Ksh {item.price.toLocaleString()}
                   </td>
-
-                  
                   <td className="px-4 py-4 text-center whitespace-nowrap align-middle">
                     <div className="flex justify-center items-center gap-2">
                       <button
