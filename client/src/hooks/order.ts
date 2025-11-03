@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { getLoggedInUserOrder } from "@/api/order.api";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getLoggedInUserOrder, createOrder } from "@/api/order.api";
 
 export const useGetLoggedInUserOrder = () => {
   return useQuery({
@@ -7,3 +7,10 @@ export const useGetLoggedInUserOrder = () => {
     queryFn: getLoggedInUserOrder,
   });
 };
+
+export const useCreateOrder = () => {
+  return useMutation({
+    mutationFn:createOrder,
+  })
+}
+

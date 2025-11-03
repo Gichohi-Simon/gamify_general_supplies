@@ -5,10 +5,6 @@ export interface userState {
   password: string;
 }
 
-export interface tokenState {
-  token: string;
-}
-
 export interface userIdinterface {
   userId: number;
 }
@@ -44,10 +40,6 @@ export interface postsInterface {
   cloudinary_id?: string;
 }
 
-export interface AuthState {
-  userInfo: userState | null;
-}
-
 export interface OrderType {
   id: number;
   userId: number;
@@ -64,7 +56,7 @@ export interface OrderType {
   orderItems: OrderItem[];
 }
 
-export type OrderItem = {
+export interface OrderItem {
   id: number;
   orderId: number;
   productId: number;
@@ -75,3 +67,8 @@ export type OrderItem = {
     image: string;
   };
 };
+
+export interface OrderItemInput {
+  productId:number;
+  quantity:number;
+}
