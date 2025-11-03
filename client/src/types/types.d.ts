@@ -36,7 +36,7 @@ export interface userInterface {
 }
 
 export interface postsInterface {
-  id?: number;
+  id: number;
   name: string;
   price: number;
   image: string;
