@@ -84,7 +84,7 @@ export default function CartPage() {
         <div className="flex justify-between items-center mb-6 px-2 md:px-3">
           <span className="capitalize flex items-center gap-2">
             <ShoppingCartIcon className="size-4 md:size-6" />
-            <h4 className="text-base font-bold">Your Cart</h4>
+            <h4 className="text-sm md:text-base font-bold">Your Cart</h4>
           </span>
         </div>
       
@@ -93,7 +93,7 @@ export default function CartPage() {
         
         <div className="overflow-x-auto shadow-md rounded-lg border border-gray-100">
           <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto">
-            <thead className="bg-gray-50 text-gray-600 uppercase text-xs  border-b">
+            <thead className="bg-gray-50 text-gray-600 uppercase text-[10px] md:text-xs border-b">
               <tr>
                 <th className="px-4 py-3 whitespace-nowrap">Product</th>
                 <th className="px-4 py-3 whitespace-nowrap">Price</th>
@@ -116,13 +116,13 @@ export default function CartPage() {
                         className="w-16 h-16 md:w-20 md:h-20 object-contain"
                       />
                       <div className="flex flex-col">
-                        <p className="font-semibold text-gray-800 break-words">
+                        <p className="font-semibold text-gray-800 break-words text-xs md:text-sm">
                           {item.name}
                         </p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle">
+                  <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-xs md:text-sm">
                     Ksh {item.price.toLocaleString()}
                   </td>
                   <td className="px-4 py-4 text-center whitespace-nowrap align-middle">
@@ -173,19 +173,19 @@ export default function CartPage() {
             <tbody>
               <tr className="border-b border-gray-100 font-bold">
                 <td className="px-4 py-3 font-semibold text-xs">Subtotal</td>
-                <td className="px-4 py-3 text-right text-sm">
+                <td className="px-4 py-3 text-right text-xs md:text-sm">
                   Ksh {subtotal.toLocaleString()}
                 </td>
               </tr>
               <tr className="border-b border-gray-100 font-bold">
                 <td className="px-4 py-3 font-semibold text-xs">VAT (16%)</td>
-                <td className="px-4 py-3 text-right text-sm">
+                <td className="px-4 py-3 text-right text-xs md:text-sm">
                   Ksh {vat.toLocaleString()}
                 </td>
               </tr>
               <tr className="border-t border-gray-200 font-bold">
                 <td className="px-4 py-3 text-xs">Total</td>
-                <td className="px-4 py-3 text-right text-sm">
+                <td className="px-4 py-3 text-right text-xs md:text-sm">
                   Ksh {total.toLocaleString()}
                 </td>
               </tr>
@@ -193,7 +193,7 @@ export default function CartPage() {
           </table>
 
           <Link href="/checkout">
-            <button className="w-full bg-secondary py-2 text-xs md:text-sm rounded mt-8 font-semibold hover:bg-secondary/80 transition">
+            <button className="w-full bg-secondary py-2 text-[10px] md:text-xs rounded mt-8 font-semibold hover:bg-secondary/80 transition">
               Proceed to Checkout
             </button>
           </Link>
@@ -202,7 +202,7 @@ export default function CartPage() {
             href="/shop"
           >
             <button
-             className="bg-primary py-2 px-3 rounded text-xs md:text-sm cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4"
+             className="bg-primary py-2 px-3 rounded text-[10px] md:text-xs cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4"
             >
               Continue Shopping
             </button>
