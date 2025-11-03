@@ -13,4 +13,3 @@ export const useCreateOrder = () => {
     mutationFn:createOrder,
   })
 }
-
