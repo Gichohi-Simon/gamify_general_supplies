@@ -3,12 +3,12 @@ import {
   fetchProducts,
   fetchFirstFourProducts,
   fetchSingleProduct,
-  fetchCartProducts
+  fetchCartProducts,
 } from "@/api/product.api";
 import { postsInterface } from "@/types/types";
 
 export const useProducts = () => {
-  return useQuery<{products:postsInterface[]}>({
+  return useQuery<{ products: postsInterface[] }>({
     queryKey: ["products"],
     queryFn: fetchProducts,
     staleTime: Infinity,
@@ -16,7 +16,7 @@ export const useProducts = () => {
 };
 
 export const useGetFirstFourProducts = () => {
-  return useQuery<{products:postsInterface[]}>({
+  return useQuery<{ products: postsInterface[] }>({
     queryKey: ["products3"],
     queryFn: fetchFirstFourProducts,
     staleTime: Infinity,
@@ -24,7 +24,7 @@ export const useGetFirstFourProducts = () => {
 };
 
 export const useGetSingleProduct = (id: string) => {
-  return useQuery<{singleProduct:postsInterface}>({
+  return useQuery<{ singleProduct: postsInterface }>({
     queryKey: ["products", id],
     queryFn: () => fetchSingleProduct(id),
     enabled: !!id,
@@ -32,11 +32,11 @@ export const useGetSingleProduct = (id: string) => {
   });
 };
 
-export const useCartProducts = (ids:number[]) => {
-  return useQuery<{products:postsInterface[]}>({
-    queryKey:["cart-products", ids],
+export const useCartProducts = (ids: number[]) => {
+  return useQuery<{ products: postsInterface[] }>({
+    queryKey: ["cart-products", ids],
     queryFn: () => fetchCartProducts(ids),
-    enabled:ids.length > 0,
-    staleTime:1000 * 60 * 5
-  })
-}
+    enabled: ids.length > 0,
+    staleTime: 1000 * 60 * 5,
+  });
+};

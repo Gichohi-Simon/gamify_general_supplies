@@ -19,7 +19,7 @@ export default function SingleProduct() {
 
   const cartItems = useAppSelector((state) => state.cart.items);
   const cartItem = cartItems.find((item) => item.productId === Number(id));
-
+  
   useEffect(() => {
     if (cartItem) {
       setQuantity(cartItem.quantity);
