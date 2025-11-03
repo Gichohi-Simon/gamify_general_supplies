@@ -5,6 +5,10 @@ export interface userState {
   password: string;
 }
 
+export interface AuthState {
+  userInfo:userState | null
+}
+
 export interface userIdinterface {
   userId: number;
 }
