@@ -34,7 +34,6 @@ export default function CartPage() {
                   className="w-24 md:w-40 h-24 md:h-40"
                 />
               </div>
-
               <div className="flex-1">
                 <p className="text-xs font-semibold md:text-base">
                   {item.name}{" "}

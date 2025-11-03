@@ -1,19 +1,72 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-
-import { useGetSingleProduct } from "@/hooks/useProducts";
 import Image from "next/image";
 
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useGetSingleProduct } from "@/hooks/useProducts";
+import { addToCart, removeFromCart } from "@/store/features/cartSlice";
+
 export default function SingleProduct() {
+  const [quantity, setQuantity] = useState(1);
+
   const params = useParams();
   const id = params.id as string;
+
+  const dispatch = useAppDispatch();
   const { data, isLoading, error } = useGetSingleProduct(id);
 
-  if (isLoading) return <p>loading...</p>;
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const cartItem = cartItems.find((item) => item.productId === Number(id));
 
+  useEffect(() => {
+    if (cartItem) {
+      setQuantity(cartItem.quantity);
+    }else{
+      setQuantity(1);
+    }
+  }, [cartItem]);
+
+  if (isLoading) return <p>loading...</p>;
   if (error) return <p>error {error.message}</p>;
+
+  const handleIncrease = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    dispatch(
+      addToCart({
+        productId: Number(id),
+        quantity: newQuantity,
+      })
+    );
+  };
+  const handleDecrease = () => {
+    if (quantity === 1) return; 
+
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      dispatch(
+        addToCart({
+          productId: Number(id),
+          quantity: newQuantity,
+        })
+      );
+  };
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        productId: Number(id),
+        quantity,
+      })
+    );
+  };
+
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(Number(id)));
+    setQuantity(1);
+  };
 
   return (
     <div className="md:flex gap-10 my-2 py-12 md:py-24 md:my-5 mx-10 md:mx-20 font-[family-name:var(--font-poppins)]">
@@ -42,25 +95,42 @@ export default function SingleProduct() {
         </div>
 
         <div className="mt-2 md:mt-6">
-          <h6 className="text-xs md:text-sm tracking-wider">
-            select quantity
-          </h6>
-          <div className="mt-4">
-            <span className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 mr-4 cursor-pointer rounded-sm">
+          <h6 className="text-xs md:text-sm tracking-wider">select quantity</h6>
+          <div className="mt-4 flex items-center">
+            <button
+              className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 mr-4 cursor-pointer rounded-sm"
+              onClick={handleDecrease}
+            >
               -
-            </span>
-            <span className="text-xs md:text-sm">1</span>
-            <span className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 ml-4 cursor-pointer rounded-sm">
+            </button>
+            <p className="text-xs md:text-sm">{quantity}</p>
+            <button
+              className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 ml-4 cursor-pointer rounded-sm"
+              onClick={handleIncrease}
+            >
               +
-            </span>
+            </button>
           </div>
         </div>
 
         <div className="mt-4">
+           {cartItem ? (
+            <button
+              className="mt-4 bg-black text-white hover:bg-primary hover:text-black w-full py-3 rounded-xl text-[10px] md:text-sm uppercase"
+              onClick={handleRemoveFromCart}
+            >
+              Remove from Cart
+            </button>
+          ) : (
+            <button
+              className="mt-4 bg-black text-white hover:bg-primary hover:text-black w-full py-3 rounded-xl text-[10px] md:text-sm uppercase"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </button>
+          )}
+
           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
-            Add to cart
-          </button>
-           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
             checkout
           </button>
         </div>

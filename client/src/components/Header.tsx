@@ -16,7 +16,11 @@ import {
 } from "@heroicons/react/16/solid";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
+import { useAppSelector } from "@/store/hooks";
+
 const Header = () => {
+  const cart = useAppSelector((cart) => cart.cart.items);
+  
   return (
     <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)]">
       <div className="text-xs md:text-sm">
@@ -48,11 +52,11 @@ const Header = () => {
         </Link>
         <Link
           href="/cart"
-          className="text-base capitalize mt-4 hover:text-secondary"
+          className="text-base capitalize mt-4 hover:text-primary"
         >
           <span className="flex justify-between items-center gap-2 relative">
-            <p className="bg-secondary absolute left-3 top-[-12] text-sm w-5 h-5 flex justify-center items-center rounded-full ">
-              4
+            <p className="bg-primary hover:text-white absolute left-3 top-[-12] text-sm w-5 h-5 flex justify-center items-center rounded-full ">
+              {cart.length}
             </p>
             <ShoppingCartIcon className="size-6" />
             <p className="text-sm">Cart</p>
@@ -105,12 +109,12 @@ const Header = () => {
             >
               <span className="flex gap-2 bg-transparent">
                 <p className="bg-secondary absolute left-5 top-[135px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black hover:bg-pink-500">
-                  4
+                  {cart.length}
                 </p>
                 <ShoppingCartIcon className="size-6" />
                 <p className="text-sm">Cart</p>
               </span>
-            </Link>
+            </Link>s
           </div>
         </PopoverPanel>
       </Transition>
