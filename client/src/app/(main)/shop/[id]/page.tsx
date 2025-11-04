@@ -20,11 +20,11 @@ export default function SingleProduct() {
 
   const cartItems = useAppSelector((state) => state.cart.items);
   const cartItem = cartItems.find((item) => item.productId === Number(id));
-  
+
   useEffect(() => {
     if (cartItem) {
       setQuantity(cartItem.quantity);
-    }else{
+    } else {
       setQuantity(1);
     }
   }, [cartItem]);
@@ -43,16 +43,16 @@ export default function SingleProduct() {
     );
   };
   const handleDecrease = () => {
-    if (quantity === 1) return; 
+    if (quantity === 1) return;
 
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-      dispatch(
-        addToCart({
-          productId: Number(id),
-          quantity: newQuantity,
-        })
-      );
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    dispatch(
+      addToCart({
+        productId: Number(id),
+        quantity: newQuantity,
+      })
+    );
   };
 
   const handleAddToCart = () => {
@@ -119,7 +119,7 @@ export default function SingleProduct() {
         </div>
 
         <div className="mt-4">
-           {cartItem ? (
+          {cartItem ? (
             <button
               className="mt-4 bg-black text-white hover:bg-primary hover:text-black w-full py-3 rounded-xl text-[10px] md:text-sm uppercase"
               onClick={handleRemoveFromCart}
@@ -135,11 +135,11 @@ export default function SingleProduct() {
             </button>
           )}
 
-         <Link href="/cart">
-           <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
-            checkout
-          </button>
-         </Link>
+          <Link href="/cart">
+            <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
+              checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>
