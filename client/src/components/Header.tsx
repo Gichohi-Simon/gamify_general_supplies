@@ -60,10 +60,10 @@ const Header = () => {
 
         <Link
           href="/cart"
-          className="text-base capitalize mt-4 hover:text-primary"
+          className="text-base capitalize mt-4 hover:text-secondary"
         >
           <span className="flex justify-between items-center gap-2 relative">
-            <p className="bg-primary absolute left-3 top-[-12px] text-sm w-5 h-5 flex justify-center items-center rounded-full">
+            <p className="bg-primary hover:bg-secondary absolute left-3 top-[-12px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">
               {cartCount}
             </p>
             <ShoppingCartIcon className="size-6" />
