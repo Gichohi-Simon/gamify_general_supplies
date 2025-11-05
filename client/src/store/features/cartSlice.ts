@@ -28,12 +28,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<OrderItemInput>) => {
       const { productId, quantity = 1 } = action.payload;
-      console.log("product id from redux ",productId)
-  //      if (!productId) {
-  //   console.error("❌ Tried to add product with null/undefined productId");
-  //   return;
-  // }
-
+      
       const existingItem = state.items.find(
         (item: OrderItemInput) => item.productId === productId
       );
