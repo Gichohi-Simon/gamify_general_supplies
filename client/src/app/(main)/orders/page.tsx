@@ -33,7 +33,7 @@ export default function MyOrders() {
             </Link>
           </div>
         </div>
-        {data?.orders ? (
+        {data?.orders && data.orders.length > 0  ? (
           <div>
             {orders.map((order: OrderType) => (
               <div
@@ -55,11 +55,12 @@ export default function MyOrders() {
                       Date
                     </p>
                     <p className="text-[10px]  md:text-xs capitalize font-bold">
-                      {new Date(order.createdAt).toLocaleDateString("en-US", {
+                      {new Intl.DateTimeFormat("en-US", {
                         year: "numeric",
                         month: "short",
                         day: "numeric",
-                      })}
+                        timeZone: "UTC",
+                      }).format(new Date(order.createdAt))}
                     </p>
                   </div>
 
@@ -172,7 +173,7 @@ export default function MyOrders() {
                           Ksh {Number(order.taxPrice).toLocaleString()}
                         </p>
                       </div>
-                      <hr className="mt-2"/>
+                      <hr className="mt-2" />
                       <div className="mt-2">
                         <p className="text-[8px] md:text-sm capitalize tracking-wider mt-2">
                           total amount
