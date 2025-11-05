@@ -19,7 +19,7 @@ export default function SingleProduct() {
   const { data, isLoading, error } = useGetSingleProduct(id);
 
   const cartItems = useAppSelector((state) => state.cart.items);
-  const cartItem = cartItems.find((item) => item.productId === Number(id));
+  const cartItem = cartItems.find((item) => item.productId === id);
 
   useEffect(() => {
     if (cartItem) {
@@ -37,7 +37,7 @@ export default function SingleProduct() {
     setQuantity(newQuantity);
     dispatch(
       addToCart({
-        productId: Number(id),
+        productId: id,
         quantity: newQuantity,
       })
     );
@@ -49,7 +49,7 @@ export default function SingleProduct() {
     setQuantity(newQuantity);
     dispatch(
       addToCart({
-        productId: Number(id),
+        productId: id,
         quantity: newQuantity,
       })
     );
@@ -58,14 +58,14 @@ export default function SingleProduct() {
   const handleAddToCart = () => {
     dispatch(
       addToCart({
-        productId: Number(id),
+        productId: id,
         quantity,
       })
     );
   };
 
   const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(Number(id)));
+    dispatch(removeFromCart(id));
     setQuantity(1);
   };
 

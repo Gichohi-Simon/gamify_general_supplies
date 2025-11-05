@@ -73,6 +73,6 @@ export interface OrderItem {
 };
 
 export interface OrderItemInput {
-  productId:number;
+  productId:string;
   quantity:number;
 }

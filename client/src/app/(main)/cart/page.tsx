@@ -52,11 +52,11 @@ export default function CartPage() {
   const vat = subtotal * 0.16;
   const total = subtotal + vat;
 
-  const handleIncrease = (productId: number, currentQty: number) => {
+  const handleIncrease = (productId: string, currentQty: number) => {
     dispatch(addToCart({ productId, quantity: currentQty + 1 }));
   };
 
-  const handleDecrease = (productId: number, currentQty: number) => {
+  const handleDecrease = (productId: string, currentQty: number) => {
     if (currentQty <= 1) return;
     dispatch(addToCart({ productId, quantity: currentQty - 1 }));
   };
@@ -163,7 +163,7 @@ export default function CartPage() {
 
                     <td className="px-4 py-4 text-center align-middle">
                       <TrashIcon
-                        onClick={() => dispatch(removeFromCart(item.id!))}
+                        onClick={() => dispatch(removeFromCart(item.id))}
                         className="size-5 text-red-500 cursor-pointer hover:scale-110 transition"
                       />
                     </td>

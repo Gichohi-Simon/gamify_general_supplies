@@ -37,7 +37,7 @@ export const fetchSingleProduct = async (
 };
 
 export const fetchCartProducts = async (
-  ids: number[]
+  ids: string[]
 ): Promise<CartProductsResponse> => {
   const query = ids.join(",");
   const response = await fetch(`${API}/product/by-ids?ids=${query}`);

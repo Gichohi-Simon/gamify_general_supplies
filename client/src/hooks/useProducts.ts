@@ -32,7 +32,7 @@ export const useGetSingleProduct = (id: string) => {
   });
 };
 
-export const useCartProducts = (ids: number[]) => {
+export const useCartProducts = (ids: string[]) => {
   return useQuery<{ products: postsInterface[] }>({
     queryKey: ["cart-products", ids],
     queryFn: () => fetchCartProducts(ids),
