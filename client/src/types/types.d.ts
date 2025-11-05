@@ -1,5 +1,5 @@
 export interface userState {
-  id: number;
+  id: string;
   email: string;
   username: string;
   password: string;
@@ -9,9 +9,9 @@ export interface AuthState {
   userInfo:userState | null
 }
 
-export interface userIdinterface {
-  userId: number;
-}
+// export interface userIdinterface {
+//   userId: number;
+// }
 
 export interface initialFormValuesInterface {
   email: string;
@@ -26,7 +26,7 @@ export interface loginInitialValues {
 }
 
 export interface userInterface {
-  id: number;
+  id: string;
   username: string;
   email: string;
   password: string;
@@ -36,7 +36,7 @@ export interface userInterface {
 }
 
 export interface postsInterface {
-  id: number;
+  id: string;
   name: string;
   price: number;
   image: string;
@@ -45,7 +45,7 @@ export interface postsInterface {
 }
 
 export interface OrderType {
-  id: number;
+  id: string;
   userId: number;
   itemsPrice:number,
   shippingPrice:number,
@@ -61,7 +61,7 @@ export interface OrderType {
 }
 
 export interface OrderItem {
-  id: number;
+  id: string;
   orderId: number;
   productId: number;
   quantity: number;
