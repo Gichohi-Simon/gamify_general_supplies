@@ -6,9 +6,9 @@ import { setCartUser } from "@/store/features/cartSlice";
 
 export default function CartUserSync() {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.auth.userInfo);
+  const user = useAppSelector((state) => state?.auth.userInfo);
   const previousUserId = useRef<string | null>(null);
-
+  
   useEffect(() => {
     if(user?.id !== previousUserId.current){
       previousUserId.current = user?.id || null;

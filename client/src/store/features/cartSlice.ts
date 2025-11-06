@@ -45,7 +45,7 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ productId, quantity });
       }
-
+      
       saveCartToStorage(state.userId, state.items);
     },
     removeFromCart: (state, action:PayloadAction<string>) => {
