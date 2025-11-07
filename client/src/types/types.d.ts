@@ -76,3 +76,12 @@ export interface OrderItemInput {
   productId:string;
   quantity:number;
 }
+
+export interface Address {
+  id:string,
+  companyName:string,
+  street:string,
+  floorNumber:string,
+  city:string,
+  postalCode:string,
+}
