@@ -23,7 +23,7 @@ export default function AccounPage() {
       console.error("logout error:", error);
     }
   };
-
+  
   return (
     <Protected>
       <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 my-5 md:my-10 h-screen">

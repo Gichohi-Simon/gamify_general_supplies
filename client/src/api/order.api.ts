@@ -23,7 +23,7 @@ export const createOrder = async (values: CreateOrderRequest) => {
   });
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.messsage || "Failed to create order");
+    throw new Error(error.message || "Failed to create order");
   }
   return response.json();
 };

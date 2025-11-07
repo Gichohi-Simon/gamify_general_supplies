@@ -34,7 +34,7 @@ export default function UserAddress() {
 
   
   return (
-    <div className="font-[family-name:var(--font-poppins)] bg-gray-100 p-4">
+    <div className="font-[family-name:var(--font-poppins)] bg-gray-100 p-4 rounded-lg">
       <p className="text-xs md:text-sm tracking-wider font-bold mb-2">
         Delivery Address
       </p>
