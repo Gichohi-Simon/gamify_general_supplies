@@ -29,7 +29,6 @@ export default function LoginPage() {
     onSubmit: async (values) => {
       try {
         const data = await mutateAsync(values);
-        console.log("data from login", data);
         dispatch(setCredentials({ userInfo: data.user }));
         formik.resetForm();
         router.push("/account");

@@ -78,7 +78,7 @@ export interface OrderItemInput {
 }
 
 export interface Address {
-  id:string,
+  id?:string,
   companyName:string,
   street:string,
   floorNumber:string,
