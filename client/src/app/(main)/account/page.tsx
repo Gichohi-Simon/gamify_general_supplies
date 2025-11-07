@@ -6,9 +6,10 @@ import { setLogout } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
 import { useSignOut } from "@/hooks/auth";
 import Link from "next/link";
+import UserAddress from "@/components/UserAddress";
 
 export default function AccounPage() {
-  const user = useAppSelector((state) => state.auth.userInfo);
+  const user = useAppSelector((state) => state?.auth.userInfo);
   const dispatch = useAppDispatch();
   const router = useRouter();
   const {mutateAsync} = useSignOut();
@@ -53,6 +54,10 @@ export default function AccounPage() {
               logout
             </button>
           </div>
+        </div>
+
+        <div className="mt-4">
+          <UserAddress />
         </div>
       </div>
     </Protected>

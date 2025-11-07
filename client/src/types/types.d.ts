@@ -85,3 +85,11 @@ export interface Address {
   city:string,
   postalCode:string,
 }
+
+export interface UserAddressResponse {
+  address:Address
+}
+
+export interface DeleteResponse {
+  message:string;
+}

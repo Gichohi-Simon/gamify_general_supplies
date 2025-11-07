@@ -4,29 +4,30 @@ import {
   updateDeliveryAddress,
   deleteDeliverAddress,
 } from "@/api/address.api";
+import { Address, UserAddressResponse, DeleteResponse } from "@/types/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export const useGetLogedInUserAddress = () => {
-  return useQuery({
+  return useQuery<UserAddressResponse>({
     queryKey: ["address"],
     queryFn: getLoggedInUserAddress,
   });
 };
 
 export const useCreateDeliveryAddress = () => {
-  return useMutation({
+  return useMutation<UserAddressResponse, Error, Address>({
     mutationFn: createDeliveryAddress,
   });
 };
 
 export const useUpdateDeliverAddress = () => {
-  return useMutation({
+  return useMutation<UserAddressResponse, Error, Address>({
     mutationFn: updateDeliveryAddress,
   });
 };
 
 export const useDeleteDeliveryAddress = () => {
-  return useMutation({
+  return useMutation<DeleteResponse, Error, void>({
     mutationFn: deleteDeliverAddress,
   });
 };
