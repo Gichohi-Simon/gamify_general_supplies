@@ -11,6 +11,9 @@ export const useGetLogedInUserAddress = () => {
   return useQuery<UserAddressResponse>({
     queryKey: ["address"],
     queryFn: getLoggedInUserAddress,
+    staleTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 };
 
