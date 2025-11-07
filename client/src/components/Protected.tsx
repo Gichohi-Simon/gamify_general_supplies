@@ -9,16 +9,24 @@ type childrenProps = {
 };
 
 export default function Protected({ children }: childrenProps) {
-  const user = useAppSelector((state) => state.auth.userInfo);
+  const { userInfo, initialized } = useAppSelector((state) => state.auth);
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    if (initialized && !userInfo) {
       router.replace("/login");
     }
-  }, [user, router]);
+  }, [initialized, userInfo, router]);
 
-  if (!user) {
+  if (!initialized) {
+    return (
+      <div className="flex justify-center items-center min-h-[60px]">
+        <p className="text-sm">Checking authentication...</p>
+      </div>
+    );
+  }
+
+  if (!userInfo) {
     return (
       <div className="flex justify-center items-center min-h-[60px]">
         <p className="text-sm">Redirecting to login...</p>

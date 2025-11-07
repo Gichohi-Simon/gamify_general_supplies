@@ -6,7 +6,8 @@ export interface userState {
 }
 
 export interface AuthState {
-  userInfo:userState | null
+  userInfo:userState | null;
+  initialized:boolean;
 }
 
 // export interface userIdinterface {

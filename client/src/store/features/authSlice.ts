@@ -3,6 +3,7 @@ import { AuthState } from "@/types/types";
 
 const initialState: AuthState = {
   userInfo: null,
+  initialized:false,
 };
 
 const authSlice = createSlice({
@@ -12,6 +13,7 @@ const authSlice = createSlice({
     setCredentials: (state, action) => {
       if (action.payload.userInfo) {
         state.userInfo = action.payload.userInfo;
+        state.initialized = true;
       }
     },
     setLogout: (state) => {
