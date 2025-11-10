@@ -3,9 +3,11 @@
 import React from "react";
 import { useGetLogedInUserAddress } from "@/hooks/address";
 import Link from "next/link";
+import { useAppSelector } from "@/store/hooks";
 
 export default function UserAddress() {
   const { data, isLoading, isError } = useGetLogedInUserAddress();
+  const user = useAppSelector((state) => state.auth.userInfo);
 
   if (isLoading) {
     return (
@@ -32,38 +34,29 @@ export default function UserAddress() {
     );
   }
 
-  
   return (
-    <div className="font-[family-name:var(--font-poppins)] bg-gray-100 p-4 rounded-lg">
-      <p className="text-xs md:text-sm tracking-wider font-bold mb-2">
-        Delivery Address
-      </p>
-      <div className="md:flex justify-between">
-        <div>
-          {[
-            { label: "City", value: data.address.city },
-            { label: "Company", value: data.address.companyName },
-            { label: "Floor Number", value: data.address.floorNumber },
-            { label: "Postal Code", value: data.address.postalCode },
-            { label: "Street", value: data.address.street },
-          ].map(({ label, value }) => (
-            <div key={label} className="flex gap-2 items-center mt-1">
-              <span className="text-xs md:text-sm font-semibold tracking-wider lowercase">
-                {label}
-              </span>
-              <span className="text-xs md:text-sm capitalize tracking-wider">
-                {value || "-"}
-              </span>
-            </div>
-          ))}
-        </div>
+    <div className="font-[family-name:var(--font-poppins)]">
+      <div className="flex justify-between">
+        <p className="text-xs md:text-sm tracking-wider mb-2 font-bold capitalize">
+          Customer Address
+        </p>
         <div className="mt-4 md:mt-0">
           <Link href="/updateaddress">
-            <button className="bg-primary px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm">
-              Change address
-            </button>
+            <p className="text-xs md:text-sm font-bold capitalize tracking-wider">Change address</p>
           </Link>
         </div>
+      </div>
+      <div>
+        <p className="text-xs md:text-sm lowercase">{user?.email}</p>
+        <hr className="mt-4" />
+      </div>
+      <div>
+        <p className="text-xs md:text-sm mt-4 mb-2 font-bold">ship to</p>
+        <p className="text-xs md:text-sm capitalize">
+          {data.address.city}, {data.address.street}, {data.address.companyName}
+          , {data.address.floorNumber}, {data.address.postalCode}
+        </p>
+        <hr className="mt-4" />
       </div>
     </div>
   );

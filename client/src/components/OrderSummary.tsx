@@ -9,11 +9,14 @@ import { postsInterface } from "@/types/types";
 
 export default function OrderSummary() {
   const cartItems = useAppSelector((state) => state.cart.items);
+
   const queryClient = useQueryClient();
 
   const ids = cartItems.map((item) => item.productId);
 
-  const cachedProducts = queryClient.getQueryData<{ products: postsInterface[] }>(["products"]);
+  const cachedProducts = queryClient.getQueryData<{
+    products: postsInterface[];
+  }>(["products"]);
 
   const { data: fetchedCartData, isLoading } = useCartProducts(ids);
 
@@ -21,7 +24,9 @@ export default function OrderSummary() {
     const localProducts = cachedProducts?.products || [];
     const merged = cartItems.map((item) => {
       const local = localProducts.find((p) => p.id === item.productId);
-      const fresh = fetchedCartData?.products?.find((p) => p.id === item.productId);
+      const fresh = fetchedCartData?.products?.find(
+        (p) => p.id === item.productId
+      );
       const product = fresh || local;
       if (!product || product.id === undefined) return null;
       return {
@@ -30,7 +35,9 @@ export default function OrderSummary() {
         subtotal: product.price * item.quantity,
       };
     });
-    return merged.filter(Boolean) as Array<postsInterface & { quantity: number; subtotal: number }>;
+    return merged.filter(Boolean) as Array<
+      postsInterface & { quantity: number; subtotal: number }
+    >;
   }, [cartItems, cachedProducts, fetchedCartData]);
 
   const subtotal = products.reduce((acc, p) => acc + p.subtotal, 0);
@@ -56,22 +63,24 @@ export default function OrderSummary() {
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] my-5 md:my-10">
-      <h4 className="text-xs md:text-sm font-bold mb-6">Order Summary</h4>
-
-      <div className="overflow-x-auto shadow-md rounded-lg border border-gray-100 mb-8">
-        <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto">
-          <thead className="bg-gray-50 text-gray-600 uppercase text-[10px] md:text-xs border-b">
+    <div className="font-[family-name:var(--font-poppins)]  mt-6 md:mt-0">
+      <div className="overflow-x-auto rounded-lg border border-gray-100 mb-8">
+        <table className="min-w-full text-sm md:text-xs text-left border-collapse table-auto">
+          <thead className="bg-gray-50 text-gray-600 uppercase text-xs border-b">
             <tr>
               <th className="px-4 py-3 whitespace-nowrap">Product</th>
               <th className="px-4 py-3 whitespace-nowrap">Price</th>
-              <th className="px-4 py-3 text-center whitespace-nowrap">Quantity</th>
-              <th className="px-4 py-3 text-right whitespace-nowrap">Subtotal</th>
+              <th className="px-4 py-3 text-center whitespace-nowrap">
+                Quantity
+              </th>
+              <th className="px-4 py-3 text-right whitespace-nowrap">
+                Subtotal
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {products.map((item) => (
-              <tr key={item.id} className="hover:bg-gray-50 transition">
+              <tr key={item.id}>
                 <td className="px-4 py-4">
                   <div className="flex items-center gap-3">
                     <Image
@@ -82,7 +91,7 @@ export default function OrderSummary() {
                       className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                     <div className="flex flex-col">
-                      <p className="font-semibold text-gray-800 break-words text-xs md:text-sm">
+                      <p className=" text-gray-800 break-words text-xs md:text-sm">
                         {item.name}
                       </p>
                     </div>
@@ -91,10 +100,10 @@ export default function OrderSummary() {
                 <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-xs md:text-sm">
                   Ksh {item.price.toLocaleString()}
                 </td>
-                <td className="px-4 py-4 text-center whitespace-nowrap align-middle">
+                <td className="px-4 py-4 text-center whitespace-nowrap align-middle text-xs md:text-sm">
                   {item.quantity}
                 </td>
-                <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle">
+                <td className="px-4 py-4 text-right font-bold text-gray-800 whitespace-nowrap align-middle text-xs md:text-sm">
                   Ksh {item.subtotal.toLocaleString()}
                 </td>
               </tr>
@@ -103,24 +112,23 @@ export default function OrderSummary() {
         </table>
       </div>
 
-      
-      <div className="px-4 py-6 border rounded-lg shadow-md w-full md:w-1/2 lg:w-1/3 ml-auto">
+      <div className="px-4 py-6 border rounded-lg w-full ml-auto">
         <table className="min-w-full text-xs md:text-sm text-left border-collapse">
           <tbody>
-            <tr className="border-b border-gray-100 font-bold">
-              <td className="px-4 py-3 font-semibold text-xs">Subtotal</td>
+            <tr className="border-b border-gray-100">
+              <td className="px-4 py-3 text-[10px] md:text-xs">Subtotal</td>
               <td className="px-4 py-3 text-right text-xs md:text-sm">
                 Ksh {subtotal.toLocaleString()}
               </td>
             </tr>
-            <tr className="border-b border-gray-100 font-bold">
-              <td className="px-4 py-3 font-semibold text-xs">VAT (16%)</td>
+            <tr className="border-b border-gray-100">
+              <td className="px-4 py-3 text-[10px] md:text-xs">VAT (16%)</td>
               <td className="px-4 py-3 text-right text-xs md:text-sm">
                 Ksh {vat.toLocaleString()}
               </td>
             </tr>
             <tr className="border-t border-gray-200 font-bold">
-              <td className="px-4 py-3 text-xs">Total</td>
+              <td className="px-4 py-3 text-[10px] md:text-xs">Total</td>
               <td className="px-4 py-3 text-right text-xs md:text-sm">
                 Ksh {total.toLocaleString()}
               </td>

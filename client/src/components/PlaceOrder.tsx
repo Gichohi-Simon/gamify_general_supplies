@@ -24,12 +24,12 @@ export default function PlaceOrder() {
     mutate({ orderItems });
   };
   return (
-    <div className="font-[family-name:var(--font-poppins)] mb-12">
+    <div className="font-[family-name:var(--font-poppins)] my-6 md:my-12">
       <form onSubmit={handleSubmit}>
         <button
           type="submit"
           disabled={isPending}
-          className="text-xs md:text-sm bg-primary w-full rounded py-2 capitalize"
+          className="text-[10px] md:text-xs hover:bg-primary bg-secondary w-full rounded py-3 capitalize font-bold"
         >
           {isPending ? "Placing order..." : "Place Order"}
         </button>
