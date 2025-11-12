@@ -34,7 +34,7 @@ const Header = () => {
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">
             Gamify
           </span>
-          <span className="text-[10px] md:text-xs text-center text-secondary font-bold mt-[-5px]">
+          <span className="text-[10px] md:text-xs text-center text-primary font-bold mt-[-5px] tracking-wider">
             general supplies.
           </span>
         </Link>
@@ -43,7 +43,7 @@ const Header = () => {
       <div className="hidden md:flex gap-4 items-center justify-between">
         <Link
           href="/shop"
-          className="text-base capitalize mt-4 hover:text-secondary"
+          className="text-base capitalize mt-4 hover:text-primary"
         >
           <span className="flex justify-between items-center gap-2">
             <BuildingStorefrontIcon className="size-6" />
@@ -51,7 +51,7 @@ const Header = () => {
           </span>
         </Link>
 
-        <Link href="/account" className="capitalize mt-4 hover:text-secondary">
+        <Link href="/account" className="capitalize mt-4 hover:text-primary">
           <span className="flex justify-between items-center gap-2">
             <UserCircleIcon className="size-6" />
             <p className="text-sm">Account</p>
@@ -60,7 +60,7 @@ const Header = () => {
 
         <Link
           href="/cart"
-          className="text-base capitalize mt-4 hover:text-secondary"
+          className="text-base capitalize mt-4 hover:text-primary"
         >
           <span className="flex justify-between items-center gap-2 relative">
             <p className="bg-primary hover:bg-secondary absolute left-3 top-[-12px] text-sm w-5 h-5 flex justify-center items-center rounded-full text-black">
