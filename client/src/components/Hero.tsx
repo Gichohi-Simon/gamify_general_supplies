@@ -11,7 +11,7 @@ const Hero = () => {
       {/* Overlay with opacity */}
       <div className="absolute inset-0 bg-black bg-opacity-65"></div>
       <div className="relative text-center md:text-start mx-4 md:mx-0">
-        <p className=" text-2xl md:text-5xl font-bold text-primary tracking-wider">
+        <p className="text-2xl md:text-5xl font-bold text-primary tracking-wider">
           Gamify general <span className="text-secondary">supplies</span>
         </p>
         <p className="mt-0 md:mt-2 text-2xl md:text-5xl font-bold text-primary tracking-wider">

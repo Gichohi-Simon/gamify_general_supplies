@@ -13,18 +13,24 @@ interface AllPosts {
 
 const MainProducts = ({ products }: AllPosts) => {
   return (
-    <div className="font-[family-name:var(--font-poppins)] overflow-x-hidden h-screen">
+    <div className="font-[family-name:var(--font-poppins)] overflow-x-hidden min-h-screen">
       <div
         className="relative bg-primary py-10 md:py-20 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/warehouse.jpg')" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-65"></div>
 
-        <div className="relative z-10 text-center text-white">
-          <p className="text-sm md:text-base my-3 md:my-6 max-w-2xl mx-auto text-primary font-bold">
-            Get the right tools, equipment, and supplies to keep your warehouse
-            running smoothly. Quality you can count on, delivered when you need
-            it.
+        <div className="relative z-10 text-start text-white">
+          <p className="my-3 mx-10 md:my-6 text-2xl md:text-4xl text-primary font-bold tracking-wider">
+            Get the right tools,{" "}
+            <span className="text-secondary">equipment</span>, and{" "}
+            <span className="text-secondary">supplies </span>
+            <br /> to keep your{" "}
+            <span className="text-secondary">warehouse </span>
+            running smoothly.
+          </p>
+          <p className="text-sm md:text-base mx-10 text-secondary tracking-wider">
+            Quality you can count on, delivered when you need it.
           </p>
         </div>
       </div>
