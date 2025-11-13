@@ -16,7 +16,7 @@ const Products = ({ products }: FirstThreeProducts) => {
       <h1 className="text-center text-base md:text-xl font-bold underline underline-offset-8 decoration-black capitalize tracking-wider">
         Our Products
       </h1>
-      <h6 className="text-center mt-4 md:mt-6 text-sm capitalize">
+      <h6 className="text-center mt-6 md:mt-10 text-sm capitalize">
         Find reliable warehouse supplies that keep your operations running
         smoothly.
       </h6>
