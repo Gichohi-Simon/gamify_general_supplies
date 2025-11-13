@@ -16,12 +16,12 @@ const Products = ({ products }: FirstThreeProducts) => {
       <h1 className="text-center text-base md:text-xl font-bold underline underline-offset-8 decoration-black capitalize tracking-wider">
         Our Products
       </h1>
-      <h6 className="text-center mt-5 md:mt-8 text-sm capitalize">
+      <h6 className="text-center mt-5 md:mt-6 text-sm capitalize">
         Find reliable warehouse supplies that keep your operations running
         smoothly.
       </h6>
 
-      <div className="flex justify-center items-center mt-8 px-2 md:px-0 py-2 md:py-6">
+      <div className="flex justify-center items-center mt-6 px-2 md:px-0 py-2 md:py-6">
         <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mx-4">
           {products?.map((catalog) => (
             <div key={catalog.name} className="flex flex-col items-center">
