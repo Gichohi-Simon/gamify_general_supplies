@@ -22,11 +22,11 @@ const Products = ({ products }: FirstThreeProducts) => {
       </h6>
 
       <div className="flex justify-center items-center mt-6 px-2 md:px-0 py-2 md:py-6">
-        <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mx-4">
+        <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mx-4">
           {products?.map((catalog) => (
-            <div key={catalog.name} className="flex flex-col items-center">
-              <span className="bg-primary py-1 px-2 text-xs capitalize self-start">
-                New
+            <div key={catalog.name} className="flex flex-col items-center border hover:border-primary rounded-lg px-4 py-3 shadow-md">
+              <span className="bg-primary py-1 px-2 text-[10px] md:text-xs capitalize self-start rounded">
+                {catalog.category}
               </span>
 
               <div className="relative w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] aspect-[4/3] overflow-hidden rounded-lg cursor-pointer">
