@@ -119,7 +119,7 @@ export default function CartPage() {
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-3">
                         <Image
-                          src={item.image}
+                          src={item.images[0]}
                           width={80}
                           height={80}
                           alt={item.name}
