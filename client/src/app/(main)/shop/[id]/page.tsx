@@ -78,7 +78,7 @@ export default function SingleProduct() {
       <div className="w-full md:w-1/2 ">
         <div className="relative w-[250px] h-[250px] md:w-[480px] md:h-[480px]">
           <Image
-            src={data.singleProduct.image}
+            src={data.singleProduct.images[0]}
             alt={data.singleProduct.name}
             fill
             className="object-contain"

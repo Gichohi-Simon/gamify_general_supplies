@@ -22,7 +22,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
               <div className="relative w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] aspect-[4/3] overflow-hidden rounded-lg cursor-pointer">
                 <Link href={`/shop/${catalog.id}`}>
                   <Image
-                    src={catalog.image}
+                    src={catalog.images[0]}
                     alt={catalog.name}
                     fill
                     className="object-contain transform transition-transform duration-300 hover:scale-105"

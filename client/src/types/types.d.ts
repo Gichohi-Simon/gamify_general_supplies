@@ -40,7 +40,7 @@ export interface postsInterface {
   id: string;
   name: string;
   price: number;
-  image: string;
+  images: string[];
   createdAt: string;
   cloudinary_id: string;
 }
