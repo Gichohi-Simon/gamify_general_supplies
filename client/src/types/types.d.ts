@@ -10,10 +10,6 @@ export interface AuthState {
   initialized:boolean;
 }
 
-// export interface userIdinterface {
-//   userId: number;
-// }
-
 export interface initialFormValuesInterface {
   email: string;
   username: string;
@@ -43,6 +39,8 @@ export interface postsInterface {
   images: string[];
   createdAt: string;
   cloudinary_id: string;
+  description:string;
+  category:string;
 }
 
 export interface OrderType {

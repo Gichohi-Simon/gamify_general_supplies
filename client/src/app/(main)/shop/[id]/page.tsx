@@ -8,9 +8,14 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useGetSingleProduct } from "@/hooks/useProducts";
 import { addToCart, removeFromCart } from "@/store/features/cartSlice";
+import {
+  ArrowLeftCircleIcon,
+  ArrowRightCircleIcon,
+} from "@heroicons/react/16/solid";
 
 export default function SingleProduct() {
   const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(0);
 
   const params = useParams();
   const id = params.id as string;
@@ -22,121 +27,136 @@ export default function SingleProduct() {
   const cartItem = cartItems.find((item) => item.productId === id);
 
   useEffect(() => {
-    if (cartItem) {
-      setQuantity(cartItem.quantity);
-    } else {
-      setQuantity(1);
-    }
+    if (cartItem) setQuantity(cartItem.quantity);
+    else setQuantity(1);
   }, [cartItem]);
 
   if (isLoading) return <p>loading...</p>;
   if (error) return <p>error {error.message}</p>;
+  if (!data?.singleProduct) return <p>No product found</p>;
 
-  const handleIncrease = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    dispatch(
-      addToCart({
-        productId: id,
-        quantity: newQuantity,
-      })
-    );
-  };
-  const handleDecrease = () => {
-    if (quantity === 1) return;
+  const product = data.singleProduct;
 
-    const newQuantity = quantity - 1;
-    setQuantity(newQuantity);
-    dispatch(
-      addToCart({
-        productId: id,
-        quantity: newQuantity,
-      })
+  const nextImage = () => {
+    setSelectedImage((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
     );
   };
 
-  const handleAddToCart = () => {
-    dispatch(
-      addToCart({
-        productId: id,
-        quantity,
-      })
+  const prevImage = () => {
+    setSelectedImage((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
     );
   };
-
-  const handleRemoveFromCart = () => {
-    dispatch(removeFromCart(id));
-    setQuantity(1);
-  };
-
-  if (!data || !data.singleProduct) {
-    return <p>No products found.</p>;
-  }
 
   return (
-    <div className="md:flex gap-10 my-2 py-12 md:py-24 md:my-5 mx-10 md:mx-20 font-[family-name:var(--font-poppins)]">
-      <div className="w-full md:w-1/2 ">
-        <div className="relative w-[250px] h-[250px] md:w-[480px] md:h-[480px]">
+    <div className="md:flex gap-6 md:gap-12 pt-6 pb-6 md:pt-16 md:pb-24 mx-5 md:mx-12 font-[family-name:var(--font-poppins)]">
+      <div className="w-full md:w-1/2 flex flex-col items-center">
+        <div className="relative w-[150px] h-[150px] md:w-[350px] md:h-[350px]">
           <Image
-            src={data.singleProduct.images[0]}
-            alt={data.singleProduct.name}
+            src={product.images[selectedImage]}
+            alt={product.name}
             fill
-            className="object-contain"
+            className="object-contain rounded-lg"
           />
+        </div>
+        <div className="flex items-center mt-4">
+          <button
+            onClick={prevImage}
+            className="px-3 py-2 rounded-full text-lg mr-2 md:mr-5"
+          >
+            <ArrowLeftCircleIcon className="size-4 md:size-7" />
+          </button>
+          <div className="flex gap-4 justify-center flex-wrap">
+            {product.images.map((img: string, idx: number) => (
+              <div
+                key={idx}
+                onClick={() => setSelectedImage(idx)}
+                className={`relative w-14 md:w-28 h-12 md:h-24 border rounded md:rounded-2xl cursor-pointer ${
+                  idx === selectedImage ? "border-black" : "border-gray-300"
+                }`}
+              >
+                <Image
+                  src={img}
+                  alt="thumbnail"
+                  fill
+                  className="object-contain rounded-md px-1 py-1 md:px-2 md:py-2"
+                />
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={nextImage}
+            className="px-3 py-2 rounded-full text-lg ml-2 md:ml-5"
+          >
+            <ArrowRightCircleIcon className="size-4 md:size-7" />
+          </button>
         </div>
       </div>
 
-      <div className="mt-5 w-full md:w-1/2">
-        <div>
-          <h5 className="font-semibold text-xl md:text-4xl capitalize tracking-widest">
-            {data.singleProduct.name}
-          </h5>
-          <h5 className="mt-2 md:mt-4 text-sm md:text-2xl font-semibold tracking-wider">
-            Ksh {Number(data.singleProduct.price).toLocaleString()}
-          </h5>
-          <p className="text-[4px] md:text-xs font-semibold tracking-wider mt-[-2px] underline text-blue-500">
-            price is exclusive of vat
-          </p>
-        </div>
+      <div className="mt-10 md:mt-5 w-full md:w-1/2">
+        <h5 className="font-bold text-lg md:text-3xl tracking-widest capitalize">
+          {product.name}
+        </h5>
+        <span className="text-[10px] md:text-xs bg-primary px-2 py-1 rounded-sm mt-1 md:mt-2">{product.category}</span>
 
-        <div className="mt-2 md:mt-6">
+        <h5 className="mt-4 tracking-wider text-xs md:text-sm">
+          {product.description}
+        </h5>
+
+        <h5 className="mt-2 md:mt-4 text-sm md:text-xl font-semibold tracking-wider">
+          Ksh {Number(product.price).toLocaleString()}
+        </h5>
+
+        <p className="text-[6px] md:text-xs font-semibold underline text-blue-500 mt-[-2px] tracking-wider">
+          price is exclusive of vat
+        </p>
+
+        <div className="mt-2 md:mt-5">
           <h6 className="text-xs md:text-sm tracking-wider">select quantity</h6>
-          <div className="mt-4 flex items-center">
+
+          <div className="mt-2 md:mt-3 flex items-center">
             <button
-              className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 mr-4 cursor-pointer rounded-sm"
-              onClick={handleDecrease}
+              className="bg-gray-100 px-3 md:px-4 py-1 md:py-2 mr-2 md:mr-4 rounded-full hover:bg-primary"
+              onClick={() => quantity > 1 && setQuantity(quantity - 1)}
             >
               -
             </button>
+
             <p className="text-xs md:text-sm">{quantity}</p>
+
             <button
-              className="bg-gray-100 px-2 md:px-3 py-1 md:py-2 ml-4 cursor-pointer rounded-sm"
-              onClick={handleIncrease}
+              className="bg-gray-100 px-3 md:px-4 py-1 md:py-2 ml-2 md:ml-4 rounded-full hover:bg-primary"
+              onClick={() => setQuantity(quantity + 1)}
             >
               +
             </button>
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-3 md:mt-4">
           {cartItem ? (
             <button
-              className="mt-4 bg-black text-white hover:bg-primary hover:text-black w-full py-3 rounded-xl text-[10px] md:text-sm uppercase"
-              onClick={handleRemoveFromCart}
+              className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              onClick={() => {
+                dispatch(removeFromCart(id));
+                setQuantity(1);
+              }}
             >
               Remove from Cart
             </button>
           ) : (
             <button
-              className="mt-4 bg-black text-white hover:bg-primary hover:text-black w-full py-3 rounded-xl text-[10px] md:text-sm uppercase"
-              onClick={handleAddToCart}
+              className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              onClick={() => dispatch(addToCart({ productId: id, quantity }))}
             >
               Add to Cart
             </button>
           )}
 
           <Link href="/cart">
-            <button className="mt-4 md:mt-6 bg-black text-white hover:bg-primary hover:text-black w-full py-2 md:py-3 rounded-xl text-[10px] md:text-sm uppercase">
+            <button className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase">
               checkout
             </button>
           </Link>
