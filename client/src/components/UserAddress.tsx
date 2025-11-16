@@ -35,28 +35,26 @@ export default function UserAddress() {
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)]">
+    <div className="font-[family-name:var(--font-poppins)] border border-1 px-4 py-4 rounded-lg">
       <div className="flex justify-between">
-        <p className="text-xs md:text-sm tracking-wider mb-2 font-bold capitalize">
+        <p className="text-xs md:text-sm tracking-wider font-bold capitalize">
           Customer Address
         </p>
-        <div className="mt-4 md:mt-0">
+        <div className="mt-4 md:mt-0 bg-primary flex items-center justify-center px-2 py-1 rounded-sm">
           <Link href="/updateaddress">
-            <p className="text-xs md:text-sm font-bold capitalize tracking-wider">Change address</p>
+            <span className="text-[10px] md:text-xs capitalize tracking-wider">Change address</span>
           </Link>
         </div>
       </div>
       <div>
         <p className="text-xs md:text-sm lowercase">{user?.email}</p>
-        <hr className="mt-4" />
       </div>
       <div>
-        <p className="text-xs md:text-sm mt-4 mb-2 font-bold">ship to</p>
+        <p className="text-xs md:text-sm mt-4 font-bold">ship to</p>
         <p className="text-xs md:text-sm capitalize">
           {data.address.city}, {data.address.street}, {data.address.companyName}
           , {data.address.floorNumber}, {data.address.postalCode}
         </p>
-        <hr className="mt-4" />
       </div>
     </div>
   );

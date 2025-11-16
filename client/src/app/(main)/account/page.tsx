@@ -27,8 +27,8 @@ export default function AccounPage() {
   return (
     <Protected>
       <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 my-5 md:my-10 h-screen">
-        <p className="text-xl font-bold mb-7">Profile</p>
-        <div className="font-[family-name:var(--font-poppins)] bg-gray-100 py-6 px-6 rounded-lg flex justify-between">
+        <p className="text-xl font-bold mb-2">Profile</p>
+        <div className="font-[family-name:var(--font-poppins)] border border-1 py-6 px-6 rounded-lg flex justify-between">
           <div>
             <div>
               <p className="text-xs md:text-sm font-bold">Name</p>
