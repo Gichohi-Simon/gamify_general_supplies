@@ -4,11 +4,7 @@ import React, { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { TrashIcon } from "@heroicons/react/16/solid";
-import {
-  ShoppingCartIcon,
-  MinusIcon,
-  PlusIcon,
-} from "@heroicons/react/20/solid";
+import { MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { useQueryClient } from "@tanstack/react-query";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useCartProducts } from "@/hooks/useProducts";
@@ -79,38 +75,22 @@ export default function CartPage() {
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] mx-4 md:mx-8 my-5 md:my-10 lg:my-14 h-screen">
-      <div className="flex justify-between items-center mb-6 px-2 md:px-3">
+    <div className="font-[family-name:var(--font-poppins)] mx-4 md:mx-8 my-3 md:my-5 h-screen">
+      <div className="flex justify-between items-center px-2 md:px-3">
         <span className="capitalize flex items-center gap-2">
-          <ShoppingCartIcon className="size-4 md:size-6" />
-          <h4 className="text-sm md:text-base font-bold">Your Cart</h4>
+          <h4 className="text-xl md:text-2xl font-bold">My Cart</h4>
         </span>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between gap-6 items-center">
-        <div className="w-full lg:w-3/4 px-2 md:px-3 py-4">
-          <div className="overflow-x-auto shadow-md rounded-lg border border-gray-100">
+      <div className="flex flex-col lg:flex-row justify-between gap-6 mt-4 md:mt-6">
+        <div className="w-full lg:w-3/4">
+          <div className="overflow-x-auto">
             <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto">
-              <thead className="bg-gray-50 text-gray-600 uppercase text-[10px] md:text-xs border-b">
-                <tr>
-                  <th className="px-4 py-3 whitespace-nowrap">Product</th>
-                  <th className="px-4 py-3 whitespace-nowrap">Price</th>
-                  <th className="px-4 py-3 text-center whitespace-nowrap">
-                    Quantity
-                  </th>
-                  <th className="px-4 py-3 text-right whitespace-nowrap">
-                    Subtotal
-                  </th>
-                  <th className="px-4 py-3 text-center whitespace-nowrap">
-                    Action
-                  </th>
-                </tr>
-              </thead>
               <tbody className="divide-y divide-gray-100">
                 {products.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50 transition">
+                  <tr key={item.id} className="transition">
                     <td className="px-4 py-4">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-5 md:gap-8 py-1 md:py-2">
                         <Image
                           src={item.images[0]}
                           width={80}
@@ -119,22 +99,25 @@ export default function CartPage() {
                           className="w-16 h-16 md:w-20 md:h-20 object-contain"
                         />
                         <div className="flex flex-col">
-                          <p className="font-semibold text-gray-800 break-words text-xs md:text-sm">
+                          <p className="font-bold capitalize text-gray-800 break-words text-sm md:text-base tracking-wider">
                             {item.name}
                           </p>
+                          <span className="text-xs md:text-sm tracking-wider">
+                            {item.category}
+                          </span>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-xs md:text-sm">
+                    <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-sm md:text-base">
                       Ksh {item.price.toLocaleString()}
                     </td>
                     <td className="px-4 py-4 text-center whitespace-nowrap align-middle">
-                      <div className="flex justify-center items-center gap-2">
+                      <div className="flex justify-center items-center gap-2 py-1">
                         <button
                           onClick={() =>
                             handleDecrease(item.id!, item.quantity)
                           }
-                          className="border rounded p-1 hover:bg-gray-100"
+                          className="border rounded-full p-1 hover:bg-gray-100"
                         >
                           <MinusIcon className="size-3 md:size-4" />
                         </button>
@@ -143,14 +126,14 @@ export default function CartPage() {
                           onClick={() =>
                             handleIncrease(item.id!, item.quantity)
                           }
-                          className="border rounded p-1 hover:bg-gray-100"
+                          className="border rounded-full p-1 hover:bg-gray-100"
                         >
                           <PlusIcon className="size-3 md:size-4" />
                         </button>
                       </div>
                     </td>
 
-                    <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle">
+                    <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle text-sm md:text-base">
                       Ksh {item.subtotal.toLocaleString()}
                     </td>
 
@@ -168,27 +151,27 @@ export default function CartPage() {
         </div>
 
         <div className="w-full lg:w-1/4">
-          <div className="px-4 py-8 border rounded-lg shadow-md overflow-x-auto">
-            <h4 className="text-xs md:text-sm font-bold capitalize mb-6">
-              Order Summary
-            </h4>
-
+          <div className="px-4 py-8 overflow-x-auto bg-gray-100 rounded-xl">
             <table className="min-w-full text-xs md:text-sm text-left border-collapse">
               <tbody>
                 <tr className="border-b border-gray-100 font-bold">
-                  <td className="px-4 py-3 font-semibold text-xs">Subtotal</td>
+                  <td className="px-4 py-3 font-semibold text-xs md:text-sm">
+                    Subtotal
+                  </td>
                   <td className="px-4 py-3 text-right text-xs md:text-sm">
                     Ksh {subtotal.toLocaleString()}
                   </td>
                 </tr>
                 <tr className="border-b border-gray-100 font-bold">
-                  <td className="px-4 py-3 font-semibold text-xs">VAT (16%)</td>
+                  <td className="px-4 py-3 font-semibold text-xs md:text-sm">
+                    VAT (16%)
+                  </td>
                   <td className="px-4 py-3 text-right text-xs md:text-sm">
                     Ksh {vat.toLocaleString()}
                   </td>
                 </tr>
                 <tr className="border-t border-gray-200 font-bold">
-                  <td className="px-4 py-3 text-xs">Total</td>
+                  <td className="px-4 py-3 text-xs md:text-sm">Total</td>
                   <td className="px-4 py-3 text-right text-xs md:text-sm">
                     Ksh {total.toLocaleString()}
                   </td>
@@ -197,13 +180,13 @@ export default function CartPage() {
             </table>
 
             <Link href="/checkout">
-              <button className="w-full bg-secondary py-2 text-[10px] md:text-xs rounded mt-8 font-semibold hover:bg-secondary/80 transition">
+              <button className="w-full bg-primary py-3 text-[10px] md:text-xs rounded-full mt-8 font-semibold hover:bg-primary/80 transition cursor-pointer">
                 Proceed to Checkout
               </button>
             </Link>
 
             <Link href="/shop">
-              <button className="bg-primary py-2 px-3 rounded text-[10px] md:text-xs cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4">
+              <button className="bg-primary py-3 px-3 rounded-full text-[10px] md:text-xs cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4">
                 Continue Shopping
               </button>
             </Link>
