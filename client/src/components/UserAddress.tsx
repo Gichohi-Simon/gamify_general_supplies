@@ -40,11 +40,12 @@ export default function UserAddress() {
         <p className="text-xs md:text-sm tracking-wider font-bold capitalize">
           Customer Address
         </p>
-        <div className="mt-4 md:mt-0 bg-primary flex items-center justify-center px-2 py-1 rounded-sm">
-          <Link href="/updateaddress">
-            <span className="text-[10px] md:text-xs capitalize tracking-wider">Change address</span>
-          </Link>
-        </div>
+
+        <Link href="/updateaddress">
+          <button className="bg-primary px-2 py-1 rounded-sm text-[10px] md:text-xs capitalize tracking-wider">
+            Change address
+          </button>
+        </Link>
       </div>
       <div>
         <p className="text-xs md:text-sm lowercase">{user?.email}</p>
