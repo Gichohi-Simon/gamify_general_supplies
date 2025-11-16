@@ -49,13 +49,17 @@ export default function UpdateAddress() {
     <div className="font-[family-name:var(--font-poppins)] flex justify-center mt-8 px-4 mb-14 md:mb-20">
       <form
         onSubmit={formik.handleSubmit}
-        className="w-full md:w-3/4 lg:w-2/3 bg-gray-100 p-6 md:p-10 rounded-xl shadow-sm space-y-5"
+        className="w-full md:w-3/4 lg:w-2/3 border border-1 p-6 md:px-6 md:py-8 rounded-xl shadow-sm space-y-5"
       >
-        <p className="text-lg font-semibold tracking-wider capitalize">Update Address</p>
-        <div>
+       <div>
+         <p className="text-sm font-bold tracking-wider capitalize">Update Address</p>
+        <p className="text-xs">manage your address details here</p>
+       </div>
+       <div className="flex gap-4">
+         <div className="w-1/2">
           <label
             htmlFor="companyName"
-            className="font-semibold text-xs md:text-sm tracking-wider"
+            className="text-[10px] md:text-xs tracking-wider"
           >
             Company Name
           </label>
@@ -63,7 +67,7 @@ export default function UpdateAddress() {
             type="text"
             placeholder="Company name"
             name="companyName"
-            className="border border-gray-300 tracking-wider py-2 px-3 text-xs md:text-sm w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 tracking-wider py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.companyName}
@@ -74,16 +78,15 @@ export default function UpdateAddress() {
             </p>
           )}
         </div>
-
-        <div>
-          <label htmlFor="street" className="font-semibold text-xs md:text-sm tracking-wider">
+        <div className="w-1/2">
+          <label htmlFor="street" className="font-semibold text-[10px] md:text-xs tracking-wider">
             Street
           </label>
           <input
             type="text"
             placeholder="Street name"
             name="street"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-xs md:text-sm w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.street}
@@ -94,11 +97,13 @@ export default function UpdateAddress() {
             </p>
           )}
         </div>
+       </div>
 
-        <div>
+        <div className="flex gap-4">
+          <div className="w-1/2">
           <label
             htmlFor="floorNumber"
-            className="font-semibold text-xs md:text-sm tracking-wider"
+            className="text-[10px] md:text-xs tracking-wider"
           >
             Floor Number
           </label>
@@ -106,7 +111,7 @@ export default function UpdateAddress() {
             type="text"
             placeholder="Floor number"
             name="floorNumber"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-xs md:text-sm w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.floorNumber}
@@ -118,15 +123,15 @@ export default function UpdateAddress() {
           )}
         </div>
 
-        <div>
-          <label htmlFor="city" className="font-semibold text-xs md:text-sm tracking-wider">
+        <div className="w-1/2">
+          <label htmlFor="city" className="text-[10px] md:text-xs tracking-wider">
             City
           </label>
           <input
             type="text"
             placeholder="City"
             name="city"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-xs md:text-sm w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.city}
@@ -137,11 +142,12 @@ export default function UpdateAddress() {
             </p>
           )}
         </div>
+        </div>
 
-        <div>
+        <div className="w-1/2">
           <label
             htmlFor="postalCode"
-            className="font-semibold text-xs md:text-sm tracking-wider"
+            className="text-[10px] md:text-xs tracking-wider"
           >
             Postal Code
           </label>
@@ -149,7 +155,7 @@ export default function UpdateAddress() {
             type="text"
             placeholder="Postal code"
             name="postalCode"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-xs md:text-sm w-full mt-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.postalCode}
@@ -161,15 +167,15 @@ export default function UpdateAddress() {
           )}
         </div>
 
-        <div className="pt-4 flex gap-4">
+        <div className="pt-4 flex justify-end gap-4">
           <button
             type="submit"
-            className="tracking-wider bg-primary text-xs font-semibold py-2 px-6 rounded-md transition duration-200"
+            className="tracking-wider bg-secondary hover:bg-primary text-[10px] md:text-xs py-2 px-6 rounded-full transition duration-200"
           >
             Update Address
           </button>
           <button
-            className="tracking-wider bg-primary text-xs font-semibold py-2 px-6 rounded-md transition duration-200"
+            className="tracking-wider bg-secondary hover:bg-primary text-[10px] md:text-xs py-2 px-6 rounded-full transition duration-200"
           >
             continue to checkout
           </button>
