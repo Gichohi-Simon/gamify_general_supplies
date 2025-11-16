@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { useCartProducts } from "@/hooks/useProducts";
 import { postsInterface } from "@/types/types";
 import { addToCart, removeFromCart } from "@/store/features/cartSlice";
+import EmptyCart from "@/components/EmptyCart";
 
 export default function CartPage() {
   const dispatch = useAppDispatch();
@@ -71,16 +72,8 @@ export default function CartPage() {
 
   if (!products.length) {
     return (
-      <div className="font-[family-name:var(--font-poppins)] text-center mt-20 text-sm md:text-base h-screen flex flex-col items-center">
-        <p className="text-xl md:text-3xl capitalize font-bold">
-          Your cart is empty 😢
-        </p>
-        <Link
-          href="/shop"
-          className="underline underline-offset-8 font-bold text-secondary mt-4 hover:text-primary"
-        >
-          Continue shopping
-        </Link>
+      <div>
+        <EmptyCart />
       </div>
     );
   }
