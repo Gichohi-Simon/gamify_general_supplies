@@ -122,7 +122,7 @@ export default function MyOrders() {
                       <div className="flex items-center gap-1 md:gap-4 w-full py-1 md:py-3">
                         <div className="h-16 w-16 md:h-28 md:w-28 mt-2 relative">
                           <Image
-                            src={orderItem.product.image}
+                            src={orderItem.product.images[0]}
                             alt={orderItem.product.name}
                             fill
                             className="object-contain p-2"
