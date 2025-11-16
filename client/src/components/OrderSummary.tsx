@@ -6,6 +6,7 @@ import { useAppSelector } from "@/store/hooks";
 import { useQueryClient } from "@tanstack/react-query";
 import { useCartProducts } from "@/hooks/useProducts";
 import { postsInterface } from "@/types/types";
+import EmptyCart from "./EmptyCart";
 
 export default function OrderSummary() {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -54,10 +55,8 @@ export default function OrderSummary() {
 
   if (!products.length) {
     return (
-      <div className="font-[family-name:var(--font-poppins)] text-center mt-20 text-sm md:text-base h-screen flex flex-col items-center">
-        <p className="text-xl md:text-3xl capitalize font-bold">
-          No items found in your order 😢
-        </p>
+      <div>
+        <EmptyCart />
       </div>
     );
   }
