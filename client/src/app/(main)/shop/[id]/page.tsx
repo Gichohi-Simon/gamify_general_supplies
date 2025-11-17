@@ -11,6 +11,8 @@ import { addToCart, removeFromCart } from "@/store/features/cartSlice";
 import {
   ArrowLeftCircleIcon,
   ArrowRightCircleIcon,
+  ShoppingCartIcon,
+  CheckCircleIcon
 } from "@heroicons/react/16/solid";
 
 export default function SingleProduct() {
@@ -96,12 +98,12 @@ export default function SingleProduct() {
       </div>
 
       <div className="mt-10 md:mt-5 w-full md:w-1/2">
-        <h5 className="font-bold text-lg md:text-3xl tracking-widest capitalize">
+        <h5 className="font-bold text-lg md:text-3xl tracking-widest capitalize mb-1 md:mb-3">
           {product.name}
         </h5>
-        <span className="text-[10px] md:text-xs bg-primary px-2 py-1 rounded-sm mt-1 md:mt-2">{product.category}</span>
+        <span className="text-[10px] md:text-xs bg-primary px-2 py-1 rounded-sm">{product.category}</span>
 
-        <h5 className="mt-4 tracking-wider text-xs md:text-sm">
+        <h5 className="mt-3 md:mt-6 tracking-wider text-xs md:text-sm">
           {product.description}
         </h5>
 
@@ -109,13 +111,11 @@ export default function SingleProduct() {
           Ksh {Number(product.price).toLocaleString()}
         </h5>
 
-        <p className="text-[6px] md:text-xs font-semibold underline text-blue-500 mt-[-2px] tracking-wider">
+        <p className="text-[6px] md:text-xs font-semibold text-blue-500 mt-[-2px] tracking-wider">
           price is exclusive of vat
         </p>
 
         <div className="mt-2 md:mt-5">
-          <h6 className="text-xs md:text-sm tracking-wider">select quantity</h6>
-
           <div className="mt-2 md:mt-3 flex items-center">
             <button
               className="bg-gray-100 px-3 md:px-4 py-1 md:py-2 mr-2 md:mr-4 rounded-full hover:bg-primary"
@@ -135,28 +135,31 @@ export default function SingleProduct() {
           </div>
         </div>
 
-        <div className="mt-3 md:mt-4">
+        <div className="flex gap-2 mt-3 md:mt-4">
           {cartItem ? (
             <button
-              className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              className="flex justify-center items-center gap-2 mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
               onClick={() => {
                 dispatch(removeFromCart(id));
                 setQuantity(1);
               }}
             >
-              Remove from Cart
+              <ShoppingCartIcon className="size-3 md:size-6"/>
+              Remove from cart
             </button>
           ) : (
             <button
-              className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
               onClick={() => dispatch(addToCart({ productId: id, quantity }))}
             >
+              <ShoppingCartIcon className="size-3 md:size-6"/>
               Add to Cart
             </button>
           )}
 
           <Link href="/cart">
-            <button className="mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black w-full py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase">
+            <button className="flex items-center gap-2 mt-2 md:mt-4 bg-black text-white hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase">
+              <CheckCircleIcon className="size-3 md:size-6"/>
               checkout
             </button>
           </Link>
