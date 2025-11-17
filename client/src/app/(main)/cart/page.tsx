@@ -75,8 +75,8 @@ export default function CartPage() {
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] mx-4 md:mx-8 my-3 md:my-5 h-screen">
-      <div className="flex justify-between items-center px-2 md:px-3">
+    <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-3 md:my-5 h-screen">
+      <div className="flex justify-between items-center">
         <span className="capitalize flex items-center gap-2">
           <h4 className="text-xl md:text-2xl font-bold">My Cart</h4>
         </span>

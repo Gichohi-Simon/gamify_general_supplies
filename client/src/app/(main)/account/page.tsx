@@ -12,7 +12,7 @@ export default function AccounPage() {
   const user = useAppSelector((state) => state?.auth.userInfo);
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const {mutateAsync} = useSignOut();
+  const { mutateAsync } = useSignOut();
 
   const handleLogout = async () => {
     try {
@@ -23,41 +23,41 @@ export default function AccounPage() {
       console.error("logout error:", error);
     }
   };
-  
+
   return (
     <Protected>
-      <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 my-5 md:my-10 h-screen">
+      <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-5 md:my-10 h-screen">
         <p className="text-xl font-bold mb-2">Profile</p>
-        <div className="font-[family-name:var(--font-poppins)] border border-1 py-6 px-6 rounded-lg flex justify-between">
-          <div>
-            <div>
-              <p className="text-xs md:text-sm font-bold">Name</p>
-              <p className="mt-[-5] text-xs md:text-sm">{user?.username}</p>
+        <div className="flex gap-10">
+          <div className="font-[family-name:var(--font-poppins)] border border-1 py-6 px-6 rounded-lg flex justify-between w-1/2">
+            <div className="">
+              <div>
+                <p className="text-xs md:text-sm font-bold">Name</p>
+                <p className="text-xs md:text-sm">{user?.username}</p>
+              </div>
+              <div className="mt-2">
+                <p className="text-xs md:text-sm font-bold">Email</p>
+                <p className="text-xs md:text-sm ">{user?.email}</p>
+              </div>
             </div>
-            <div className="mt-2">
-              <p className="text-xs md:text-sm font-bold">Email</p>
-              <p className="mt-[-5] text-xs md:text-sm ">{user?.email}</p>
+            <div className="flex gap-4 justify-center items-center">
+              <Link href="/orders">
+                <button className="bg-primary px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm">
+                  view orders
+                </button>
+              </Link>
+              <button
+                className="bg-red-500 text-white px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
+                onClick={handleLogout}
+              >
+                logout
+              </button>
             </div>
           </div>
-          <div className="flex gap-4 justify-center items-center">
-           <Link href="/orders">
-             <button
-              className="bg-primary px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
-            >
-              view orders
-            </button>
-           </Link>
-            <button
-              className="bg-red-500 text-white px-2 py-1 md:px-3 md:py-2 text-[10px] md:text-xs rounded-sm"
-              onClick={handleLogout}
-            >
-              logout
-            </button>
-          </div>
-        </div>
 
-        <div className="mt-4">
-          <UserAddress />
+          <div className="mt-4 w-1/2">
+            <UserAddress />
+          </div>
         </div>
       </div>
     </Protected>
