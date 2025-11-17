@@ -28,7 +28,7 @@ const Header = () => {
   const cartCount = isMounted ? cart.length : 0;
 
   return (
-    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 font-[family-name:var(--font-poppins)]">
+    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 mx-[20px] md:mx-[40px] font-[family-name:var(--font-poppins)]">
       <div className="text-xs md:text-sm">
         <Link href="/" className="flex flex-col">
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">

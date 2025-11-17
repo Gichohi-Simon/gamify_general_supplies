@@ -16,13 +16,8 @@ const Products = ({ products }: FirstThreeProducts) => {
       <h1 className="text-center text-base md:text-xl font-bold underline underline-offset-8 decoration-black capitalize tracking-wider">
         Our Products
       </h1>
-      <h6 className="text-center mt-5 md:mt-6 text-sm capitalize">
-        Find reliable warehouse supplies that keep your operations running
-        smoothly.
-      </h6>
-
-      <div className="flex justify-center items-center mt-6 px-2 md:px-0 py-2 md:py-6">
-        <div className="w-full max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mx-4">
+      <div className="flex justify-center items-center mt-6 py-6 md:py-12">
+        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => (
             <div key={catalog.name} className="flex flex-col items-center border hover:border-primary rounded-lg px-4 py-3 shadow-md">
               <span className="bg-primary py-1 px-2 text-[10px] md:text-xs capitalize self-start rounded">
