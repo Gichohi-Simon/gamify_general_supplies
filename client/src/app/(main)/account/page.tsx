@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useSignOut } from "@/hooks/auth";
 import Link from "next/link";
 import UserAddress from "@/components/UserAddress";
+import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid";
 
 export default function AccounPage() {
   const user = useAppSelector((state) => state?.auth.userInfo);
@@ -27,9 +28,14 @@ export default function AccounPage() {
   return (
     <Protected>
       <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-5 md:my-10 h-screen">
-        <p className="text-xl font-bold mb-2">Profile</p>
-        <div className="flex gap-10">
-          <div className="font-[family-name:var(--font-poppins)] border border-1 py-6 px-6 rounded-lg flex justify-between w-1/2">
+        <div className="flex justify-between">
+          <p className="text-xl font-bold mb-2">Profile</p>
+       <Link href="/">
+         <span><ArrowLeftCircleIcon className="size-5"/></span>
+       </Link>
+        </div>
+        <div className="md:flex gap-10">
+          <div className="font-[family-name:var(--font-poppins)] border border-1 py-6 px-6 rounded-lg flex justify-between w-full md:w-1/2">
             <div className="">
               <div>
                 <p className="text-xs md:text-sm font-bold">Name</p>
@@ -55,7 +61,7 @@ export default function AccounPage() {
             </div>
           </div>
 
-          <div className="mt-4 w-1/2">
+          <div className="mt-4 w-full md:w-1/2">
             <UserAddress />
           </div>
         </div>
