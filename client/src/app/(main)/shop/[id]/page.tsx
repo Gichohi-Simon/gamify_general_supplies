@@ -138,28 +138,28 @@ export default function SingleProduct() {
         <div className="flex gap-2 mt-3 md:mt-4">
           {cartItem ? (
             <button
-              className="flex justify-center items-center gap-2 mt-2 md:mt-4 bg-primary hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              className="flex justify-center items-center gap-2 mt-2 md:mt-4 bg-primary hover:bg-secondary hover:text-black px-4 py-2 md:py-2 rounded-full text-[10px] md:text-xs uppercase"
               onClick={() => {
                 dispatch(removeFromCart(id));
                 setQuantity(1);
               }}
             >
-              <ShoppingCartIcon className="size-3 md:size-6"/>
+              <ShoppingCartIcon className="size-3 md:size-4"/>
               Remove from cart
             </button>
           ) : (
             <button
-              className="mt-2 md:mt-4 bg-primary  hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase"
+              className="flex justify-center items-center gap-2 mt-2 md:mt-4 bg-primary  hover:bg-secondary hover:text-black px-4 py-2 md:py-2 rounded-full text-[10px] md:text-xs uppercase"
               onClick={() => dispatch(addToCart({ productId: id, quantity }))}
             >
-              <ShoppingCartIcon className="size-3 md:size-6"/>
+              <ShoppingCartIcon className="size-3 md:size-4"/>
               Add to Cart
             </button>
           )}
 
           <Link href="/cart">
-            <button className="flex items-center gap-2 mt-2 ml-2 md:mt-4 bg-primary hover:bg-secondary hover:text-black px-4 py-2 md:py-3 rounded-full text-[10px] md:text-xs uppercase">
-              <CheckCircleIcon className="size-3 md:size-6"/>
+            <button className="flex items-center gap-2 mt-2 ml-2 md:mt-4 bg-primary hover:bg-secondary hover:text-black px-4 py-2 md:py-2 rounded-full text-[10px] md:text-xs uppercase">
+              <CheckCircleIcon className="size-3 md:size-4"/>
               checkout
             </button>
           </Link>
