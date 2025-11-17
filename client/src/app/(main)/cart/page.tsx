@@ -67,25 +67,38 @@ export default function CartPage() {
   }
 
   if (!products.length) {
-    return (
-      <div>
-        <EmptyCart />
-      </div>
-    );
+    return <EmptyCart />;
   }
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-3 md:my-5 h-screen">
+    <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-3 md:my-5 min-h-screen">
       <div className="flex justify-between items-center">
-        <span className="capitalize flex items-center gap-2">
-          <h4 className="text-xl md:text-2xl font-bold">My Cart</h4>
-        </span>
+        <h4 className="text-lg md:text-xl font-bold capitalize">My Cart</h4>
       </div>
 
-      <div className="flex flex-col lg:flex-row justify-between gap-6 mt-4 md:mt-6">
+      <div className="flex flex-col lg:flex-row justify-between gap-8 mt-4 md:mt-6">
         <div className="w-full lg:w-3/4">
           <div className="overflow-x-auto">
-            <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto">
+            <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto border border-1">
+              <thead className="bg-primary">
+                <tr>
+                  <th className="px-4 py-3 text-left text-xs md:text-sm font-semibold">
+                    Product
+                  </th>
+                  <th className="px-4 py-3 text-left text-xs md:text-sm font-semibold">
+                    Price
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs md:text-sm font-semibold">
+                    Quantity
+                  </th>
+                  <th className="px-4 py-3 text-right text-xs md:text-sm font-semibold">
+                    Subtotal
+                  </th>
+                  <th className="px-4 py-3 text-center text-xs md:text-sm font-semibold">
+                    Remove
+                  </th>
+                </tr>
+              </thead>
               <tbody className="divide-y divide-gray-100">
                 {products.map((item) => (
                   <tr key={item.id} className="transition">
@@ -132,11 +145,9 @@ export default function CartPage() {
                         </button>
                       </div>
                     </td>
-
                     <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle text-sm md:text-base">
                       Ksh {item.subtotal.toLocaleString()}
                     </td>
-
                     <td className="px-4 py-4 text-center align-middle">
                       <TrashIcon
                         onClick={() => dispatch(removeFromCart(item.id))}
@@ -151,7 +162,7 @@ export default function CartPage() {
         </div>
 
         <div className="w-full lg:w-1/4">
-          <div className="px-4 py-8 overflow-x-auto bg-gray-100 rounded-xl">
+          <div className="px-4 py-8 overflow-x-auto bg-gray-100">
             <table className="min-w-full text-xs md:text-sm text-left border-collapse">
               <tbody>
                 <tr className="border-b border-gray-100 font-bold">
