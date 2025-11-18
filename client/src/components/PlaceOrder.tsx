@@ -29,7 +29,7 @@ export default function PlaceOrder() {
         <button
           type="submit"
           disabled={isPending}
-          className="text-[10px] md:text-xs hover:bg-gray-700 bg-black text-white w-1/2 rounded py-3 capitalize font-bold"
+          className="text-[10px] md:text-xs hover:bg-gray-700 bg-black text-white w-full rounded py-3 capitalize font-bold"
         >
           {isPending ? "Placing order..." : "Place Order"}
         </button>

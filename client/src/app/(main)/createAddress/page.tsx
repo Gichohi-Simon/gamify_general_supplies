@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { useCreateDeliveryAddress } from "@/hooks/address";
 import { Address } from "@/types/types";
+import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid";
+import Link from "next/link";
 
 export default function CreateAddress() {
   const router = useRouter();
@@ -48,6 +50,13 @@ export default function CreateAddress() {
         className="w-full md:w-3/4 lg:w-2/3 border border-1 p-6 md:px-6 md:py-8 rounded-xl shadow-sm space-y-5"
       >
         <div>
+          <div className="mb-2">
+            <Link href="/">
+            <span>
+              <ArrowLeftCircleIcon className="size-4" />
+            </span>
+          </Link>
+          </div>
           <p className="text-sm font-bold tracking-wider capitalize">Create Address</p>
           <p className="text-[10px] md:text-xs">manage your address details here</p>
         </div>

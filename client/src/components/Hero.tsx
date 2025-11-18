@@ -11,13 +11,13 @@ const Hero = () => {
       
       <div className="absolute inset-0 bg-black bg-opacity-65"></div>
       <div className="relative text-center md:text-start">
-        <p className="text-2xl md:text-5xl font-bold text-primary tracking-wider">
+        <p className="text-2xl md:text-5xl font-bold text-primary tracking-wider capitalize">
           Gamify general <span className="text-secondary">supplies</span>
         </p>
-        <p className="mt-0 md:mt-2 text-2xl md:text-5xl font-bold text-primary tracking-wider">
+        <p className="mt-0 md:mt-2 text-2xl md:text-5xl font-bold text-primary tracking-wider capitalize">
           and services
         </p>
-        <p className="mt-4 text-secondary  text-xs md:text-base tracking-wider">
+        <p className="mt-4 text-secondary  text-xs md:text-base tracking-wider lowercase">
           suppliers of materials used in handling <span>warehouse</span>{" "}
           products
         </p>

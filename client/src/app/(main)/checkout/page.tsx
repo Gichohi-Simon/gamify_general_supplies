@@ -15,9 +15,9 @@ export default function CheckoutPage() {
         </div>
         <div className="w-full">
           <OrderSummary />
+           <PlaceOrder />
         </div>
       </div>
-     <PlaceOrder />
     </div>
    </Protected>
   );
