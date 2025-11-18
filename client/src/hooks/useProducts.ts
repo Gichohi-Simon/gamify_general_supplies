@@ -4,6 +4,7 @@ import {
   fetchFirstFourProducts,
   fetchSingleProduct,
   fetchCartProducts,
+  fetchRandomFourProducts,
 } from "@/api/product.api";
 import { postsInterface } from "@/types/types";
 
@@ -22,6 +23,14 @@ export const useGetFirstFourProducts = () => {
     staleTime: Infinity,
   });
 };
+
+export const useGetRandomFourProducts = () => {
+  return useQuery<{products:postsInterface[]}>({
+    queryKey:["productsRandom"],
+    queryFn:fetchRandomFourProducts,
+    staleTime:Infinity,
+  })
+}
 
 export const useGetSingleProduct = (id: string) => {
   return useQuery<{ singleProduct: postsInterface }>({

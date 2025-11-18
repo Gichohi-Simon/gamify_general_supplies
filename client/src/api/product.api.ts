@@ -26,6 +26,16 @@ export const fetchFirstFourProducts = async (): Promise<{
   return response.json();
 };
 
+export const fetchRandomFourProducts = async (): Promise<{
+  products: postsInterface[];
+}> => {
+  const response = await fetch(`${API}/product/get-random-four-products`, {
+    cache: "no-store",
+  });
+  if (!response.ok) throw new Error("Error fetching data");
+  return response.json();
+};
+
 export const fetchSingleProduct = async (
   id: string
 ): Promise<{ singleProduct: postsInterface }> => {
