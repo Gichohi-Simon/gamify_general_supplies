@@ -14,7 +14,7 @@ const MainProducts = () => {
         <div className="absolute inset-0 bg-black bg-opacity-65"></div>
 
         <div className="relative z-10 text-start text-white mx-[30px] md:mx-[60px]">
-          <p className="my-3 md:my-6 text-2xl md:text-4xl text-primary font-bold tracking-wider">
+          <p className="my-3 md:my-6 text-base md:text-4xl text-primary font-bold tracking-wider">
             Get the right tools,{" "}
             <span className="text-secondary">equipment</span>, and{" "}
             <span className="text-secondary">supplies </span>

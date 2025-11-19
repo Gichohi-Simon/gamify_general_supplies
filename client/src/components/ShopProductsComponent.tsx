@@ -20,7 +20,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
   return (
     <div className="mt-8 md:mt-10">
       <div className="flex justify-center">
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 pb-20 pt-5 mx-[30px] md:mx-[60px]">
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-20 pt-5 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => {
             const itemInCart = cartItems.some(
               (item) => item.productId === catalog.id
@@ -32,18 +32,18 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                 className="flex flex-col border hover:border-primary rounded-xl px-4 py-3 shadow-md"
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className="bg-primary py-1 px-2 text-[10px] md:text-xs capitalize rounded">
+                  <span className="bg-primary py-1 px-2 text-[8px] md:text-xs capitalize rounded">
                     {catalog.category}
                   </span>
 
                   <div className="border border-black hover:bg-primary p-2 rounded-full">
                     <Link href={`/shop/${catalog.id}`}>
-                      <EyeIcon className="size-3 md:size-4" />
+                      <EyeIcon className="size-2 md:size-4" />
                     </Link>
                   </div>
                 </div>
 
-                <div className="relative w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] aspect-[4/3] overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
+                <div className="relative w-full max-w-[80px] md:max-w-[260px] h-20 md:aspect-[4/3] overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
                   <Link href={`/shop/${catalog.id}`}>
                     <Image
                       src={catalog.images[0]}
@@ -55,11 +55,11 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                   </Link>
                 </div>
 
-                <div className="mt-4 text-start w-full">
-                  <span className="text-sm font-bold tracking-wider line-clamp-1 capitalize block">
+                <div className="mt-2 md:mt-4 text-start w-full">
+                  <span className="text-[10px] md:text-sm font-bold tracking-wider line-clamp-1 capitalize block">
                     {catalog.name}
                   </span>
-                  <span className="text-sm mt-1 block">
+                  <span className="text-[10px] md:text-sm block">
                     ksh {Number(catalog.price).toLocaleString()}
                   </span>
                 </div>
@@ -68,7 +68,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-xs bg-secondary px-4 py-2 rounded-full w-full mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(removeFromCart(catalog.id))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ")
@@ -81,7 +81,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-xs bg-primary px-4 py-2 rounded-full w-full mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-primary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() =>
                       dispatch(addToCart({ productId: catalog.id, quantity }))
                     }
@@ -90,7 +90,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                         dispatch(addToCart({ productId: catalog.id, quantity }));
                     }}
                   >
-                    <PlusCircleIcon className="size-5" /> add to cart
+                    <PlusCircleIcon className="size-4 md:size-5" /> add to cart
                   </span>
                 )}
               </div>

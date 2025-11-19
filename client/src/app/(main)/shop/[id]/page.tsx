@@ -107,7 +107,7 @@ export default function SingleProduct() {
             {product.category}
           </span>
 
-          <h5 className="mt-3 md:mt-6 tracking-wider text-xs md:text-sm">
+          <h5 className="mt-3 md:mt-6 tracking-wider text-xs md:text-sm md:w-3/4">
             {product.description}
           </h5>
 

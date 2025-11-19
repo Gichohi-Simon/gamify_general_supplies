@@ -18,10 +18,10 @@ const Products = ({ products }: FirstThreeProducts) => {
 
   return (
     <div className="font-[family-name:var(--font-poppins)] py-24 md:py-40 overflow-x-hidden">
-      <h1 className="text-center text-base md:text-xl font-bold underline underline-offset-8 decoration-black capitalize tracking-wider">
+      <h1 className="text-center text-2xl md:text-3xl font-bold decoration-black capitalize tracking-wider">
         Our Products
       </h1>
-      <div className="flex mt-6 py-6 md:py-12">
+      <div className="flex mt-6 py-4 md:py-8">
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => {
             const itemInCart = cartItems.some((item) => item.productId === catalog.id);

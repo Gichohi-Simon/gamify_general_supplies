@@ -11,7 +11,7 @@ export default function MainProductList() {
     </div>
   );;
 
-  if (error) return <p>Error occured: {error.message}</p>;
+  if (error) return <p>Error occured: {error.message} </p>;
   
   if (!data || !data.products) {
     return <p>No products found.</p>;
