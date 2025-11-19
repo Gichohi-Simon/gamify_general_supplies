@@ -17,7 +17,7 @@ const Products = ({ products }: FirstThreeProducts) => {
   const cartItems = useAppSelector((state) => state.cart.items);
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] py-24 md:py-40 overflow-x-hidden">
+    <div className="font-[family-name:var(--font-poppins)] py-16 md:py-28 overflow-x-hidden">
       <h1 className="text-center text-xl md:text-3xl font-bold decoration-black capitalize tracking-wider">
         Our Products
       </h1>
