@@ -18,11 +18,11 @@ const Products = ({ products }: FirstThreeProducts) => {
 
   return (
     <div className="font-[family-name:var(--font-poppins)] py-24 md:py-40 overflow-x-hidden">
-      <h1 className="text-center text-2xl md:text-3xl font-bold decoration-black capitalize tracking-wider">
+      <h1 className="text-center text-xl md:text-3xl font-bold decoration-black capitalize tracking-wider">
         Our Products
       </h1>
       <div className="flex mt-6 py-4 md:py-8">
-        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mx-[30px] md:mx-[60px]">
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => {
             const itemInCart = cartItems.some((item) => item.productId === catalog.id);
 
@@ -33,7 +33,7 @@ const Products = ({ products }: FirstThreeProducts) => {
               >
                 <div className="flex items-center justify-between w-full">
                   <div>
-                    <span className="bg-primary py-1 px-2 text-[10px] md:text-xs capitalize self-start rounded">
+                    <span className="bg-primary py-1 px-2 text-[8px] md:text-xs capitalize self-start rounded">
                       {catalog.category}
                     </span>
                   </div>
@@ -44,7 +44,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                   </div>
                 </div>
 
-                <div className="relative w-full max-w-[220px] sm:max-w-[240px] md:max-w-[260px] aspect-[4/3] overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
+                <div className="relative w-full max-w-[80px] md:max-w-[260px] aspect-[4/3] overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
                   <Link href={`/shop/${catalog.id}`}>
                     <Image
                       src={catalog.images[0]}
@@ -56,11 +56,11 @@ const Products = ({ products }: FirstThreeProducts) => {
                   </Link>
                 </div>
 
-                <div className="mt-4 text-start w-full">
-                  <span className="text-sm font-bold tracking-wider line-clamp-1 capitalize block">
+                <div className="mt-2 md:mt-4 text-start w-full">
+                  <span className="text-[10px] md:text-sm font-bold tracking-wider line-clamp-1 capitalize block">
                     {catalog.name}
                   </span>
-                  <span className="text-sm mt-1 block">
+                  <span className="text-[10px] md:text-sm mt-1 block">
                     ksh {Number(catalog.price).toLocaleString()}
                   </span>
                 </div>
@@ -69,7 +69,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-xs bg-secondary px-4 py-2 rounded-full w-full mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(removeFromCart(catalog.id))}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") 
                     dispatch(removeFromCart(catalog.id ));
@@ -81,11 +81,11 @@ const Products = ({ products }: FirstThreeProducts) => {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-xs bg-primary px-4 py-2 rounded-full w-full mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-primary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(addToCart({ productId: catalog.id, quantity }))}
                     onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") dispatch(addToCart({ productId: catalog.id, quantity })); }}
                   >
-                    <PlusCircleIcon className="size-5" /> add to cart
+                    <PlusCircleIcon className="size-4 md:size-5" /> add to cart
                   </span>
                 )}
               </div>
