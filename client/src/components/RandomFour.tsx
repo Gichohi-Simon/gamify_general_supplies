@@ -72,7 +72,7 @@ export default function RandomFour() {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-[10px] bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[8px] bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(removeFromCart(catalog.id))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ")

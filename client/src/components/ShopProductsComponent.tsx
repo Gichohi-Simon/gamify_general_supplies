@@ -32,34 +32,34 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                 className="flex flex-col border hover:border-primary rounded-xl px-4 py-3 shadow-md"
               >
                 <div className="flex items-center justify-between w-full">
-                  <span className="bg-primary py-1 px-2 text-[8px] md:text-xs capitalize rounded">
+                  <span className="bg-primary py-1 px-2 text-[8px] md:text-[10px] capitalize rounded">
                     {catalog.category}
                   </span>
 
                   <div className="border border-black hover:bg-primary p-2 rounded-full">
                     <Link href={`/shop/${catalog.id}`}>
-                      <EyeIcon className="size-2 md:size-4" />
+                      <EyeIcon className="size-2 md:size-3" />
                     </Link>
                   </div>
                 </div>
 
-                <div className="relative w-full max-w-[80px] md:max-w-[260px] h-20 md:aspect-[4/3] overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
+                <div className="relative w-full max-w-[80px] md:max-w-[100px] h-20 md:h-32 overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
                   <Link href={`/shop/${catalog.id}`}>
                     <Image
                       src={catalog.images[0]}
                       alt={catalog.name}
                       fill
-                      className="object-contain transition-transform duration-300 hover:scale-105"
+                      className="object-contain transform transition-transform duration-300 hover:scale-105"
                       sizes="(max-width: 640px) 200px, (max-width: 1024px) 240px, 260px"
                     />
                   </Link>
                 </div>
 
-                <div className="mt-2 md:mt-4 text-start w-full">
-                  <span className="text-[10px] md:text-sm font-bold tracking-wider line-clamp-1 capitalize block">
+                <div className="mt-2 text-start w-full">
+                  <span className="text-[10px] md:text-xs font-bold tracking-wider line-clamp-1 capitalize block">
                     {catalog.name}
                   </span>
-                  <span className="text-[10px] md:text-sm block">
+                  <span className="text-[10px] md:text-xs mt-1 block">
                     ksh {Number(catalog.price).toLocaleString()}
                   </span>
                 </div>
