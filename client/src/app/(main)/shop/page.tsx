@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import MainProducts from "@/components/MainProducts";
 
 const ProductsPage = () => {
   return (
     <div>
-      <MainProducts />
+     <Suspense fallback={<div>Loading...</div>}>
+       <MainProducts />
+     </Suspense>
     </div>
   );
 };

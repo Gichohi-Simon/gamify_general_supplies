@@ -7,7 +7,7 @@ export default function Search() {
 
   const initialQuery = params.get("q") || "";
   const [text, setText] = useState(initialQuery);
-
+  
   const handleSearch = () => {
     const query = text?.trim();
     setText("");
