@@ -18,9 +18,10 @@ export default function ShopProductsComponent({ products }: AllPosts) {
   const cartItems = useAppSelector((state) => state.cart.items);
 
   return (
-    <div className="mt-8 md:mt-10">
+    <div className="mt-6 md:mt-12">
+      <p className="mx-[30px] md:mx-[60px] text-lg md:text-xl font-bold">Get Started</p>
       <div className="flex justify-center">
-        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-20 pt-5 mx-[30px] md:mx-[60px]">
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-10 md:pb-12 pt-6 md:pt-10 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => {
             const itemInCart = cartItems.some(
               (item) => item.productId === catalog.id

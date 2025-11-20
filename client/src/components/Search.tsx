@@ -20,15 +20,17 @@ export default function Search() {
   };
 
   return (
-    <div className="mb-4 font-[family-name:var(--font-poppins)] flex justify-center items-center mt-6 gap-2 w-full md:w-1/4">
-      <input
+    <div className="relative mb-4 font-[family-name:var(--font-poppins)] mt-[-50] md:mt-[-70]  md:w-1/2 shadow-lg rounded-xl px-5 pt-6 pb-8 z-20  bg-white">
+     <p className="text-xs md:text-base font-semibold mb-4 capitalize">what are you looking for?</p>
+     <div className="flex justify-center items-center gap-2 w-full">
+       <input
         type="text"
-        placeholder="search products"
-        className="w-full md:w-3/4 border border-1 border-primary rounded-lg md:rounded-lg py-2 px-2 text-xs md:text-sm"
+        placeholder="search for warehouse products"
+        className="w-full border border-1 border-primary rounded-full py-2 px-4 text-xs md:text-sm"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button className="bg-primary py-2 px-2 rounded-lg text-xs md:text-sm"
+      <button className="bg-primary py-2 px-4 rounded-full text-xs md:text-sm"
       onClick={handleSearch}
       >
         search
@@ -41,6 +43,7 @@ export default function Search() {
           Clear search
         </button>
       )}
+     </div>
     </div>
   );
 }
