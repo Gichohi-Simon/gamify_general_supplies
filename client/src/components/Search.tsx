@@ -7,7 +7,7 @@ export default function Search() {
 
   const initialQuery = params.get("q") || "";
   const [text, setText] = useState(initialQuery);
-  
+
   const handleSearch = () => {
     const query = text?.trim();
     setText("");
@@ -20,7 +20,7 @@ export default function Search() {
   };
 
   return (
-    <div className="mb-4 font-[family-name:var(--font-poppins)] flex justify-start items-center mt-6 gap-2 w-full">
+    <div className="mb-4 font-[family-name:var(--font-poppins)] flex justify-center items-center mt-6 gap-2 w-full md:w-1/4">
       <input
         type="text"
         placeholder="search products"

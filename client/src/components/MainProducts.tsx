@@ -1,7 +1,6 @@
 "use client";
 
 import Search from "./Search";
-// import Categories from "./Categories";
 import MainProductList from "./MainProductList";
 
 const MainProducts = () => {
@@ -28,9 +27,8 @@ const MainProducts = () => {
         </div>
       </div>
 
-      <div className="w-full px-8 md:px-[60px] md:flex justify-between items-center mt-6">
+      <div className="w-full px-8 md:px-[60px] md:flex justify-center items-center mt-6">
         <Search />
-        {/* <Categories /> */}
       </div>
       <MainProductList />
     </div>
