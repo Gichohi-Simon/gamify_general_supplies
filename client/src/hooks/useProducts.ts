@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import {
   fetchProducts,
   fetchFirstFourProducts,
@@ -8,11 +8,23 @@ import {
 } from "@/api/product.api";
 import { postsInterface } from "@/types/types";
 
-export const useProducts = () => {
-  return useQuery<{ products: postsInterface[] }>({
-    queryKey: ["products"],
-    queryFn: fetchProducts,
-    staleTime: Infinity,
+export type GetAllProductResponse = {
+  success:boolean;
+  currentPage:number;
+  totalPages:number;
+  totalProducts:number;
+  products:postsInterface[]
+}
+
+export const useProducts = ({
+  page = 1,
+  limit = 6,
+  query = "",
+} = {}) => {
+  return useQuery<GetAllProductResponse>({
+    queryKey: ["products", {page, limit, query}] as const,
+    queryFn: () => fetchProducts({page, limit, query}),
+    placeholderData:keepPreviousData,
   });
 };
 
