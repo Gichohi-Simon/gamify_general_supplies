@@ -18,7 +18,7 @@ export default function Pagination({ currentPage, totalPages }:{currentPage:numb
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
-        className={`px-2 py-1 rounded-md border text-xs md:text-sm ${
+        className={`px-2 py-1 rounded-md border text-xs md:text-sm bg-primary ${
           currentPage <= 1
             ? "opacity-50 cursor-not-allowed"
             : "hover:bg-gray-100"
@@ -36,7 +36,7 @@ export default function Pagination({ currentPage, totalPages }:{currentPage:numb
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className={`px-2 py-1 rounded-md border text-xs md:text-sm ${
+        className={`px-2 py-1 rounded-md border text-xs md:text-sm bg-primary ${
           currentPage >= totalPages
             ? "opacity-50 cursor-not-allowed"
             : "hover:bg-gray-100"
