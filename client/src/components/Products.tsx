@@ -17,7 +17,7 @@ const Products = ({ products }: FirstThreeProducts) => {
   const cartItems = useAppSelector((state) => state.cart.items);
 
   return (
-    <div className="font-[family-name:var(--font-poppins)] py-16 md:py-28 overflow-x-hidden">
+    <div className="font-[family-name:var(--font-poppins)] py-16 md:py-20 overflow-x-hidden">
       <h1 className="text-center text-xl md:text-3xl font-bold decoration-black capitalize tracking-wider">
         Our Products
       </h1>
@@ -70,7 +70,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-[8px] bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(removeFromCart(catalog.id))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") dispatch(removeFromCart(catalog.id));

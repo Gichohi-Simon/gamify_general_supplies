@@ -50,7 +50,7 @@ export default function MainProductList() {
 
 
   return (
-    <div>
+    <div className="mb-5 md:mb-10">
       <ShopProductsComponent products={data.products}/> 
       <Pagination 
         currentPage={data.currentPage}
