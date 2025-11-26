@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { getLoggedInUserOrder, createOrder } from "@/api/order.api";
+import { getLoggedInUserOrder, createOrder, getSingleOrderById } from "@/api/order.api";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
 import { clearCart } from "@/store/features/cartSlice";
@@ -10,6 +10,15 @@ export const useGetLoggedInUserOrder = () => {
     queryFn: getLoggedInUserOrder,
   });
 };
+
+export const useGetOrderById = (id:string) => {
+  return useQuery({
+    queryKey:["singleOrder", id],
+    queryFn: () => getSingleOrderById(id),
+    enabled: !!id,
+    staleTime: Infinity,
+  })
+}
 
 export const useCreateOrder = () => {
   const router = useRouter();

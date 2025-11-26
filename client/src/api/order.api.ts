@@ -14,6 +14,16 @@ export const getLoggedInUserOrder = async () => {
   return await response.json();
 };
 
+export const getSingleOrderById = async (id: string) => {
+  const response = await fetch(`${API}/order/get-user-order-by-id/${id}`, {
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("error fetching the order");
+  }
+  return await response.json();
+};
+
 export const createOrder = async (values: CreateOrderRequest) => {
   const response = await fetch(`${API}/order/create-order`, {
     method: "POST",
