@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
           <div className="flex justify-center md:justify-start">
             <Link href="/shop">
-              <span className="bg-black text-white text-[10px] md:text-xs px-4 py-2 rounded mt-6 tracking-wider capitalize flex gap-2">
+              <span className="bg-black text-white text-[10px] md:text-xs px-4 py-2 rounded-full mt-6 tracking-wider capitalize flex gap-2">
                 start shopping
                 <ArrowRightCircleIcon className="size-4" />
               </span>

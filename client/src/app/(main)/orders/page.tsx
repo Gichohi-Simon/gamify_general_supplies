@@ -16,7 +16,7 @@ export default function MyOrders() {
 
   return (
     <Protected>
-      <div className="font-[family-name:var(--font-poppins)] mx-8 md:mx-20 my-5 md:my-10 min-h-screen">
+      <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-5 md:my-10 min-h-screen">
         <div className="flex justify-between items-center">
           <div>
             <p className="font-bold text-base md:text-xl capitalize">

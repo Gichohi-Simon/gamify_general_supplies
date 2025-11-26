@@ -100,7 +100,7 @@ const Products = ({ products }: FirstThreeProducts) => {
       <div className="flex justify-center">
         <Link
           href="/shop"
-          className="mt-6 md:mt-10 px-2 py-1 rounded-full bg-primary flex justify-center items-center gap-2 w-24 md:w-28 hover:bg-secondary"
+          className="mt-6 md:mt-10 px-2 py-2 rounded-full bg-primary flex justify-center items-center gap-2 w-24 md:w-28 hover:bg-secondary"
         >
           <p className="text-[10px] md:text-xs lowercase font-bold">Shop</p>
           <ArrowRightCircleIcon className="size-5" />

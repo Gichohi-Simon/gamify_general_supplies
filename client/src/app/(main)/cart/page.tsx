@@ -78,7 +78,7 @@ export default function CartPage() {
 
       <div className="flex flex-col lg:flex-row justify-between gap-8 mt-4 md:mt-6">
         <div className="w-full lg:w-3/4">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-lg">
             <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto border border-1">
               <thead className="bg-primary">
                 <tr>
@@ -162,7 +162,7 @@ export default function CartPage() {
         </div>
 
         <div className="w-full lg:w-1/4">
-          <div className="px-4 py-8 overflow-x-auto bg-gray-100">
+          <div className="px-4 py-8 overflow-x-auto bg-gray-100 rounded-lg">
             <table className="min-w-full text-xs md:text-sm text-left border-collapse">
               <tbody>
                 <tr className="border-b border-gray-100 font-bold">
