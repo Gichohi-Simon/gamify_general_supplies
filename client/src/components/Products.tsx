@@ -45,7 +45,7 @@ const Products = ({ products }: FirstThreeProducts) => {
                   </Link>
                 </div>
 
-                <div className="relative w-full max-w-[80px] md:max-w-[100px] h-20 md:h-32 overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
+                <div className="relative w-full max-w-[80px] md:max-w-[140px] h-20 md:h-44 overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
                   <Link href={`/shop/${catalog.id}`}>
                     <Image
                       src={catalog.images[0]}
@@ -58,10 +58,10 @@ const Products = ({ products }: FirstThreeProducts) => {
                 </div>
 
                 <div className="text-start w-full">
-                  <span className="text-[10px] md:text-xs font-bold tracking-wider line-clamp-1 capitalize block">
+                  <span className="text-xs md:text-sm font-bold tracking-wider line-clamp-1 capitalize block">
                     {catalog.name}
                   </span>
-                  <span className="text-[10px] md:text-xs mt-1 block">
+                  <span className="text-xs md:text-sm mt-1 block">
                     ksh {Number(catalog.price).toLocaleString()}
                   </span>
                 </div>
@@ -82,13 +82,13 @@ const Products = ({ products }: FirstThreeProducts) => {
                   <span
                     role="button"
                     tabIndex={0}
-                    className="capitalize text-[10px] bg-primary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
+                    className="capitalize text-[10px] md:text-xs bg-primary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() => dispatch(addToCart({ productId: catalog.id, quantity }))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") dispatch(addToCart({ productId: catalog.id, quantity }));
                     }}
                   >
-                    <PlusCircleIcon className="size-4" /> add to cart
+                    <PlusCircleIcon className="size-5" /> add to cart
                   </span>
                 )}
               </div>
@@ -100,9 +100,9 @@ const Products = ({ products }: FirstThreeProducts) => {
       <div className="flex justify-center">
         <Link
           href="/shop"
-          className="mt-6 md:mt-10 px-4 md:px-6 py-2 rounded-full bg-primary flex justify-center items-center gap-2 w-24 md:w-32 hover:bg-secondary"
+          className="mt-6 md:mt-10 px-2 py-1 rounded-full bg-primary flex justify-center items-center gap-2 w-24 md:w-28 hover:bg-secondary"
         >
-          <p className="text-xs md:text-sm lowercase font-bold">Shop</p>
+          <p className="text-[10px] md:text-xs lowercase font-bold">Shop</p>
           <ArrowRightCircleIcon className="size-5" />
         </Link>
       </div>

@@ -44,7 +44,7 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                   </div>
                 </div>
 
-                <div className="relative w-full max-w-[80px] md:max-w-[100px] h-20 md:h-32 overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
+                <div className="relative w-full max-w-[80px] md:max-w-[140px] h-20 md:h-44 overflow-hidden rounded-lg cursor-pointer mx-auto mt-3">
                   <Link href={`/shop/${catalog.id}`}>
                     <Image
                       src={catalog.images[0]}
@@ -57,10 +57,10 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                 </div>
 
                 <div className="mt-2 text-start w-full">
-                  <span className="text-[10px] md:text-xs font-bold tracking-wider line-clamp-1 capitalize block">
+                  <span className="text-[10px] md:text-sm font-bold tracking-wider line-clamp-1 capitalize block">
                     {catalog.name}
                   </span>
-                  <span className="text-[10px] md:text-xs mt-1 block">
+                  <span className="text-[10px] md:text-sm mt-1 block">
                     ksh {Number(catalog.price).toLocaleString()}
                   </span>
                 </div>
