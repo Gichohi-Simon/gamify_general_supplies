@@ -70,6 +70,12 @@ export default function CartPage() {
     return <EmptyCart />;
   }
 
+  const handleManualQuantity = (productId: string, newQty: number) => {
+    if (!newQty || newQty < 1) return;
+
+    dispatch(addToCart({ productId, quantity: newQty }));
+  };
+
   return (
     <div className="font-[family-name:var(--font-poppins)] mx-[30px] md:mx-[60px] my-3 md:my-5 min-h-screen">
       <div className="flex justify-between items-center">
@@ -134,7 +140,18 @@ export default function CartPage() {
                         >
                           <MinusIcon className="size-2 md:size-3" />
                         </button>
-                        <span className="font-semibold text-[10px] md:text-xs">{item.quantity}</span>
+                        <input
+                          type="number"
+                          min={1}
+                          className="w-12 md:w-14 text-center border rounded-md text-[10px] md:text-xs"
+                          value={item.quantity}
+                          onChange={(e) =>
+                            handleManualQuantity(
+                              item.id!,
+                              Number(e.target.value)
+                            )
+                          }
+                        />
                         <button
                           onClick={() =>
                             handleIncrease(item.id!, item.quantity)
