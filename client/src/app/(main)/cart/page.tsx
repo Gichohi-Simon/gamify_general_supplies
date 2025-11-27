@@ -82,19 +82,19 @@ export default function CartPage() {
             <table className="min-w-full text-xs md:text-sm text-left border-collapse table-auto border border-1">
               <thead className="bg-primary">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs md:text-sm font-semibold">
+                  <th className="px-4 py-3 text-left text-[10px] md:text-xs font-semibold">
                     Product
                   </th>
-                  <th className="px-4 py-3 text-left text-xs md:text-sm font-semibold">
+                  <th className="px-4 py-3 text-left text-[10px] md:text-xs font-semibold">
                     Price
                   </th>
-                  <th className="px-4 py-3 text-center text-xs md:text-sm font-semibold">
+                  <th className="px-4 py-3 text-center text-[10px] md:text-xs font-semibold">
                     Quantity
                   </th>
-                  <th className="px-4 py-3 text-right text-xs md:text-sm font-semibold">
+                  <th className="px-4 py-3 text-right text-[10px] md:text-xs font-semibold">
                     Subtotal
                   </th>
-                  <th className="px-4 py-3 text-center text-xs md:text-sm font-semibold">
+                  <th className="px-4 py-3 text-center text-[10px] md:text-xs font-semibold">
                     Remove
                   </th>
                 </tr>
@@ -112,16 +112,16 @@ export default function CartPage() {
                           className="w-16 h-16 md:w-20 md:h-20 object-contain"
                         />
                         <div className="flex flex-col">
-                          <p className="font-bold capitalize text-gray-800 break-words text-sm md:text-base tracking-wider">
+                          <p className="font-bold capitalize text-gray-800 break-words text-[10px] md:text-xs tracking-wider">
                             {item.name}
                           </p>
-                          <span className="text-xs md:text-sm tracking-wider">
+                          <span className="text-[10px] md:text-xs tracking-wider">
                             {item.category}
                           </span>
                         </div>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-sm md:text-base">
+                    <td className="px-4 py-4 text-gray-700 whitespace-nowrap align-middle text-xs md:text-sm">
                       Ksh {item.price.toLocaleString()}
                     </td>
                     <td className="px-4 py-4 text-center whitespace-nowrap align-middle">
@@ -132,26 +132,26 @@ export default function CartPage() {
                           }
                           className="border rounded-full p-1 hover:bg-gray-100"
                         >
-                          <MinusIcon className="size-3 md:size-4" />
+                          <MinusIcon className="size-2 md:size-3" />
                         </button>
-                        <span className="font-semibold">{item.quantity}</span>
+                        <span className="font-semibold text-[10px] md:text-xs">{item.quantity}</span>
                         <button
                           onClick={() =>
                             handleIncrease(item.id!, item.quantity)
                           }
                           className="border rounded-full p-1 hover:bg-gray-100"
                         >
-                          <PlusIcon className="size-3 md:size-4" />
+                          <PlusIcon className="size-2 md:size-3" />
                         </button>
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle text-sm md:text-base">
+                    <td className="px-4 py-4 text-right font-semibold text-gray-800 whitespace-nowrap align-middle text-xs md:text-sm">
                       Ksh {item.subtotal.toLocaleString()}
                     </td>
                     <td className="px-4 py-4 text-center align-middle">
                       <TrashIcon
                         onClick={() => dispatch(removeFromCart(item.id))}
-                        className="size-5 text-red-500 cursor-pointer hover:scale-110 transition"
+                        className="size-3 md:size-4 text-red-500 cursor-pointer hover:scale-110 transition"
                       />
                     </td>
                   </tr>
@@ -166,7 +166,7 @@ export default function CartPage() {
             <table className="min-w-full text-xs md:text-sm text-left border-collapse">
               <tbody>
                 <tr className="border-b border-gray-100 font-bold">
-                  <td className="px-4 py-3 font-semibold text-xs md:text-sm">
+                  <td className="px-4 py-3 font-semibold text-[10px] md:text-xs">
                     Subtotal
                   </td>
                   <td className="px-4 py-3 text-right text-xs md:text-sm">
@@ -174,15 +174,15 @@ export default function CartPage() {
                   </td>
                 </tr>
                 <tr className="border-b border-gray-100 font-bold">
-                  <td className="px-4 py-3 font-semibold text-xs md:text-sm">
+                  <td className="px-4 py-3 font-semibold text-[10px] md:text-xs">
                     VAT (16%)
                   </td>
-                  <td className="px-4 py-3 text-right text-xs md:text-sm">
+                  <td className="px-4 py-3 text-right text-[10px] md:text-xs">
                     Ksh {vat.toLocaleString()}
                   </td>
                 </tr>
                 <tr className="border-t border-gray-200 font-bold">
-                  <td className="px-4 py-3 text-xs md:text-sm">Total</td>
+                  <td className="px-4 py-3 text-[10px] md:text-xs">Total</td>
                   <td className="px-4 py-3 text-right text-xs md:text-sm">
                     Ksh {total.toLocaleString()}
                   </td>
@@ -191,13 +191,13 @@ export default function CartPage() {
             </table>
 
             <Link href="/checkout">
-              <button className="w-full bg-primary py-3 text-[10px] md:text-xs rounded-full mt-8 font-semibold hover:bg-primary/80 transition cursor-pointer">
+              <button className="w-full bg-primary py-2 text-[10px] md:text-xs rounded-full mt-8 font-semibold hover:bg-primary/80 transition cursor-pointer">
                 Proceed to Checkout
               </button>
             </Link>
 
             <Link href="/shop">
-              <button className="bg-primary py-3 px-3 rounded-full text-[10px] md:text-xs cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4">
+              <button className="bg-primary py-2 px-3 rounded-full text-[10px] md:text-xs cursor-pointer font-semibold hover:bg-primary/80 transition w-full mt-4">
                 Continue Shopping
               </button>
             </Link>
