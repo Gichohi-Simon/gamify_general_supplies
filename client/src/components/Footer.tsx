@@ -83,7 +83,7 @@ const Footer = () => {
           &copy; 2025 Gamify General Supplies and general services, All rights
           reserved.
         </p>
-        <p className="text-xs md:text-sm">
+        <p className="text-xs md:text-sm mt-3 md:mt-0">
           Developed by{" "}
           <a href="https://gichohi.com">
             <span className="font-bold">gichohi</span>
