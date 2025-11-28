@@ -9,12 +9,14 @@ import { useAppDispatch } from "@/store/hooks";
 import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 import { useSignIn } from "@/hooks/auth";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { mutateAsync } = useSignIn();
 
+ 
   const initialValues: loginInitialValues = {
     email: "",
     password: "",
@@ -29,11 +31,13 @@ export default function LoginPage() {
     onSubmit: async (values) => {
       try {
         const data = await mutateAsync(values);
+        console.log(data);
         dispatch(setCredentials({ userInfo: data.user }));
         formik.resetForm();
         router.push("/account");
       } catch (error) {
-        console.error(error);
+        toast.error((error as Error).message)
+        console.error((error as Error).message);
       }
     },
   });
@@ -51,7 +55,7 @@ export default function LoginPage() {
           general supplies.
         </p>
         <div className="mt-5 mb-3">
-          <p className="text-lg md:text-2xl tracking-wider font-bold">login</p>
+          <p className="text-lg md:text-2xl tracking-wider font-bold text-white">login</p>
           <p className="text-xs md:text-sm">
             welcome to gamify store, login to continue.
           </p>

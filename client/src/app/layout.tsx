@@ -3,7 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 
 import Providers from "./providers";
-
+import { Toaster } from "@/components/ui/sonner"
 const poppins = Raleway({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -26,6 +26,7 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased overflow-x-hidden min-h-screen flex flex-col`}
       >
         <Providers>
+          <Toaster/>
           <main className="flex-grow">{children}</main>
         </Providers>
       </body>

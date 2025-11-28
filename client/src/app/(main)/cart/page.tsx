@@ -73,7 +73,8 @@ export default function CartPage() {
   const handleManualQuantity = (productId: string, newQty: number) => {
     if (!newQty || newQty < 1) return;
 
-    dispatch(addToCart({ productId, quantity: newQty }));
+    const action = dispatch(addToCart({ productId, quantity: newQty }));
+    console.log(action);
   };
 
   return (

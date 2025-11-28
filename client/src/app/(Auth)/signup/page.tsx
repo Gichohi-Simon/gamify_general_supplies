@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 // import { setCredentials } from "../../../store/features/authSlice";
 import { initialFormValuesInterface } from "@/types/types";
 import { useSignUp } from "@/hooks/auth";
+import { toast } from "sonner";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -40,7 +41,8 @@ export default function SignUpPage() {
         formik.resetForm();
         router.push("/login");
       } catch (error) {
-        console.log(error);
+        toast.error((error as Error).message)
+        return
       }
     },
   });

@@ -9,8 +9,11 @@ export const signIn = async (values: loginInitialValues) => {
     body: JSON.stringify(values),
     headers: { "Content-Type": "application/json" },
   });
-  if (!response.ok) throw new Error("error signing in");
-  return response.json();
+  
+  const data = await response.json()
+  if (!response.ok) throw new Error(data.msg || "error in Login");
+  
+  return data;
 };
 
 export const signUp = async (values: initialFormValuesInterface) => {
@@ -19,8 +22,10 @@ export const signUp = async (values: initialFormValuesInterface) => {
     body: JSON.stringify(values),
     headers: { "Content-Type": "application/json" },
   });
-  if (!response.ok) throw new Error("error signing up");
-  return response.json();
+  const data = await response.json();
+
+  if (!response.ok) throw new Error(data.msg || "error signing up");
+  return data;
 };
 
 export const signOut = async () => {
@@ -28,8 +33,10 @@ export const signOut = async () => {
     method: "POST",
     credentials: "include",
   });
-  if (!response.ok) throw new Error("logout failed");
-  return response.json();
+  const data = await response.json();
+
+  if (!response.ok) throw new Error(data.msg || "logout failed");
+  return data;
 };
 
 export const checkAuth = async () => {
