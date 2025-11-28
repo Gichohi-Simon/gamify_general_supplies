@@ -4,6 +4,7 @@ import React from "react";
 import { useGetLogedInUserAddress } from "@/hooks/address";
 import Link from "next/link";
 import { useAppSelector } from "@/store/hooks";
+import { PencilSquareIcon } from "@heroicons/react/20/solid";
 
 export default function UserAddress() {
   const { data, isLoading, isError } = useGetLogedInUserAddress();
@@ -40,14 +41,17 @@ export default function UserAddress() {
         <p className="text-xs md:text-sm tracking-wider font-bold capitalize">
           Customer Address
         </p>
-
         <Link href="/updateaddress">
-          <button className="bg-primary px-2 py-1 rounded-sm text-[10px] md:text-xs capitalize tracking-wider">
-            Change address
-          </button>
+          <span className="cursor-pointer flex justify-center items-center gap-1 group bg-primary py-2 pl-3 pr-2 rounded-md w-fit font-bold">
+            <PencilSquareIcon className="size-3 md:size-4" />
+            <p className="overflow-hidden max-w-0 opacity-0 group-hover:max-w-[50px] group-hover:opacity-100 transition-all duration-300 text-[10px] md:text-xs whitespace-nowrap">
+              edit
+            </p>
+          </span>
         </Link>
       </div>
       <div>
+        <p className="font-bold text-wider text-sm md:text-base">email</p>
         <p className="text-xs md:text-sm lowercase">{user?.email}</p>
       </div>
       <div>
