@@ -28,7 +28,7 @@ const Header = () => {
   const cartCount = isMounted ? cart.length : 0;
 
   return (
-    <Popover className="flex justify-between items-center px-2 md:px-5 py-4 mx-[20px] md:mx-[40px] font-[family-name:var(--font-poppins)] relative z-50">
+    <header className="flex justify-between items-center px-2 md:px-5 py-4 mx-[20px] md:mx-[40px] font-[family-name:var(--font-poppins)] relative z-50">
       <div className="text-xs md:text-sm">
         <Link href="/" className="flex flex-col">
           <span className="font-bold text-base md:text-xl uppercase tracking-wider">
@@ -40,7 +40,6 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* Desktop Menu */}
       <div className="hidden md:flex gap-4 items-center justify-between">
         <Link
           href="/shop"
@@ -73,15 +72,12 @@ const Header = () => {
         </Link>
       </div>
 
-      {/* Mobile Menu */}
-      <Popover>
+      <Popover className="md:hidden">
         {({ close }) => (
           <>
-            <div className="block md:hidden">
-              <PopoverButton>
-                <Bars3Icon className="size-6" />
-              </PopoverButton>
-            </div>
+            <PopoverButton>
+              <Bars3Icon className="size-6" />
+            </PopoverButton>
 
             <Transition
               as={Fragment}
@@ -92,7 +88,7 @@ const Header = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <PopoverPanel className="fixed inset-0 md:hidden bg-secondary z-50 px-4 py-6">
+              <PopoverPanel className="fixed inset-0 bg-secondary z-50 px-4 py-6">
                 <div className="flex justify-end mb-6">
                   <PopoverButton>
                     <XCircleIcon className="text-black size-6" />
@@ -141,7 +137,7 @@ const Header = () => {
           </>
         )}
       </Popover>
-    </Popover>
+    </header>
   );
 };
 
