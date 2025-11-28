@@ -45,7 +45,7 @@ export default function AccounPage() {
                   </Link>
                 </div>
                 <Link href="/orders">
-                  <button className="bg-black text-white px-2 py-1 md:px-3 md:py-2 text-xs md:text-sm rounded-lg w-full">
+                  <button className="bg-black text-white px-2 py-2 md:px-3 text-xs md:text-sm rounded-lg w-full">
                     view orders
                   </button>
                 </Link>
