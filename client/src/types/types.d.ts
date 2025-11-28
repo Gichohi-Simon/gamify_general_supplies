@@ -83,6 +83,7 @@ export interface Address {
   floorNumber:string,
   city:string,
   postalCode:string,
+  phoneNumber?:string,
 }
 
 export interface UserAddressResponse {

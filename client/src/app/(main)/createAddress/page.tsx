@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function CreateAddress() {
   const router = useRouter();
-  const { mutate } = useCreateDeliveryAddress();
+  const { mutateAsync } = useCreateDeliveryAddress();
 
   const initialValues: Address = {
     companyName: "",
@@ -19,6 +19,7 @@ export default function CreateAddress() {
     floorNumber: "",
     city: "",
     postalCode: "",
+    phoneNumber: "",
   };
 
   const formik = useFormik({
@@ -30,11 +31,11 @@ export default function CreateAddress() {
       floorNumber: Yup.string().required("floor number is required"),
       city: Yup.string().required("city is a required field"),
       postalCode: Yup.string().required("postal code is required"),
+      phoneNumber: Yup.string().required("phone number is required")
     }),
     onSubmit: async (values) => {
       try {
-        const data = mutate(values);
-        console.log(data);
+        await mutateAsync(values);
         formik.resetForm();
         router.push("/account");
       } catch (error) {
@@ -145,7 +146,8 @@ export default function CreateAddress() {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className="flex gap-4">
+          <div className="w-1/2">
           <label htmlFor="postalCode" className="text-[10px] md:text-xs tracking-wider">
             Postal Code
           </label>
@@ -163,6 +165,29 @@ export default function CreateAddress() {
               {formik.errors.postalCode}
             </p>
           )}
+        </div>
+        <div className="w-1/2">
+          <label
+            htmlFor="phoneNumber"
+            className="text-[10px] md:text-xs tracking-wider"
+          >
+            Phone Number
+          </label>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            name="phoneNumber"
+            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.phoneNumber}
+          />
+          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+            <p className="text-red-500 mt-1 font-medium text-xs">
+              {formik.errors.phoneNumber}
+            </p>
+          )}
+        </div>
         </div>
 
         <div className="pt-4 flex justify-end gap-4">
