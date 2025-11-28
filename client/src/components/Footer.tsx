@@ -42,7 +42,7 @@ const Footer = () => {
 
           <div className="mt-3">
             <p className="font-bold capitalize text-xs md:text-sm tracking-wider">
-              warehouse location
+              store
             </p>
             <p className="text-[10px] md:text-xs capitalize tracking-wider">
               Shimanzi jua kali
