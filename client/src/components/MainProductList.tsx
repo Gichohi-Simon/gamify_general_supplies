@@ -13,7 +13,7 @@ export default function MainProductList() {
 
   const { data, isLoading, error } = useProducts({
     page,
-    limit:6,
+    limit:8,
     query,
   });
 
