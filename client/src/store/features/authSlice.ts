@@ -3,7 +3,7 @@ import { AuthState } from "@/types/types";
 
 const initialState: AuthState = {
   userInfo: null,
-  initialized:false,
+  initialized: false,
 };
 
 const authSlice = createSlice({
