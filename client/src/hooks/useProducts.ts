@@ -9,22 +9,18 @@ import {
 import { postsInterface } from "@/types/types";
 
 export type GetAllProductResponse = {
-  success:boolean;
-  currentPage:number;
-  totalPages:number;
-  totalProducts:number;
-  products:postsInterface[]
-}
+  success: boolean;
+  currentPage: number;
+  totalPages: number;
+  totalProducts: number;
+  products: postsInterface[];
+};
 
-export const useProducts = ({
-  page = 1,
-  limit = 6,
-  query = "",
-} = {}) => {
+export const useProducts = ({ page = 1, limit = 6, query = "" } = {}) => {
   return useQuery<GetAllProductResponse>({
-    queryKey: ["products", {page, limit, query}] as const,
-    queryFn: () => fetchProducts({page, limit, query}),
-    placeholderData:keepPreviousData,
+    queryKey: ["products", { page, limit, query }] as const,
+    queryFn: () => fetchProducts({ page, limit, query }),
+    placeholderData: keepPreviousData,
   });
 };
 
@@ -37,16 +33,16 @@ export const useGetFirstFourProducts = () => {
 };
 
 export const useGetRandomFourProducts = () => {
-  return useQuery<{products:postsInterface[]}>({
-    queryKey:["productsRandom"],
-    queryFn:fetchRandomFourProducts,
-    staleTime:Infinity,
-  })
-}
+  return useQuery<{ products: postsInterface[] }>({
+    queryKey: ["productsRandom"],
+    queryFn: fetchRandomFourProducts,
+    staleTime: Infinity,
+  });
+};
 
 export const useGetSingleProduct = (id: string) => {
   return useQuery<{ singleProduct: postsInterface }>({
-    queryKey: ["products", id],
+    queryKey: ["product", id],
     queryFn: () => fetchSingleProduct(id),
     enabled: !!id,
     staleTime: Infinity,

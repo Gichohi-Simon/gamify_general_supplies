@@ -9,19 +9,19 @@ interface CartProductsResponse {
 
 export const fetchProducts = async ({
   page = 1,
-  limit = 6,
+  limit = 8,
   query = "",
 }): Promise<GetAllProductResponse> => {
   const params = new URLSearchParams();
 
   params.append("page", page.toString());
   params.append("limit", limit.toString());
-  if(query) params.append("q", query);
-  
+  if (query) params.append("q", query);
+
   const response = await fetch(`${API}/product/all-products?${params}`, {
     cache: "no-store",
   });
-  
+
   if (!response.ok) throw new Error("Error fetching data");
   return response.json();
 };
