@@ -9,6 +9,9 @@ import { useAppDispatch } from "@/store/hooks";
 import { loginInitialValues } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 import { useSignIn } from "@/hooks/auth";
+import GoogleLoginButton from "@/components/GoogleLoginButton";
+import { toast } from "sonner";
+import { User } from "@/types/types";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -56,6 +59,13 @@ export default function LoginPage() {
             welcome to gamify store, login to continue.
           </p>
         </div>
+        <GoogleLoginButton
+          onLogin={(user: User) => {
+            dispatch(setCredentials({ userInfo: user }));
+            toast.success("Google login");
+            router.push("/shop");
+          }}
+        />
         <div>
           <label htmlFor="email" className="font-semibold text-xs md:text-sm">
             email

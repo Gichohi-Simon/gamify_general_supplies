@@ -5,14 +5,16 @@ import Link from "next/link";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
-// import { useDispatch } from "react-redux";
-// import { setCredentials } from "../../../store/features/authSlice";
-import { initialFormValuesInterface } from "@/types/types";
+import { useAppDispatch } from "@/store/hooks";
+import { setCredentials } from "../../../store/features/authSlice";
+import { initialFormValuesInterface, User } from "@/types/types";
 import { useSignUp } from "@/hooks/auth";
+import GoogleLoginButton from "@/components/GoogleLoginButton";
+import { toast } from "sonner";
 
 export default function SignUpPage() {
   const router = useRouter();
-  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { mutateAsync } = useSignUp();
 
   const initialValues: initialFormValuesInterface = {
@@ -65,6 +67,13 @@ export default function SignUpPage() {
             welcome to gamify, Register here!
           </p>
         </div>
+        <GoogleLoginButton
+          onLogin={(user: User) => {
+            dispatch(setCredentials({ userInfo: user }));
+            toast.success("Google login successful");
+            router.push("/shop");
+          }}
+        />
         <div>
           <label htmlFor="email" className="font-semibold text-xs md:text-sm">
             email

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -10,4 +11,101 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+
+@layer base {
+  :root {
+    /* Core */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* BRAND: Yellow + Black */
+    --primary: 48 96% 50%;          /* yellow */
+    --primary-foreground: 0 0% 10%; /* black text */
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 48 96% 50%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 48 96% 50%;
+
+    /* Charts (optional) */
+    --chart-1: 48 96% 50%;
+    --chart-2: 40 90% 55%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 20 70% 55%;
+    --chart-5: 10 60% 55%;
+
+    --radius: 0.5rem;
+  }
+
+  /* ------------------------------
+     Theme variables (DARK)
+  -------------------------------- */
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Keep yellow brand in dark mode */
+    --primary: 48 96% 50%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 48 96% 50%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 48 96% 50%;
+
+    --chart-1: 48 96% 50%;
+    --chart-2: 40 90% 55%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 20 70% 55%;
+    --chart-5: 10 60% 55%;
+  }
+}
+
+/* ------------------------------
+   Base styles
+-------------------------------- */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }

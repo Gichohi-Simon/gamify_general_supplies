@@ -1,3 +1,14 @@
+export type UserRole = "USER" | "ADMIN" | "EMPLOYEE";
+export type AuthProvider = "LOCAL" | "GOOGLE";
+
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: UserRole;
+  authProvider: AuthProvider;
+}
+
 export interface userState {
   id: string;
   email: string;
@@ -6,8 +17,8 @@ export interface userState {
 }
 
 export interface AuthState {
-  userInfo:userState | null;
-  initialized:boolean;
+  userInfo: userState | null;
+  initialized: boolean;
 }
 
 export interface initialFormValuesInterface {
@@ -39,15 +50,15 @@ export interface postsInterface {
   images: string[];
   createdAt: string;
   cloudinary_id: string;
-  description:string;
-  category:string;
+  description: string;
+  category: string;
 }
 
 export interface OrderType {
   id: string;
   userId: number;
-  itemsPrice:number,
-  shippingPrice:number,
+  itemsPrice: number;
+  shippingPrice: number;
   taxPrice: number;
   totalPrice: number;
   isPaid: boolean;
@@ -69,27 +80,27 @@ export interface OrderItem {
     name: string;
     images: string;
   };
-};
+}
 
 export interface OrderItemInput {
-  productId:string;
-  quantity:number;
+  productId: string;
+  quantity: number;
 }
 
 export interface Address {
-  id?:string,
-  companyName:string,
-  street:string,
-  floorNumber:string,
-  city:string,
-  postalCode:string,
-  phoneNumber?:string,
+  id?: string;
+  companyName: string;
+  street: string;
+  floorNumber: string;
+  city: string;
+  postalCode: string;
+  phoneNumber?: string;
 }
 
 export interface UserAddressResponse {
-  address:Address
+  address: Address;
 }
 
 export interface DeleteResponse {
-  message:string;
+  message: string;
 }
