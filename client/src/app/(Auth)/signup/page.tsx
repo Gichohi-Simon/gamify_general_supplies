@@ -37,12 +37,16 @@ export default function SignUpPage() {
 
     onSubmit: async (values) => {
       try {
-        const data = await mutateAsync(values);
-        console.log("data from signup", data);
+        await mutateAsync(values);
+        toast.success("signup succesful");
         formik.resetForm();
         router.push("/login");
-      } catch (error) {
-        console.log(error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("something went wrong contact admin");
+        }
       }
     },
   });

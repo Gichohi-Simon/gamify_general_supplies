@@ -33,10 +33,15 @@ export default function LoginPage() {
       try {
         const data = await mutateAsync(values);
         dispatch(setCredentials({ userInfo: data.user }));
+        toast.success("login successful");
         formik.resetForm();
         router.push("/account");
-      } catch (error) {
-        console.error(error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        } else {
+          toast.error("unexpected error occurred");
+        }
       }
     },
   });
@@ -62,7 +67,7 @@ export default function LoginPage() {
         <GoogleLoginButton
           onLogin={(user: User) => {
             dispatch(setCredentials({ userInfo: user }));
-            toast.success("Google login");
+            toast.success("login succesful");
             router.push("/shop");
           }}
         />
