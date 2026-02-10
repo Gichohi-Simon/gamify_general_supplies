@@ -51,12 +51,18 @@ export default function UserAddress() {
         </Link>
       </div>
       <div>
-        <p className="font-bold text-wider text-xs md:text-sm capitalize">email</p>
+        <p className="font-bold text-wider text-xs md:text-sm capitalize">
+          email
+        </p>
         <p className="text-xs md:text-sm lowercase">{user?.email}</p>
       </div>
-       <div className="my-2">
-        <p className="font-bold text-wider text-xs md:text-sm capitalize">phone number</p>
-        <p className="text-xs md:text-sm lowercase">{data.address.phoneNumber}</p>
+      <div className="my-2">
+        <p className="font-bold text-wider text-xs md:text-sm capitalize">
+          phone number
+        </p>
+        <p className="text-xs md:text-sm lowercase">
+          {data.address.phoneNumber}
+        </p>
       </div>
       <div>
         <p className="text-xs md:text-sm mt-2 font-bold">ship to</p>
