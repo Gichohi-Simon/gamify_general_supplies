@@ -11,6 +11,7 @@ import { useCartProducts } from "@/hooks/useProducts";
 import { postsInterface } from "@/types/types";
 import { addToCart, removeFromCart } from "@/store/features/cartSlice";
 import EmptyCart from "@/components/EmptyCart";
+import { toast } from "sonner";
 
 export default function CartPage() {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export default function CartPage() {
     const merged = cartItems.map((item) => {
       const local = localProducts.find((p) => p.id === item.productId);
       const fresh = fetchedCartData?.products?.find(
-        (p) => p.id === item.productId
+        (p) => p.id === item.productId,
       );
       const product = fresh || local;
       if (!product || product.id === undefined) return null;
@@ -51,11 +52,13 @@ export default function CartPage() {
 
   const handleIncrease = (productId: string, currentQty: number) => {
     dispatch(addToCart({ productId, quantity: currentQty + 1 }));
+    toast.success("product added successfully");
   };
 
   const handleDecrease = (productId: string, currentQty: number) => {
     if (currentQty <= 1) return;
     dispatch(addToCart({ productId, quantity: currentQty - 1 }));
+    toast.success("item quantity has been updated");
   };
 
   if (isLoading) {
@@ -72,8 +75,8 @@ export default function CartPage() {
 
   const handleManualQuantity = (productId: string, newQty: number) => {
     if (!newQty || newQty < 1) return;
-
     dispatch(addToCart({ productId, quantity: newQty }));
+    toast.success("item quantity has been updated");
   };
 
   return (
@@ -148,7 +151,7 @@ export default function CartPage() {
                           onChange={(e) =>
                             handleManualQuantity(
                               item.id!,
-                              Number(e.target.value)
+                              Number(e.target.value),
                             )
                           }
                         />
@@ -167,7 +170,12 @@ export default function CartPage() {
                     </td>
                     <td className="px-4 py-4 text-center align-middle">
                       <TrashIcon
-                        onClick={() => dispatch(removeFromCart(item.id))}
+                        onClick={() =>
+                          dispatch(
+                            removeFromCart(item.id),
+                            toast.success("product removed from cart"),
+                          )
+                        }
                         className="size-3 md:size-4 text-red-500 cursor-pointer hover:scale-110 transition"
                       />
                     </td>

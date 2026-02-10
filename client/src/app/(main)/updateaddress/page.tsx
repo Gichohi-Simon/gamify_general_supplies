@@ -11,6 +11,7 @@ import {
 import { Address } from "@/types/types";
 import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function UpdateAddress() {
   const router = useRouter();
@@ -35,15 +36,18 @@ export default function UpdateAddress() {
       floorNumber: Yup.string(),
       city: Yup.string().required("city is a required field"),
       postalCode: Yup.string(),
-      phoneNumber: Yup.string().required("phone number is required")
+      phoneNumber: Yup.string().required("phone number is required"),
     }),
     onSubmit: async (values) => {
       try {
         await mutateAsync(values);
         formik.resetForm();
+        toast.success("address updated successful");
         router.push("/checkout");
-      } catch (error) {
-        console.error(error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        }
       }
     },
   });
@@ -57,10 +61,10 @@ export default function UpdateAddress() {
         <div>
           <div className="mb-2">
             <Link href="/">
-            <span>
-              <ArrowLeftCircleIcon className="size-4" />
-            </span>
-          </Link>
+              <span>
+                <ArrowLeftCircleIcon className="size-4" />
+              </span>
+            </Link>
           </div>
           <p className="text-sm font-bold tracking-wider capitalize">
             Update Address
@@ -164,50 +168,50 @@ export default function UpdateAddress() {
 
         <div className="flex gap-4">
           <div className="w-1/2">
-          <label
-            htmlFor="postalCode"
-            className="text-[10px] md:text-xs tracking-wider"
-          >
-            Postal Code
-          </label>
-          <input
-            type="text"
-            placeholder="Postal code"
-            name="postalCode"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.postalCode}
-          />
-          {formik.touched.postalCode && formik.errors.postalCode && (
-            <p className="text-red-500 mt-1 font-medium text-xs">
-              {formik.errors.postalCode}
-            </p>
-          )}
-        </div>
+            <label
+              htmlFor="postalCode"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
+              Postal Code
+            </label>
+            <input
+              type="text"
+              placeholder="Postal code"
+              name="postalCode"
+              className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.postalCode}
+            />
+            {formik.touched.postalCode && formik.errors.postalCode && (
+              <p className="text-red-500 mt-1 font-medium text-xs">
+                {formik.errors.postalCode}
+              </p>
+            )}
+          </div>
 
-        <div className="w-1/2">
-          <label
-            htmlFor="phoneNumber"
-            className="text-[10px] md:text-xs tracking-wider"
-          >
-            Phone Number
-          </label>
-          <input
-            type="text"
-            placeholder="Phone Number"
-            name="phoneNumber"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.phoneNumber}
-          />
-          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-            <p className="text-red-500 mt-1 font-medium text-xs">
-              {formik.errors.phoneNumber}
-            </p>
-          )}
-        </div>
+          <div className="w-1/2">
+            <label
+              htmlFor="phoneNumber"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
+              Phone Number
+            </label>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.phoneNumber}
+            />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+              <p className="text-red-500 mt-1 font-medium text-xs">
+                {formik.errors.phoneNumber}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="pt-4 flex justify-end gap-4">

@@ -7,6 +7,7 @@ import { EyeIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import { postsInterface } from "@/types/types";
 import { addToCart, removeFromCart } from "@/store/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { toast } from "sonner";
 
 interface AllPosts {
   products: postsInterface[];
@@ -19,12 +20,14 @@ export default function ShopProductsComponent({ products }: AllPosts) {
 
   return (
     <div className="mt-6 md:mt-12">
-      <p className="mx-[30px] md:mx-[60px] text-lg md:text-xl font-bold">Get Started</p>
+      <p className="mx-[30px] md:mx-[60px] text-lg md:text-xl font-bold">
+        Get Started
+      </p>
       <div className="flex justify-center">
         <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pb-10 md:pb-12 pt-6 md:pt-10 mx-[30px] md:mx-[60px]">
           {products?.map((catalog) => {
             const itemInCart = cartItems.some(
-              (item) => item.productId === catalog.id
+              (item) => item.productId === catalog.id,
             );
 
             return (
@@ -70,10 +73,18 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                     role="button"
                     tabIndex={0}
                     className="capitalize text-[10px] md:text-xs bg-secondary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
-                    onClick={() => dispatch(removeFromCart(catalog.id))}
+                    onClick={() =>
+                      dispatch(
+                        removeFromCart(catalog.id),
+                        toast.warning("product removed from cart"),
+                      )
+                    }
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ")
-                        dispatch(removeFromCart(catalog.id));
+                        dispatch(
+                          removeFromCart(catalog.id),
+                          toast.warning("product removed from cart"),
+                        );
                     }}
                   >
                     remove from cart
@@ -84,11 +95,17 @@ export default function ShopProductsComponent({ products }: AllPosts) {
                     tabIndex={0}
                     className="capitalize text-[10px] md:text-xs bg-primary px-4 py-2 rounded-full w-full mt-3 md:mt-6 mb-3 flex justify-center items-center gap-2 font-bold cursor-pointer"
                     onClick={() =>
-                      dispatch(addToCart({ productId: catalog.id, quantity }))
+                      dispatch(
+                        addToCart({ productId: catalog.id, quantity }),
+                        toast.success("product added to cart"),
+                      )
                     }
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ")
-                        dispatch(addToCart({ productId: catalog.id, quantity }));
+                        dispatch(
+                          addToCart({ productId: catalog.id, quantity }),
+                          toast.success("product added to cart"),
+                        );
                     }}
                   >
                     <PlusCircleIcon className="size-4 md:size-5" /> add to cart

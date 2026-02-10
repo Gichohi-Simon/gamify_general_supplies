@@ -8,6 +8,7 @@ import { useCreateDeliveryAddress } from "@/hooks/address";
 import { Address } from "@/types/types";
 import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
+import { toast } from "sonner";
 
 export default function CreateAddress() {
   const router = useRouter();
@@ -31,15 +32,18 @@ export default function CreateAddress() {
       floorNumber: Yup.string().required("floor number is required"),
       city: Yup.string().required("city is a required field"),
       postalCode: Yup.string().required("postal code is required"),
-      phoneNumber: Yup.string().required("phone number is required")
+      phoneNumber: Yup.string().required("phone number is required"),
     }),
     onSubmit: async (values) => {
       try {
         await mutateAsync(values);
         formik.resetForm();
+        toast.success("address created succesfully");
         router.push("/account");
-      } catch (error) {
-        console.error(error);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          toast.success(error.message);
+        }
       }
     },
   });
@@ -53,18 +57,25 @@ export default function CreateAddress() {
         <div>
           <div className="mb-2">
             <Link href="/">
-            <span>
-              <ArrowLeftCircleIcon className="size-4" />
-            </span>
-          </Link>
+              <span>
+                <ArrowLeftCircleIcon className="size-4" />
+              </span>
+            </Link>
           </div>
-          <p className="text-sm font-bold tracking-wider capitalize">Create Address</p>
-          <p className="text-[10px] md:text-xs">manage your address details here</p>
+          <p className="text-sm font-bold tracking-wider capitalize">
+            Create Address
+          </p>
+          <p className="text-[10px] md:text-xs">
+            manage your address details here
+          </p>
         </div>
 
         <div className="flex gap-4">
           <div className="w-1/2">
-            <label htmlFor="companyName" className="text-[10px] md:text-xs tracking-wider">
+            <label
+              htmlFor="companyName"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
               Company Name
             </label>
             <input
@@ -84,7 +95,10 @@ export default function CreateAddress() {
           </div>
 
           <div className="w-1/2">
-            <label htmlFor="street" className="text-[10px] md:text-xs tracking-wider">
+            <label
+              htmlFor="street"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
               Street
             </label>
             <input
@@ -106,7 +120,10 @@ export default function CreateAddress() {
 
         <div className="flex gap-4">
           <div className="w-1/2">
-            <label htmlFor="floorNumber" className="text-[10px] md:text-xs tracking-wider">
+            <label
+              htmlFor="floorNumber"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
               Floor Number
             </label>
             <input
@@ -126,7 +143,10 @@ export default function CreateAddress() {
           </div>
 
           <div className="w-1/2">
-            <label htmlFor="city" className="text-[10px] md:text-xs tracking-wider">
+            <label
+              htmlFor="city"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
               City
             </label>
             <input
@@ -148,46 +168,49 @@ export default function CreateAddress() {
 
         <div className="flex gap-4">
           <div className="w-1/2">
-          <label htmlFor="postalCode" className="text-[10px] md:text-xs tracking-wider">
-            Postal Code
-          </label>
-          <input
-            type="text"
-            placeholder="Postal code"
-            name="postalCode"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.postalCode}
-          />
-          {formik.touched.postalCode && formik.errors.postalCode && (
-            <p className="text-red-500 mt-1 font-medium text-xs">
-              {formik.errors.postalCode}
-            </p>
-          )}
-        </div>
-        <div className="w-1/2">
-          <label
-            htmlFor="phoneNumber"
-            className="text-[10px] md:text-xs tracking-wider"
-          >
-            Phone Number
-          </label>
-          <input
-            type="text"
-            placeholder="Phone Number"
-            name="phoneNumber"
-            className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.phoneNumber}
-          />
-          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-            <p className="text-red-500 mt-1 font-medium text-xs">
-              {formik.errors.phoneNumber}
-            </p>
-          )}
-        </div>
+            <label
+              htmlFor="postalCode"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
+              Postal Code
+            </label>
+            <input
+              type="text"
+              placeholder="Postal code"
+              name="postalCode"
+              className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.postalCode}
+            />
+            {formik.touched.postalCode && formik.errors.postalCode && (
+              <p className="text-red-500 mt-1 font-medium text-xs">
+                {formik.errors.postalCode}
+              </p>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label
+              htmlFor="phoneNumber"
+              className="text-[10px] md:text-xs tracking-wider"
+            >
+              Phone Number
+            </label>
+            <input
+              type="text"
+              placeholder="Phone Number"
+              name="phoneNumber"
+              className="tracking-wider border border-gray-300 py-2 px-3 text-[10px] md:text-xs w-full mt-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.phoneNumber}
+            />
+            {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+              <p className="text-red-500 mt-1 font-medium text-xs">
+                {formik.errors.phoneNumber}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="pt-4 flex justify-end gap-4">

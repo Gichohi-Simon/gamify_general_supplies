@@ -9,6 +9,7 @@ import Link from "next/link";
 import UserAddress from "@/components/UserAddress";
 import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid";
 import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline";
+import { toast } from "sonner";
 
 export default function AccounPage() {
   const user = useAppSelector((state) => state?.auth.userInfo);
@@ -20,9 +21,14 @@ export default function AccounPage() {
     try {
       await mutateAsync();
       dispatch(setLogout());
+      toast.success("logout succesful");
       router.replace("/login");
-    } catch (error) {
-      console.error("logout error:", error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("something went wrong login failed");
+      }
     }
   };
 
