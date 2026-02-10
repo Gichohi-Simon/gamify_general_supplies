@@ -80,7 +80,7 @@ const Footer = () => {
       <hr className="my-8 border-1 border-black opacity-10" />
       <div className="text-center md:flex justify-between mt-6">
         <p className="font-bold text-xs md:text-sm tracking-wider">
-          &copy; 2025 Gamify General Supplies and general services, All rights
+          &copy; 2026 Gamify General Supplies and general services, All rights
           reserved.
         </p>
         <p className="text-xs md:text-sm mt-3 md:mt-0">
