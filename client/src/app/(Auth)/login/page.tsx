@@ -6,12 +6,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/store/hooks";
-import { loginInitialValues } from "@/types/types";
+import { loginInitialValues, AuthUser } from "@/types/types";
 import { setCredentials } from "@/store/features/authSlice";
 import { useSignIn } from "@/hooks/auth";
 import GoogleLoginButton from "@/components/GoogleLoginButton";
 import { toast } from "sonner";
-import { User } from "@/types/types";
+
+type LoginResponse = {
+  user: AuthUser;
+};
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,8 +34,9 @@ export default function LoginPage() {
     }),
     onSubmit: async (values) => {
       try {
-        const data = await mutateAsync(values);
+        const data = (await mutateAsync(values)) as LoginResponse;
         dispatch(setCredentials({ userInfo: data.user }));
+
         toast.success("login successful");
         formik.resetForm();
         router.push("/account");
@@ -65,7 +69,7 @@ export default function LoginPage() {
           </p>
         </div>
         <GoogleLoginButton
-          onLogin={(user: User) => {
+          onLogin={(user: AuthUser) => {
             dispatch(setCredentials({ userInfo: user }));
             toast.success("login succesful");
             router.push("/shop");

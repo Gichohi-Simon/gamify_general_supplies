@@ -9,12 +9,7 @@ export interface User {
   authProvider: AuthProvider;
 }
 
-export interface userState {
-  id: string;
-  email: string;
-  username: string;
-  password: string;
-}
+export type AuthUser = User;
 
 export interface AuthState {
   userInfo: userState | null;
