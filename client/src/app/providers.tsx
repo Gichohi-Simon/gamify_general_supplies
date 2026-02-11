@@ -15,9 +15,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <Provider store={store}>
       <GoogleOAuthProvider clientId={googleClientId!}>
         <QueryClientComponent>
-          <Toaster position="top-right" richColors closeButton />
-          <AuthProvider />
+          <Toaster position="top-left" richColors closeButton />
           <CartUserSync />
+          <AuthProvider />
           {children}
         </QueryClientComponent>
       </GoogleOAuthProvider>

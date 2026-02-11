@@ -6,15 +6,24 @@ import { setCartUser } from "@/store/features/cartSlice";
 
 export default function CartUserSync() {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state?.auth.userInfo);
+  const userId = useAppSelector((state) => state?.auth.userInfo?.id ?? null);
+
+  const hydratedOnce = useRef(false);
   const previousUserId = useRef<string | null>(null);
-  
+
   useEffect(() => {
-    if(user?.id !== previousUserId.current){
-      previousUserId.current = user?.id || null;
-      dispatch(setCartUser(user?.id || null))
+    if (!hydratedOnce.current) {
+      hydratedOnce.current = true;
+      previousUserId.current = userId;
+      dispatch(setCartUser(userId));
+      return;
     }
-  }, [user?.id, dispatch]);
+
+    if (userId !== previousUserId.current) {
+      previousUserId.current = userId;
+      dispatch(setCartUser(userId));
+    }
+  }, [userId, dispatch]);
 
   return null;
 }
